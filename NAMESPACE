@@ -1,0 +1,8 @@
+export(fbGetToken)
+export(fbGetProjects)
+export(fbGetAdAccounts)
+export(fbGetPages)
+export(fbGetApps)
+export(fbGetMarketingStat)
+importFrom(getURL,RCurl)
+importFrom(jsonlite,fromJSON)
