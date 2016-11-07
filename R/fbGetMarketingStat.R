@@ -7,11 +7,12 @@ function(accounts_id = NULL,
                                filtering = NULL,
                                date_start = "2000-01-01",
                                date_stop = Sys.Date(),
+							   api_version = "v2.8",
                                access_token = NULL){
   result <- data.frame()
   for(i in 1:length(accounts_id)){
     QueryString <- gsub("&{1,5}","&",
-                        paste(paste0("https://graph.facebook.com/v2.7/",accounts_id[i],"/insights?"),
+                        paste(paste0("https://graph.facebook.com/",api_version,"/",accounts_id[i],"/insights?"),
                           ifelse(is.null(sorting),"",paste0("sort=",sorting)),
                           paste0("level=",level),
                           ifelse(is.null(breakdowns),"",paste0("breakdowns=",breakdowns)),
