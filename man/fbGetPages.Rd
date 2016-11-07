@@ -4,11 +4,12 @@
 \title{Get pages list}
 \description{Load data about all avable pages}
 \usage{
-fbGetPages(projects_id = NULL, access_token = NULL)
+fbGetPages(projects_id = NULL, api_version = "v2.8", access_token = NULL)
 }
 
 \arguments{
   \item{projects_id}{ Your project ID.}
+  \item{api_version}{Current Facebook API version.}
   \item{access_token}{Your facebook API token.}
 }
 
@@ -18,5 +19,5 @@ fbGetPages(projects_id = NULL, access_token = NULL)
 \author{Alexey Seleznev}
 
 \examples{
-fbPages <- fbGetPages(projects_id = "xxxxxxxxxxxxx", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+fbPages <- fbGetPages(projects_id = "xxxxxxxxxxxxx", api_version = "v2.8", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 }

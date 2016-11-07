@@ -3,11 +3,12 @@
 \title{Get project list}
 \description{Load data about all avable projects}
 \usage{
-fbGetProjects(bussiness_id = NULL, access_token = NULL)
+fbGetProjects(bussiness_id = NULL, api_version = "v2.8", access_token = NULL)
 }
 
 \arguments{
   \item{bussiness_id}{ID by your Business Manager}
+  \item{api_version}{Current Facebook API version.}
   \item{access_token}{Your API facebook token}
 }
 
@@ -16,5 +17,5 @@ fbGetProjects(bussiness_id = NULL, access_token = NULL)
 \author{Alexey Seleznev}
 
 \examples{
-fbProject <- fbGetProjects(bussiness_id = "xxxxxxxxx", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+fbProject <- fbGetProjects(bussiness_id = "xxxxxxxxx", api_version = "v2.8", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 }
