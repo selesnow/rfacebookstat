@@ -126,10 +126,40 @@ fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
 ###Аругменты
 client_id - ID вашего приложени в Facebook
 
-client_secret - Секрет вашего приложения в Facebook /t
+client_secret - Секрет вашего приложения в Facebook 
+
 fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
 
+##fbGetProjects
+###Описание
+Данная функция загружает список доступных в вашем бизнес менеджере проектов
 
+###Синтаксис
+fbGetProjects(bussiness_id, api_version, access_token)
+
+###Аругменты
+bussiness_id - ID вашего бизнес менеджера, посмотреть ID можно перейдя в основном меню бизнес менеджера в "Настройки Business Manager" на вкладку "Информация о компании".
+<p align="center">
+<img src="http://img.netpeak.ua/alsey/148190852785_kiss_43kb.png" data-canonical-src="http://img.netpeak.ua/alsey/148190852785_kiss_43kb.png" style="max-width:100%;">
+</p>
+
+api_version - Версия API Facebook в формате v*.*, например v2.8
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+##fbGetApps
+###Описание
+Данная функция возвращает набор данных со списком аккаунтов в вашем бизнес менеджере.
+
+###Синтаксис
+fbGetApps(projects_id, api_version, access_token)
+
+###Аругменты
+projects_id - ID проекта в котором ведётся реклама приложени
+
+api_version - Версия API Facebook в формате v*.*, например v2.8
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
  *Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
 
