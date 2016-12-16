@@ -227,7 +227,7 @@ date_start — начальная дата отчетного периода в 
 
 date_stop — конечная дата отчетного периода в формате YYYY-MM-DDD.
 
-api_version — версия API Facebook, в формате v*.*, например "v8.2"
+api_version — версия API Facebook, в формате v*.*, например "v2.8"
 
 access_token — токен доступа.
 
