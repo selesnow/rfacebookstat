@@ -11,28 +11,28 @@
 На данный момент в пакете rfacebookstat доступно 7 функций.
 <table>
     <tr>
-        <td><center>Функция</center></td><td><center>Описание</center></td><td>
+        <td><center>Функция</center></td><td><center>Описание</center></td>
     </tr>
     <tr>
-        <td><center>fbGetToken</center></td><td><center>Получает окен для доступа к API Facebook</center></td><td>
+        <td><center>fbGetToken</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
     </tr>
      <tr>
-        <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td><td>
+        <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td>
     </tr>
     <tr>
-        <td><center>fbGetApps</center></td><td><center>Получает список рекламируемых приложений</center></td><td>
+        <td><center>fbGetApps</center></td><td><center>Получает список рекламируемых приложений</center></td>
     </tr>
     <tr>
-        <td><center>fbGetPages</center></td><td><center>Получает список рекламируемых страниц</center></td><td>
+        <td><center>fbGetPages</center></td><td><center>Получает список рекламируемых страниц</center></td>
     </tr>
     <tr>
-        <td><center>fbGetProjects</center></td><td><center>Получает список проектов доступных в бизнес менеджере</center></td><td>
+        <td><center>fbGetProjects</center></td><td><center>Получает список проектов доступных в бизнес менеджере</center></td>
     </tr>
     <tr>
-        <td><center>fbGetAdAccounts</center></td><td><center>Получает список доступных рекламных аккаунтов</center></td><td>
+        <td><center>fbGetAdAccounts</center></td><td><center>Получает список доступных рекламных аккаунтов</center></td>
     </tr>
     <tr>
-        <td><center>fbGetMarketingStat</center></td><td><center>Получает статистику из рекламного кабинета</center></td><td>
+        <td><center>fbGetMarketingStat</center></td><td><center>Получает статистику из рекламного кабинета</center></td>
     </tr>
 </table>
 Описание работы с пакетом будет добавлено в ближайшее времяю.
