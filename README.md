@@ -105,7 +105,29 @@
         <td><center>fbGetMarketingStat</center></td><td><center>Получает статистику из рекламного кабинета</center></td>
     </tr>
 </table>
-Описание работы с пакетом будет добавлено в ближайшее времяю.
+
+##fbGetToken
+###Описание
+Функция предназначена для получения краткосрочного токена для доступа к API Facebook.
+
+###Синтаксис
+fbGetToken(app_id = 000000000)
+
+###Аргументы
+app_id - ID вашего приложени в Facebook
+
+##fbGetLongTimeToken
+###Описание
+Данная функция меняет краткосрочный токен с сроком 2 часа на долгосрочный токен который действителен на протяжении двух месяцев.
+
+###Синтаксис
+fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
+
+###Аругменты
+client_id - ID вашего приложени в Facebook
+client_secret - Секрет вашего приложения в Facebook
+fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
+
 
 
  *Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
