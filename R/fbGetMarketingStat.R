@@ -1,14 +1,14 @@
 fbGetMarketingStat <-
 function(accounts_id = NULL,
-                               sorting = NULL,
-                               level = "account",
-                               breakdowns = NULL,
-                               fields ="account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend",
-                               filtering = NULL,
-                               date_start = "2000-01-01",
-                               date_stop = Sys.Date(),
-							   api_version = "v2.8",
-                               access_token = NULL){
+         sorting = NULL,
+         level = "account",
+         breakdowns = NULL,
+         fields ="account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend",
+         filtering = NULL,
+         date_start = "2000-01-01",
+         date_stop = Sys.Date(),
+	 api_version = "v2.8",
+         access_token = NULL){
   result <- data.frame()
   for(i in 1:length(accounts_id)){
     QueryString <- gsub("&{1,5}","&",
@@ -19,6 +19,7 @@ function(accounts_id = NULL,
                           paste0("fields=",fields),
                           ifelse(is.null(filtering),"",paste0("filtering=",filtering)),
                           paste0("time_range={\"since\":\"",date_start,"\",\"until\":\"",date_stop,"\"}"),
+			  "limit=5000",
                           paste0("access_token=",access_token),
                           sep = "&"))
     answer <- getURL(QueryString)
