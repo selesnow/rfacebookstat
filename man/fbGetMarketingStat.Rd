@@ -12,7 +12,7 @@ fbGetMarketingStat(accounts_id = NULL, sorting = NULL, level = "account", breakd
   \item{level}{Represents the level of result. Avable ad, adset, campaign, account.}
   \item{breakdowns}{Permutations marked with an asterisk (*) can be joined with action_type and action_target_id. Avable age, country, gender, frequency_value, hourly_stats_aggregated_by_advertiser_time_zone, hourly_stats_aggregated_by_audience_time_zone, impression_device, place_page_id, placement, device_platform, product_id, region}
   \item{fields}{List of fields which you want get in R.}
-  \item{filtering}{Array of filtring parameters, on example "[{/'field/':/'ad.effective_status/',/'operator/':/'IN/',/'value/':[/'ARCHIVED/']"}
+  \item{filtering}{Array of filtring parameters, on example `[{/'field/':/'ad.effective_status/',/'operator/':/'IN/',/'value/':[/'ARCHIVED/']`}
   \item{date_start}{Start reporting date.}
   \item{date_stop}{End reporting day}
   \item{api_version}{Current Facebook API version.}
@@ -40,7 +40,7 @@ fbStat <- fbGetMarketingStat(accounts_id = "act_xxxxxxxxxxxxxxx",
                              breakdowns = "device_platform",
                              date_start = "2016-08-01",
                              date_stop = "2016-08-10",
-							 api_version = "v2.8",
+			     api_version = "v2.8",
                              access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 }
 
