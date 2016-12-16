@@ -11,8 +11,9 @@ function(accounts_id = NULL,
          access_token = NULL){
   result <- data.frame()
   for(i in 1:length(accounts_id)){
+    #Создаём строку запроса
     QueryString <- gsub("&{1,5}","&",
-                        paste(paste0("https://graph.facebook.com/",api_version,"/",accounts_id[i],"/insights?"),
+                          paste(paste0("https://graph.facebook.com/",api_version,"/",accounts_id[i],"/insights?"),
                           ifelse(is.null(sorting),"",paste0("sort=",sorting)),
                           paste0("level=",level),
                           ifelse(is.null(breakdowns),"",paste0("breakdowns=",breakdowns)),
@@ -22,15 +23,23 @@ function(accounts_id = NULL,
 			  "limit=5000",
                           paste0("access_token=",access_token),
                           sep = "&"))
+    #Отправка запроса
     answer <- getURL(QueryString)
     answerobject <- fromJSON(answer)
     tempData <- answerobject$data
     result <- rbind(result, tempData)
     if(!is.null(answerobject$error)) {
       error <- answerobject$error
-      message(message(answerobject$error))
+      stop(answerobject$error)
     }
     if(exists("tempData")){rm(tempData)}
+	  #Запуск процесса пейджинации
+	      while(!is.null(answerobject$paging$`next`)){
+                 QueryString <- answerobject$paging$`next`
+                 answer <- getURL(QueryString)
+                 answerobject <- fromJSON(answer)
+                 tempData <- answerobject$data
+                 result <- rbind(result, tempData)}
   }
   return(result)
 }
