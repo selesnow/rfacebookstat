@@ -155,11 +155,72 @@ access_token - Токен достепа полученный с помощью 
 fbGetApps(projects_id, api_version, access_token)
 
 ###Аругменты
-projects_id - ID проекта в котором ведётся реклама приложени
+projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
 
 api_version - Версия API Facebook в формате v*.*, например v2.8
 
 access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+##fbGetPages
+###Описание
+Функция возвращает список всех страниц по конкретному проекту бизнес менеджера.
+
+###Синтаксис
+fbGetPages(projects_id, api_version, access_token)
+
+###Аругменты
+projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
+
+api_version - Версия API Facebook в формате v*.*, например v2.8
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+##fbGetAdAccounts
+###Описание
+Функция возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
+
+###Синтаксис
+fbGetAdAccounts(projects_id, api_version, access_token )
+
+###Аругменты
+projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
+
+api_version - Версия API Facebook в формате v*.*, например v2.8
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+##fbGetMarketingStat
+###Описание
+Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
+
+###Синтаксис
+fbGetMarketingStat(accounts_id, 
+                   sortingL, 
+                   level, 
+                   breakdowns, 
+                   fields, 
+                   filtering, 
+                   date_start, 
+                   date_stop, 
+                   api_version,
+                   access_token)
+
+###Аругменты
+accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+
+sorting — cортировка данных. Необязательный аргумент. На входе принимает список полей и направление сортировки (по возрастанию или по убыванию). Пример: reach_descending, impressions_ascending.
+
+level — уровень детализации данных. Обязательный аргумент. Принимает значения ad, adset, campaign, account. Пример — level = "account".
+
+fields — список полей, по которым вы планируете получить данные. Обязательный аргумент. Пример: fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend". Актуальный список всех доступных полей можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/fields/).
+
+filtering — фильтр данных. Необязательный аргумент. Фильтры задаются в виде JSON объектов «ключ:значение». Необходимо прописать три свойства:
+
+*field — поле, по которому будет осуществляться фильтрация;
+*operator — оператор логического значения (IN, ANY);
+*value — значения, по которому будет фильтроваться указанное поле.
+
+4.2.5. breakdowns — аргумент, с помощью которого можно получить данные в разбивке на различные сегменты. Список доступных срезов информации, а так же информацию о том как они могут друг с другом сочитаться можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns/).
 
  *Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
 
