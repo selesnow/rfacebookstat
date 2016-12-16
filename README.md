@@ -125,7 +125,8 @@ fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
 
 ###Аругменты
 client_id - ID вашего приложени в Facebook
-client_secret - Секрет вашего приложения в Facebook
+
+client_secret - Секрет вашего приложения в Facebook /t
 fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
 
 
