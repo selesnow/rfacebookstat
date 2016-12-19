@@ -247,8 +247,10 @@ AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
                               date_stop = "2016-11-30",
                               api_version = "v2.8",
                               access_token = token)
-                                                       ```
+```
+
 Получите статистику по количеству уникальных показов и уникальных кликов, с фильтром по возрастным группам «18-24», «25-34» и сортировкой данных в порядке убывания количества уникальных показов (поле unique_impressions).
+
 
 ```
 CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
@@ -263,8 +265,6 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
                                    access_token = token)
 ```
                                                        
-
-
  *Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
 
  [GitHub](https://github.com/selesnow/)
