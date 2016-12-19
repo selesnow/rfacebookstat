@@ -2,6 +2,16 @@
 # Пакет для загрузки данных из Marketing API Facebook в R.
 
 ##Содержание README
++ [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
++ [Функции пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Функции-пакета-rfacebookstat)
++ [fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken)
++ [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken)
++ [fbGetProjects](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetprojects)
++ [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps)
++ [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages)
++ [fbGetAdAccounts](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccounts)
++ [fbGetMarketingStat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetmarketingstat)
++ [Пример работы с пакетом rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Пример-работы-с-пакетом-rfacebookstat)
 
 ##Начало работы с API Facebook
 Для начала работы с API Facebook необходимо создать приложение:
@@ -84,7 +94,7 @@
         <td><center>Функция</center></td><td><center>Описание</center></td>
     </tr>
     <tr>
-        <td><center>fbGetToken</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
+        <td><center>[fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken)</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
     </tr>
      <tr>
         <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td>
