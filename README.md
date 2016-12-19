@@ -94,7 +94,7 @@
         <td><center>Функция</center></td><td><center>Описание</center></td>
     </tr>
     <tr>
-        <td><center>[fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken)</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
+        <td><center>fbGetToken</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
     </tr>
      <tr>
         <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td>
