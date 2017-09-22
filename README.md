@@ -63,9 +63,9 @@
 <img src="http://images.netpeak.net/blog/v-pole-url-adres-sajta.png" data-canonical-src="http://images.netpeak.net/blog/v-pole-url-adres-sajta.png" style="max-width:100%;">
 </p>
 
-6. В меню приложения перейдите в раздел «Вход через Facebook». В поле «Действительные URL-адреса для перенаправления OAuth» введите «https://www.facebook.com/connect/login_success.html».
+6. В меню приложения перейдите в раздел «Вход через Facebook». В поле «Действительные URL-адреса для перенаправления OAuth» введите «https://selesnow.github.io/rfacebookstat/getToken/get_token.html».
 <p align="center">
-<img src="http://images.netpeak.net/blog/dejstvitelnye-url-adresa-dla-perenapravlenia-oauth.jpg" data-canonical-src="http://images.netpeak.net/blog/dejstvitelnye-url-adresa-dla-perenapravlenia-oauth.jpg" style="max-width:100%;">
+<img src="http://img.netpeak.ua/alsey/150609735202_kiss_4kb.png" data-canonical-src="http://img.netpeak.ua/alsey/150609735202_kiss_4kb.png" style="max-width:100%;">
 </p>
 
 7. Далее нужно выбрать, из каких рекламных аккаунтов вы будете получать статистику через API и скопировать их ID (Чтобы получить ID аккаунта, перейдите в рекламный кабинет и скопируйте цифры из параметра act в URL.).
