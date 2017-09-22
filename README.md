@@ -145,7 +145,7 @@ MyFBToken <- fbGetToken(app_id = 1111111111111111)
 <p align="center"><img src="https://images.netpeak.net/blog/podtverdite-vhod.jpg" data-canonical-src="https://images.netpeak.net/blog/podtverdite-vhod.jpg" style="max-width:100%;"></p>
 
 После того как вы подтвердите доступ, нажав ОК вы попадаете на страницу https://selesnow.github.io/rfacebookstat/getToken/get_token.html, на которой будет сгенерирован токен доступа к API Facebook.
-<p align="center"><img src="http://img.netpeak.ua/alsey/150609816783_kiss_73kb.png" data-canonical-src="http://img.netpeak.ua/alsey/150609816783_kiss_73kb.png" style="max-width:100%;"></p>
+<p align="center"><img src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" data-canonical-src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" style="max-width:100%;"></p>
 
 ## fbGetLongTimeToken
 ### Описание
