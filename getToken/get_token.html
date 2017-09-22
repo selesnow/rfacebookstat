@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="ru">
+<head>
+<style type="text/css">
+                         .colortext {
+                                color: red; /* Красный цвет выделения */
+								font-family: Impact;
+								font-size: 24px;
+								font-style: bold;
+                                    }
+                       </style>
+					   
+</head>
+
+<body>
+
+<script>
+window.onload = function() {
+document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.indexOf('&'));
+}
+</script>
+
+<h1>Авторизация для работы с API Вконтакте с помощью R клиента <b>rvfacebookstat</b></h1>
+<h1><center>Ваш Код Токен доступа:</center></h1>
+<h1><center><span id='txt1' class="colortext"></span></center></h1>
+
+<p><center><i>Введите значение данного когда в R консоль на запрос "Enter your token: ", после чего в R будет создан объект содержащий токен доступа к API Вконтакте и вы сможете получить данные с помощью функций доступных в пакете rvkstat.<i></center></p>
+
+<p>Подробное описание асех достапных функций пакета можно найти <a href="https://selesnow.github.io/rvkstat/">тут</a>.</p>
+</body>
+</html>
