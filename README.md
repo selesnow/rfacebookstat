@@ -299,7 +299,7 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
                                                        
 ## Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
 <center>
-<table>
+<table border="0" align="center">
 <tr>
 <td>
 <p align="center">
