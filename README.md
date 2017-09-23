@@ -298,6 +298,7 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
 ```
                                                        
 ## Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
+<center>
 <table>
 <tr>
 <td>
@@ -306,7 +307,7 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
 </p>
 </td>
 <td>
-### Контакты:
+**Контакты:**
 <nav class="jetpack-social-navigation jetpack-social-navigation-svg">
 <div class="menu-%d1%81%d0%be%d1%86%d0%b8%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d0%b5-%d1%81%d0%b5%d1%82%d0%b8-container">
 <ul id="menu-%d1%81%d0%be%d1%86%d0%b8%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d0%b5-%d1%81%d0%b5%d1%82%d0%b8" class="menu">
@@ -321,7 +322,7 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
 </td>
 </tr>
 </table>
-
+</center>
   
 <p align="center">
 <img src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png?w=300" data-canonical-src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png?w=300" style="max-width:100%;">
