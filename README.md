@@ -297,7 +297,8 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
                                    access_token = token)
 ```
                                                        
-## Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
+## Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak
+
 <center>
 <table border="0" align="center">
 <tr>
@@ -307,9 +308,8 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
 </p>
 </td>
 <td>
-**Контакты:**
+Контакты:
 <nav class="jetpack-social-navigation jetpack-social-navigation-svg">
-<div class="menu-%d1%81%d0%be%d1%86%d0%b8%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d0%b5-%d1%81%d0%b5%d1%82%d0%b8-container">
 <ul id="menu-%d1%81%d0%be%d1%86%d0%b8%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d0%b5-%d1%81%d0%b5%d1%82%d0%b8" class="menu">
 <li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="http://www.facebook.com/selesnow" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
 <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="https://www.linkedin.com/in/selesnow/" target="_blank"><span class="screen-reader-text">LinkedIn</span></a></li>
@@ -317,7 +317,6 @@ CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
 <li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="https://github.com/selesnow"><span class="screen-reader-text">GitHub</span></a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="https://alexeyseleznev.wordpress.com/">Blog</a></li>
 </ul>
-</div>
 </nav>
 </td>
 </tr>
