@@ -1,4 +1,4 @@
-fbGetAdAccounts2 <- function(source_id = NULL, api_version = "v2.10", access_token = NULL){
+fbGetAdAccounts <- function(source_id = NULL, api_version = "v2.10", access_token = NULL){
   
   #Check of fill out access_token
   if(is.null(access_token)){
