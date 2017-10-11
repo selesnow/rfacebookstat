@@ -30,7 +30,7 @@ for(account in accounts_id){
 
  #Отправляем запрос на сервер
  answer <- GET(QueryString)
- raw <- fromJSON(content(answer, "text", "application/json"))
+ raw <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"))
  
  #Проверям результат на ошибки
  if(length(raw$error) > 0){
@@ -39,7 +39,7 @@ for(account in accounts_id){
  }
 
  #Парсим ответ и преобразуем его в табицу
- flatten_data <- fromJSON(content(answer, "text", "application/json"), flatten = T)$data
+ flatten_data <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"), flatten = T)$data
  flatten_data$account_id <- account
  
  #Получаем имя пользователя и ссылку на его страницу
@@ -48,14 +48,14 @@ for(account in accounts_id){
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",user,"?fields=id,name,link&access_token=",access_token)
   answerUSER <- GET(QueryString)
   stop_for_status(answerUSER)
-  raw <- fromJSON(content(answerUSER, "text", "application/json"))
+  raw <- fromJSON(content(answerUSER, "text", "application/json",encoding = "UTF-8"))
   #Проверям результат на ошибки
   if(length(answerUSER$error) > 0){
     try(stop(paste0(raw$error$code, " - ", raw$error$message)))
     next
   }
 
-  rawUSER <- data.frame(fromJSON(content(answerUSER, "text", "application/json"), flatten = T))
+  rawUSER <- data.frame(fromJSON(content(answerUSER, "text", "application/json",encoding = "UTF-8"), flatten = T))
   flatten_data$link[flatten_data$id == user] <- as.character(rawUSER$link)
   }
 
