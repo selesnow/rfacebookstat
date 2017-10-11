@@ -34,7 +34,7 @@ for(account in accounts_id){
  
  #Проверям результат на ошибки
  if(length(raw$error) > 0){
-   try(stop(paste0(account," - ",raw$error$code, " - ", raw$error$message)))
+   packageStartupMessage(paste0(account," - ",raw$error$code, " - ", raw$error$message), appendLF = T)
    next
  }
 
@@ -51,7 +51,7 @@ for(account in accounts_id){
   raw <- fromJSON(content(answerUSER, "text", "application/json",encoding = "UTF-8"))
   #Проверям результат на ошибки
   if(length(answerUSER$error) > 0){
-    try(stop(paste0(raw$error$code, " - ", raw$error$message)))
+    packageStartupMessage(paste0(account," - ",raw$error$code, " - ", raw$error$message), appendLF = T)
     next
   }
 
