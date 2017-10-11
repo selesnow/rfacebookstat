@@ -40,6 +40,12 @@ for(account in accounts_id){
 
  #Парсим ответ и преобразуем его в табицу
  flatten_data <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"), flatten = T)$data
+ #Check account data
+ if(length(flatten_data)==0){
+      packageStartupMessage(paste0(account," - Empty data."), appendLF = T)
+      next
+ }
+  
  flatten_data$account_id <- account
  
  #Получаем имя пользователя и ссылку на его страницу
