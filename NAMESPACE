@@ -1,6 +1,8 @@
 export(fbGetToken)
+export(fbGetBusinessManagers)
 export(fbGetProjects)
 export(fbGetAdAccounts)
+export(fbGetAdAccountUsers)
 export(fbGetPages)
 export(fbGetApps)
 export(fbGetLongTimeToken)
