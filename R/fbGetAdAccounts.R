@@ -37,4 +37,7 @@ while(!is.null(raw$paging$`next`)){
   raw  <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8")) 
   result <- rbind(result, raw$data)}
 
+#Transform money data
+result$balance <- result$balance / 100
+result$amount_spent <- result$amount_spent/ 100
 return(result)}
