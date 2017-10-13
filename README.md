@@ -3,7 +3,7 @@
 
 ## Содержание README
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
-+ [Устновка пакета]()
++ [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
 + [Функции пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Функции-пакета-rfacebookstat)
 + [fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken) - Получить токен для работы с API Facebook.
 + [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
