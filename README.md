@@ -255,6 +255,60 @@ api_version - Версия API Facebook в формате v*.*, например
 
 access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
+### Структура возвращаемого дата фрейма
+<table>
+    <tr>
+        <td><center>Поле</center></td><td><center>Описание</center></td>
+    </tr>
+    <tr>
+        <td><center>name</center></td><td><center>Имя учетной записи. Если имя учетной записи не установлено, будет возвращено имя первого администратора, видимого пользователю.</center></td>
+    </tr>
+     <tr>
+        <td><center>id</center></td><td><center>ID рекламного аккаунта с префиксом "act_"</center></td>
+    </tr>
+     <tr>
+        <td><center>account_id</center></td><td><center>ЗID рекламного аккаунта</center></td>
+    </tr>
+     <tr>
+        <td><center>account_status</center></td><td><center>Статус аккаунта, возможные значения 1 = ACTIVE, 2 = DISABLED, 3 = UNSETTLED, 7 = PENDING_RISK_REVIEW, 9 = IN_GRACE_PERIOD, 100 = PENDING_CLOSURE, 101 = CLOSED, 102 = PENDING_SETTLEMENT, 201 = ANY_ACTIVE, 202 = ANY_CLOSED
+</center></td>
+    </tr>
+    <tr>
+        <td><center>amount_spent</center></td><td><center>Сумма потраченных средств, этот параметр можно сбрасывать в настройках аккаунта</center></td>
+    </tr>
+    <tr>
+        <td><center>balance</center></td><td><center>Остаток средств аккаунта</center></td>
+    </tr>
+    <tr>
+        <td><center>currency</center></td><td><center>Валюта аккаунта</center></td>
+    </tr>
+    <tr>
+        <td><center>business_city</center></td><td><center>Город указанный в настройках бизнес менеджера</center></td>
+    </tr>
+    <tr>
+        <td><center>business_country_code</center></td><td><center>Страна указанная в настройках бизнес менеджера</center></td>
+    </tr>
+    <tr>
+        <td><center>age</center></td><td><center>Количество дней после активации рекламного аккаунта</center></td>
+    </tr>
+    <tr>
+        <td><center>spend_cap</center></td><td><center>Лимит средств который может быть потрачен в рекламном аккаунта, после чего рекламные кампании будут остановлены, если установлено значения 0 то лимита нет.</center></td>
+    </tr>
+    </tr>
+    <tr>
+        <td><center>business.id</center></td><td><center>ID бизнес менеджера к которому приклеплён аккаунт</center></td>
+    </tr>
+    <tr>
+        <td><center>business.name</center></td><td><center>Название бизнес менеджера к которому приклеплён аккаунт</center></td>
+    </tr>
+    <tr>
+        <td><center>owner.id</center></td><td><center>ID владельца рекламного аккаунта</center></td>
+    </tr>
+    <tr>
+        <td><center>owner.name</center></td><td><center>Имя владельца рекламного аккаунта</center></td>
+    </tr>
+</table>
+
 ## fbGetMarketingStat
 ### Описание
 Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
