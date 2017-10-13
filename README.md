@@ -94,7 +94,7 @@
 Для установки пакета запустите приведённый ниже код в RStudio или R консоли.
 ```
 if(!"devtools" %in% installed.packages()[,1]){install.packages("devtools")}
-devtools::install_github('selesnow/rvkstat')
+devtools::install_github('selesnow/rfacebookstat')
 ```
 
 ## Функции пакета rfacebookstat
