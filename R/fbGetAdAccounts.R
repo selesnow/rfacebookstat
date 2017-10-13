@@ -1,65 +1,40 @@
-fbGetAdAccountUsers <- function(accounts_id = NULL ,api_version = "v2.10", access_token = NULL){
+fbGetAdAccounts <- function(source_id = NULL, api_version = "v2.10", access_token = NULL){
   
-  if(is.null(accounts_id)|is.null(access_token)){
-    stop("Arguments accounts_id and access_token is require.")
+  #Check of fill out access_token
+  if(is.null(access_token)){
+    stop("access_token id require argument!")
+  }
+  
+  #Check source
+  if(is.null(source_id)){
+    source_id <- "me"
+  }
+  
+  #Create result data frame
+  result <- data.frame(stringsAsFactors = FALSE)
+  
+  #Compose query string
+  QueryString <- paste0("https://graph.facebook.com/",api_version,"/",source_id,"/adaccounts?&fields=name,id,account_id,account_status,user_role,age,business_name,amount_spent,balance,currency,business_city,business_country_code&limit=100&access_token=",access_token)
+
+  #Send query to API server
+  answer <- GET(QueryString)
+
+  #Parse result
+  raw <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"))
+
+  #Check error
+  if(!is.null(raw$error)){
+    stop(raw$error$message)
   }
 
-#check stringAsFactor
-factor_change <- FALSE
+#Add to result
+result <- rbind(result, raw$data)
 
-#change string is factor if TRUE
-if(getOption("stringsAsFactors")){
-  options(stringsAsFactors = F)
-  factor_change <- TRUE
-}
+#Paging
+while(!is.null(raw$paging$`next`)){
+  QueryString <- raw$paging$`next`
+  answer <- GET(QueryString)
+  raw  <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8")) 
+  result <- rbind(result, raw$data)}
 
-#Check account ids
-accounts_id <- ifelse(grepl("^act_",accounts_id),accounts_id,paste0("act_",accounts_id))
-
-#result df
-result <- data.frame(stringsAsFactors = F)
-
-packageStartupMessage("Processing...", appendLF = T)
-#
-#start cycle
-for(account in accounts_id){
-  if(is.na(account)|is.null(account)) next
-  
-#Compose URL hhtp request
- packageStartupMessage(account, appendLF = F)
- 
- QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account,"/userpermissions?access_token=",access_token)
-
- #Send request
- answer <- GET(QueryString)
- raw <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"))
- 
- #Check answer on error
- if(length(raw$error) > 0){
-   packageStartupMessage(paste0(" - ",raw$error$code, " - ", raw$error$message), appendLF = T)
-   next
- }
-
- #Parse answer and transform him to data frame
- flatten_data <- fromJSON(content(answer, "text", "application/json",encoding = "UTF-8"), flatten = T)$data
- 
- if(is.null(flatten_data)|length(flatten_data) == 0){
-   packageStartupMessage(paste0(" - Empty userlist!"), appendLF = T)
-   next
- }
-   
- flatten_data$account_id <- account
- 
- #Add to result data.frame
- result <- rbind(result, flatten_data)
- 
- packageStartupMessage(paste0(" - Done, ",length(unique(flatten_data$user.id))," users"), appendLF = T)
-}
-
-#back string as factor value
-if(factor_change){
-  options(stringsAsFactors = T)
-}
-packageStartupMessage("Done", appendLF = T)
-return(result)
-}
+return(result)}
