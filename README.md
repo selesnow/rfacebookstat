@@ -7,6 +7,8 @@
 + [Функции пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Функции-пакета-rfacebookstat)
 + [fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken) - Получить токен для работы с API Facebook.
 + [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
++ [fbGetBusinessManagers] - Загружает список доступных бизнес менеджеров
++ [fbGetAdAccountUsers] - Загружает список пользователей из рекламных аккаунтов
 + [fbGetProjects](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetprojects) - Загружает список доступных в вашем бизнес менеджере проектов
 + [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
 + [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
@@ -107,6 +109,12 @@ devtools::install_github('selesnow/rvkstat')
     </tr>
      <tr>
         <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td>
+    </tr>
+     <tr>
+        <td><center>fbGetBusinessManagers</center></td><td><center>Загружает список доступных бизнес менеджеров</center></td>
+    </tr>
+     <tr>
+        <td><center>fbGetAdAccountUsers</center></td><td><center>Загружает список пользователей из рекламных аккаунтов</center></td>
     </tr>
     <tr>
         <td><center>fbGetApps</center></td><td><center>Получает список рекламируемых приложений</center></td>
