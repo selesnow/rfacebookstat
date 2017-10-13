@@ -170,6 +170,32 @@ client_secret - Секрет вашего приложения в Facebook
 
 fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
 
+## fbGetBusinessManagers
+### Описание
+Данная функция загружает список доступных бизнес менеджеров с некоторыми их параметрами.
+
+### Синтаксис
+fbGetBusinessManagers(api_version = "v2.10", access_token = NULL)
+
+### Аругменты
+api_version - Версия API Facebook в формате v*.*, например v2.10
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeTokenn
+
+## fbGetAdAccountUsers
+### Описание
+Данная функция загружает список пользователей рекламных аккаунтов.
+
+### Синтаксис
+fbGetAdAccountUsers(accounts_id = NULL ,api_version = "v2.10", access_token = NULL)
+
+### Аругменты
+accounts_id - Вектор ID рекламных аккаунтов с префиксом act_, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
+
+api_version - Версия API Facebook в формате v*.*, например v2.10
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeTokenn
+
 ## fbGetProjects
 ### Описание
 Данная функция загружает список доступных в вашем бизнес менеджере проектов
