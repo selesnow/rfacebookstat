@@ -55,3 +55,11 @@ for(account in accounts_id){
  
  packageStartupMessage(paste0(" - Done, ",length(unique(flatten_data$user.id))," users"), appendLF = T)
 }
+
+#back string as factor value
+if(factor_change){
+  options(stringsAsFactors = T)
+}
+packageStartupMessage("Done", appendLF = T)
+return(result)
+}
