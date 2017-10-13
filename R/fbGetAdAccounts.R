@@ -38,6 +38,6 @@ while(!is.null(raw$paging$`next`)){
   result <- rbind(result, raw$data)}
 
 #Transform money data
-result$balance <- result$balance / 100
-result$amount_spent <- result$amount_spent/ 100
+result$balance <- as.integer(result$balance) / 100
+result$amount_spent <- as.integer(result$amount_spent) / 100
 return(result)}
