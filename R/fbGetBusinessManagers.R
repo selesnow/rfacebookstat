@@ -19,11 +19,11 @@ fbGetBusinessManagers <- function(api_version = "v2.10", access_token = NULL){
   
   #Check error
   if(!is.null(raw$error)){
-    stop(raw_first$error)
+    stop(raw$error)
   }
   
   #Add data to result data frame
-  result <- rbind(result, raw_first$data)
+  result <- rbind(result, raw$data)
   
   #Pagination
   #Запуск процесса пейджинации
