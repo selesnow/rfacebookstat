@@ -19,11 +19,17 @@ accounts_id <- ifelse(grepl("^act_",accounts_id),accounts_id,paste0("act_",accou
 #result df
 result <- data.frame(stringsAsFactors = F)
 
+#Create counter variables
+account_number <- 0
+error_number   <- 0
+ 
+#Start message
 packageStartupMessage("Processing...", appendLF = T)
 #
 #start cycle
 for(account in accounts_id){
   if(is.na(account)|is.null(account)) next
+  account_number <- account_number + 1
   
 #Compose URL hhtp request
  packageStartupMessage(account, appendLF = F)
@@ -37,6 +43,7 @@ for(account in accounts_id){
  #Check answer on error
  if(length(raw$error) > 0){
    packageStartupMessage(paste0(" - ",raw$error$code, " - ", raw$error$message), appendLF = T)
+   error_number   <- error_number + 1
    next
  }
 
@@ -45,6 +52,7 @@ for(account in accounts_id){
  
  if(is.null(flatten_data)|length(flatten_data) == 0){
    packageStartupMessage(paste0(" - Empty userlist!"), appendLF = T)
+   error_number   <- error_number + 1
    next
  }
   
@@ -69,5 +77,7 @@ if(factor_change){
   options(stringsAsFactors = T)
 }
 packageStartupMessage("Done", appendLF = T)
+packageStartupMessage(paste0("Load userlist from ", account_number - error_number, " accounts."), appendLF = T)
+if(error_number > 0) packageStartupMessage(paste0("Error in ", error_number, " accounts."), appendLF = T)
 return(result)
 }
