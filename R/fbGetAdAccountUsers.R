@@ -28,7 +28,7 @@ for(account in accounts_id){
 #Compose URL hhtp request
  packageStartupMessage(account, appendLF = F)
  
- QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account,"/userpermissions?access_token=",access_token)
+ QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account,"/userpermissions?fields=user,business_persona,role,status&limit=150&access_token=",access_token)
 
  #Send request
  answer <- GET(QueryString)
