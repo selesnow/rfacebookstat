@@ -47,8 +47,16 @@ for(account in accounts_id){
    packageStartupMessage(paste0(" - Empty userlist!"), appendLF = T)
    next
  }
-   
+  
+ #add account id ino data frame 
  flatten_data$account_id <- account
+ 
+ #Add all field list
+ if(is.null(flatten_data$email))                 flatten_data$email <- NA
+ if(is.null(flatten_data$business.id))           flatten_data$business.id <- NA
+ if(is.null(flatten_data$business.name))         flatten_data$business.name <- NA
+ if(is.null(flatten_data$business_persona.id))   flatten_data$business_persona.id <- NA
+ if(is.null(flatten_data$business_persona.name)) flatten_data$business_persona.name <- NA
  
  #Add to result data.frame
  result <- rbind(result, flatten_data)
