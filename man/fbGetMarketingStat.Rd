@@ -4,7 +4,7 @@
 \title{Get statistic by ad accounts.}
 \description{fbGetMarketingStat is main function of rfacebookstat package, intended for load statiscit data by your ad, adset, campaign or account}
 \usage{
-fbGetMarketingStat(accounts_id = NULL, sorting = NULL, level = "account", breakdowns = NULL, fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend", filtering = NULL, date_start = "2000-01-01", date_stop = Sys.Date(), api_version = "v2.8", access_token = NULL)
+fbGetMarketingStat(accounts_id = NULL, sorting = NULL, level = "account", breakdowns = NULL, fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend", filtering = NULL, date_start = Sys.Date() - 30, date_stop = Sys.Date(), interval = "day", api_version = "v2.8", access_token = NULL)
 }
 \arguments{
   \item{accounts_id}{ID of your ad account.}
@@ -16,6 +16,7 @@ fbGetMarketingStat(accounts_id = NULL, sorting = NULL, level = "account", breakd
   \item{date_start}{Start reporting date.}
   \item{date_stop}{End reporting day}
   \item{api_version}{Current Facebook API version.}
+  \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"} 
   \item{access_token}{Your facebook API token}
 }
 
@@ -40,6 +41,7 @@ fbStat <- fbGetMarketingStat(accounts_id = "act_xxxxxxxxxxxxxxx",
                              breakdowns = "device_platform",
                              date_start = "2016-08-01",
                              date_stop = "2016-08-10",
+			     interval = "day",
 			     api_version = "v2.8",
                              access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 }
