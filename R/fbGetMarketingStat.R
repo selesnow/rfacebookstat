@@ -7,7 +7,7 @@ function(accounts_id = NULL,
          filtering = NULL,
          date_start = Sys.Date() - 30,
          date_stop = Sys.Date(),
-	       api_version = "v2.10",
+	 api_version = "v2.10",
          interval = "day",
          access_token = NULL){
   
@@ -15,7 +15,7 @@ function(accounts_id = NULL,
   result <- data.frame()
   
   #Проверяем выбранный интервал
-  dates_from <- seq.Date(date_start, date_stop, by = interval)
+  dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
   dates_to   <- dates_from - 1
   dates_to   <- c(dates_to[-1],date_stop)
   dates_df   <- data.frame(dates_from = dates_from,
