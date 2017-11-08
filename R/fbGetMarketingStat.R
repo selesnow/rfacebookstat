@@ -15,11 +15,11 @@ function(accounts_id = NULL,
   result <- data.frame()
   
   #Проверяем выбранный интервал
-  dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
-  dates_to   <- dates_from - 1
-  dates_to   <- c(dates_to[-1],date_stop)
-  dates_df   <- data.frame(dates_from = dates_from,
-                          dates_to   = dates_to)
+    dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
+    dates_to   <- as.Date(dates_from - 1)
+    dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))
+    dates_df   <- data.frame(dates_from = dates_from,
+                             dates_to   = dates_to)
   
   for(i in 1:length(accounts_id)){
     
