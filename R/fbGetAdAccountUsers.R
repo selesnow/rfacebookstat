@@ -1,4 +1,4 @@
-fbGetAdAccountUsers <- function(accounts_id = NULL ,api_version = "v2.10", access_token = NULL){
+fbGetAdAccountUsers <- function(accounts_id = NULL ,api_version = "v2.11", access_token = NULL){
   
   if(is.null(accounts_id)|is.null(access_token)){
     stop("Arguments accounts_id and access_token is require.")
