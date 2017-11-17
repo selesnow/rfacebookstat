@@ -7,7 +7,7 @@ function(accounts_id = NULL,
          filtering = NULL,
          date_start = Sys.Date() - 30,
          date_stop = Sys.Date(),
-	 api_version = "v2.10",
+	 api_version = "v2.11",
          interval = "day",
          access_token = NULL){
   
