@@ -58,6 +58,17 @@ function(accounts_id = NULL,
                  result <- rbind(result, tempData)}
     }
   }
+	
+  #Расплющиваем action
+    if(length(result$actions) > 0){
+      fb_res <- data.frame()
+      for(row in 1:length(result$actions)) {
+        
+        fb_res <- rbind(fb_res, cbind(result[row,], result[row,]$actions))
+	      
+      }
+      result <- fb_res
+    }
   #Возвращаем дата фрейм
   return(result)
 }
