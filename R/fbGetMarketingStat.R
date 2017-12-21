@@ -147,8 +147,10 @@ function(accounts_id = NULL,
       result <- fb_res
     }
   #Возвращаем дата фрейм
+  packageStartupMessage("-----------------------------------------------------", appendLF = T)
   packageStartupMessage("Data loaded successfully!", appendLF = T)
   packageStartupMessage(paste0("Loaded ",nwor(result)," rows."), appendLF = T)
   packageStartupMessage(paste0("Sended ",request_counter,"  API requests."), appendLF = T)
+  packageStartupMessage("-----------------------------------------------------", appendLF = T)
   return(result)
 }
