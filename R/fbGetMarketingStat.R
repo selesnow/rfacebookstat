@@ -1,5 +1,4 @@
-
-fbGetMarketingStat2 <-
+fbGetMarketingStat <-
   function(accounts_id = NULL,
            sorting = NULL,
            level = "account",
@@ -32,6 +31,7 @@ fbGetMarketingStat2 <-
     
     #API request counter
     request_counter <- 0
+    error_counter   <- 0
     
     for(i in 1:length(accounts_id)){
       
@@ -64,6 +64,8 @@ fbGetMarketingStat2 <-
         
         #Check answer on errors
         if (!is.null(answerobject$error)) {
+          #Add error in error counter
+          error_counter <- error_counter + 1
           if (answerobject$error$message == "(#17) User request limit reached") {
             #First attempt
             attempt <- 1
@@ -89,7 +91,8 @@ fbGetMarketingStat2 <-
                 if(console_type == "message"){
                   packageStartupMessage("Problem fixed. Continue data collection", appendLF = T)}
                 break}
-              
+              #Add error in error counter
+              error_counter <- error_counter + 1
               #Next attempt
               attempt <- attempt + 1
             }
@@ -118,6 +121,8 @@ fbGetMarketingStat2 <-
           
           #Check answer on errors
           if (!is.null(answerobject$error)) {
+            #Add error in error counter
+            error_counter <- error_counter + 1
             if (answerobject$error$message == "(#17) User request limit reached") {
               #First attempt
               attempt <- 1
@@ -143,7 +148,8 @@ fbGetMarketingStat2 <-
                   if(console_type == "message"){
                     packageStartupMessage("Problem fixed. Continue data collection", appendLF = T)}
                   break}
-                
+                #Add error in error counter
+                error_counter <- error_counter + 1
                 #Next attempt
                 attempt <- attempt + 1
               }
@@ -174,6 +180,7 @@ fbGetMarketingStat2 <-
     packageStartupMessage("Data loaded successfully!", appendLF = T)
     packageStartupMessage(paste0("Loaded ",nrow(result)," rows."), appendLF = T)
     packageStartupMessage(paste0("Sended ",request_counter," API requests."), appendLF = T)
+    if(error_counter > 0) packageStartupMessage(paste0(error_counter," error request."), appendLF = T)
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
     return(result)
   }
