@@ -39,26 +39,96 @@ function(accounts_id = NULL,
 			  "limit=5000",
                           paste0("access_token=",access_token),
                           sep = "&"))
-    #Отправка запроса
-    answer <- getURL(QueryString)
-    answerobject <- fromJSON(answer)
-    tempData <- answerobject$data
-    result <- rbind(result, tempData)
-    if(!is.null(answerobject$error)) {
-      error <- answerobject$error
-      stop(answerobject$error)
-    }
-    if(exists("tempData")){rm(tempData)}
-    #Запуск процесса пейджинации
-	      while(!is.null(answerobject$paging$`next`)){
-                 QueryString <- answerobject$paging$`next`
-                 answer <- getURL(QueryString)
-                 answerobject <- fromJSON(answer)
-                 tempData <- answerobject$data
-                 result <- rbind(result, tempData)}
+      #Send API request
+      answer <- getURL(QueryString)
+      #Parse result
+      answerobject <- fromJSON(answer)
+      
+      #Check answer on errors
+      if (!is.null(answerobject$error)) {
+      if (answerobject$error$message == "(#17) User request limit reached") {
+        #First attempt
+        attempt <- 1
+        packageStartupMessage("WARNING: User request limit reached", appendLF = T)
+        packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
+        packageStartupMessage("Wait few minutes.", appendLF = T)
+        #Start cycle
+        while(attempt <= 5){
+          packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)
+        
+          #Wait one minute and repaete
+          Sys.sleep(61)
+          
+          #Repeate API request
+          answer <- getURL(QueryString)
+          answerobject <- fromJSON(answer)
+          
+          #Check new answer
+          if(is.null(answerobject$error$message)) {
+            packageStartupMessage("Problem fixed. Continue data collection", appendLF = T) 
+            break}
+        
+          #Next attempt
+          attempt <- attempt + 1
+        }
+      }
+        
+      #Check other questions  
+      if(!is.null(answerobject$error)){
+        error <- answerobject$error
+        stop(answerobject$error$message)}
+        
+      }
+      
+      #Adding data to result
+      tempData <- answerobject$data
+      result <- rbind(result, tempData)
+      
+      if (exists("tempData")) {
+        rm(tempData)
+      }
+      #Pagination
+      while (!is.null(answerobject$paging$`next`)) {
+        QueryString <- answerobject$paging$`next`
+        answer <- getURL(QueryString)
+        answerobject <- fromJSON(answer)
+	      
+	      #Check answer on errors
+      	      if (!is.null(answerobject$error)) {
+      	         if (answerobject$error$message == "(#17) User request limit reached") {
+        		#First attempt
+        		attempt <- 1
+        		packageStartupMessage("WARNING: User request limit reached", appendLF = T)
+        		packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
+        		packageStartupMessage("Wait few minutes.", appendLF = T)
+        		#Start cycle
+        		while(attempt <= 5){
+          		packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)
+        
+          		#Wait one minute and repaete
+          		Sys.sleep(61)
+          
+          		#Repeate API request
+          		answer <- getURL(QueryString)
+          		answerobject <- fromJSON(answer)
+          
+          		#Check new answer
+          		if(is.null(answerobject$error$message)) {
+            		packageStartupMessage("Problem fixed. Continue data collection", appendLF = T) 
+            		break}
+        
+          		#Next attempt
+          		attempt <- attempt + 1
+        		}
+      		}        
+      	}
+      
+      	#Adding data to result
+        tempData <- answerobject$data
+        result <- rbind(result, tempData)
+      }
     }
   }
-	
   #Расплющиваем action
     if(length(result$actions) > 0){
       fb_res <- data.frame()
