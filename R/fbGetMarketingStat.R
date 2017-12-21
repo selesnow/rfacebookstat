@@ -21,6 +21,9 @@ function(accounts_id = NULL,
     dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
+	
+  #API request counter
+  request_counter <- 0
   
   for(i in 1:length(accounts_id)){
     
@@ -41,6 +44,7 @@ function(accounts_id = NULL,
                           sep = "&"))
       #Send API request
       answer <- getURL(QueryString)
+      request_counter <- request_counter + 1
       #Parse result
       answerobject <- fromJSON(answer)
       
@@ -61,6 +65,7 @@ function(accounts_id = NULL,
           
           #Repeate API request
           answer <- getURL(QueryString)
+	  request_counter <- request_counter + 1
           answerobject <- fromJSON(answer)
           
           #Check new answer
@@ -91,6 +96,7 @@ function(accounts_id = NULL,
       while (!is.null(answerobject$paging$`next`)) {
         QueryString <- answerobject$paging$`next`
         answer <- getURL(QueryString)
+	request_counter <- request_counter + 1
         answerobject <- fromJSON(answer)
 	      
 	      #Check answer on errors
@@ -110,6 +116,7 @@ function(accounts_id = NULL,
           
           		#Repeate API request
           		answer <- getURL(QueryString)
+		        request_counter <- request_counter + 1
           		answerobject <- fromJSON(answer)
           
           		#Check new answer
@@ -140,5 +147,8 @@ function(accounts_id = NULL,
       result <- fb_res
     }
   #Возвращаем дата фрейм
+  packageStartupMessage("Data loaded successfully!", appendLF = T)
+  packageStartupMessage(paste0("Loaded ",nwor(result)," rows."), appendLF = T)
+  packageStartupMessage(paste0("Sended ",request_counter,"  API requests."), appendLF = T)
   return(result)
 }
