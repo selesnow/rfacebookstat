@@ -16,12 +16,13 @@ fbGetMarketingStat(accounts_id = NULL, sorting = NULL, level = "account", breakd
   \item{date_start}{Start reporting date.}
   \item{date_stop}{End reporting day}
   \item{api_version}{Current Facebook API version.}
-  \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"} 
+  \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"}
+  \item{console_type}{Character value for manage console output message, one of "progressbar", "message". By default = "progressbar". See more at Detail}
   \item{access_token}{Your facebook API token}
 }
 
 \value{Data frame with statistic.}
-
+\details{console_type parameters, if chose "progressbar" you can see load progress in percent, and if chose "message" you get message about loading process.}
 \author{Alexey Seleznev}
 \note{
 %%  ~~further notes~~
