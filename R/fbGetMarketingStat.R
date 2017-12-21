@@ -149,7 +149,7 @@ function(accounts_id = NULL,
   #Возвращаем дата фрейм
   packageStartupMessage("-----------------------------------------------------", appendLF = T)
   packageStartupMessage("Data loaded successfully!", appendLF = T)
-  packageStartupMessage(paste0("Loaded ",nwor(result)," rows."), appendLF = T)
+  packageStartupMessage(paste0("Loaded ",nrow(result)," rows."), appendLF = T)
   packageStartupMessage(paste0("Sended ",request_counter,"  API requests."), appendLF = T)
   packageStartupMessage("-----------------------------------------------------", appendLF = T)
   return(result)
