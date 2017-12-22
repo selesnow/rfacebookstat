@@ -80,14 +80,7 @@ fbGetMarketingStat <-
         
         #Request step pause
         Sys.sleep(pause_time)
-        
-        #If many limits up pause time
-        if(error_counter >= 3 & pause_time < 5){
-          if(console_type == "message"){
-              packageStartupMessage("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
-          pause_time <- pause_time * 1.5
-          }
-        
+               
         #Check answer on errors
         if (!is.null(answerobject$error)) {
           #Add error in error counter
@@ -112,6 +105,12 @@ fbGetMarketingStat <-
               request_counter <- request_counter + 1
               answerobject <- fromJSON(answer)
               
+             #If many limits up pause time
+             if(error_counter >= 3 & pause_time < 5){
+             if(console_type == "message"){
+                packageStartupMessage("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
+                pause_time <- pause_time * 1.5
+             }
                         
               #Check new answer
               if(is.null(answerobject$error$message)) {
