@@ -12,6 +12,8 @@ fbGetMarketingStat <-
            interval = "day",
            console_type = "progressbar",
            access_token = NULL){
+    #Check start time
+    start_time <- Sys.time()
     
     #Создаём результирующий дата фрейм
     result <- data.frame()
@@ -181,6 +183,7 @@ fbGetMarketingStat <-
     packageStartupMessage(paste0("Loaded ",nrow(result)," rows."), appendLF = T)
     packageStartupMessage(paste0("Sended ",request_counter," API requests."), appendLF = T)
     if(error_counter > 0) packageStartupMessage(paste0(error_counter," error request."), appendLF = T)
+    packageStartupMessage(paste0("Total processing time ",round(difftime(Sys.time(), start_time, units = "secs"), 0) ," seconds."), appendLF = T)
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
     return(result)
   }
