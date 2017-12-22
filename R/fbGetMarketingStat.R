@@ -71,15 +71,20 @@ fbGetMarketingStat <-
         if(console_type == "progressbar"){
           pb_step <- pb_step + 1
           setTxtProgressBar(pb, pb_step)}
-        
-        #Request step pause
-        Sys.sleep(pause_time)
-        
+                      
         #Send API request
         answer <- getURL(QueryString)
         request_counter <- request_counter + 1
         #Parse result
         answerobject <- fromJSON(answer)
+        
+        #Request step pause
+        Sys.sleep(pause_time)
+        
+        #If many limits up pause time
+        if(error_counter == 3){
+          pause_time <- pause_time * 2
+          }
         
         #Check answer on errors
         if (!is.null(answerobject$error)) {
@@ -105,6 +110,7 @@ fbGetMarketingStat <-
               request_counter <- request_counter + 1
               answerobject <- fromJSON(answer)
               
+                        
               #Check new answer
               if(is.null(answerobject$error$message)) {
                 if(console_type == "message"){
@@ -137,6 +143,9 @@ fbGetMarketingStat <-
           answer <- getURL(QueryString)
           request_counter <- request_counter + 1
           answerobject <- fromJSON(answer)
+          
+          #Request step pause
+          Sys.sleep(pause_time)
           
           #Check answer on errors
           if (!is.null(answerobject$error)) {
