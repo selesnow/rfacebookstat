@@ -28,7 +28,7 @@ fbGetMarketingStat <-
                              dates_to   = dates_to)
     
     #request step pause
-    if(request_speed %in% ("fast","normal","slow")){
+    if(request_speed %in% c("fast","normal","slow")){
       pause_time <- switch(request_speed,
                               "fast" = 0,
                               "normal" = 1 / 20,
