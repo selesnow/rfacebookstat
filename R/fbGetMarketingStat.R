@@ -27,6 +27,11 @@ fbGetMarketingStat <-
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
     
+    #Accelereting if need less of 20 queries
+    if(nrow(dates_df) < 25){
+      request_speed <- "fast"
+    }
+    
     #request step pause
     if(request_speed %in% c("fast","normal","slow")){
       pause_time <- switch(request_speed,
@@ -38,7 +43,7 @@ fbGetMarketingStat <-
     } else {
       pause_time <- 0
     }
-    
+   
     #Progress settings
     pb_step <- 1
     
