@@ -11,7 +11,7 @@ fbGetMarketingStat <-
            api_version = "v2.11",
            interval = "day",
            console_type = "progressbar",
-           request_speed = "fast",
+           request_speed = "normal",
            access_token = NULL){
     
     #Check start time
