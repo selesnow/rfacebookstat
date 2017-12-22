@@ -27,11 +27,6 @@ fbGetMarketingStat <-
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
     
-    #Accelereting if need less of 20 queries
-    if(nrow(dates_df) < 25){
-      request_speed <- "fast"
-    }
-    
     #request step pause
     if(request_speed %in% c("fast","normal","slow")){
       pause_time <- switch(request_speed,
@@ -98,7 +93,7 @@ fbGetMarketingStat <-
               packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
               packageStartupMessage("Wait few minutes.", appendLF = T)}
             #Start cycle
-            while(attempt <= 5){
+            while(attempt <= 6){
               if(console_type == "message"){
                 packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)}
               
