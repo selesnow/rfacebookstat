@@ -379,7 +379,6 @@ AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
                               breakdowns = "region",
                               date_start = "2016-11-01",
                               date_stop = "2016-11-30",
-                              api_version = "v2.8",
                               access_token = token)
 ```
 
@@ -389,13 +388,12 @@ AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
 ```
 CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
                                    level = "campaign",
-                                   fields = "campaign_name,unique_impressions,unique_clicks",
+                                   fields = "campaign_name,impressions,clicks",
                                    breakdowns = "age",
                                    sorting = "unique_impressions_descending",
                                    filtering = "[{'field':'age','operator':'IN','value':['18-24','25-34']}]",
                                    date_start = "2016-10-01",
                                    date_stop = "2016-10-10",
-                                   api_version = "v2.8",
                                    access_token = token)
 ```
                                                        
