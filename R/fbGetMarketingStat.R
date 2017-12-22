@@ -204,7 +204,7 @@ fbGetMarketingStat <-
     packageStartupMessage("Data loaded successfully!", appendLF = T)
     packageStartupMessage(paste0("Loaded ",nrow(result)," rows."), appendLF = T)
     packageStartupMessage(paste0("Sended ",request_counter," API requests."), appendLF = T)
-    if(error_counter > 0) packageStartupMessage(paste0(error_counter," error request."), appendLF = T)
+    if(error_counter > 0) packageStartupMessage(paste0(error_counter," errors of limit request."), appendLF = T)
     if(error_counter > 0) packageStartupMessage(paste0("Error rate ",round(error_counter / request_counter * 100,2),"%"), appendLF = T)
     packageStartupMessage(paste0("Total processing time ",round(difftime(Sys.time(), start_time, units = "secs"), 0) ," seconds."), appendLF = T)
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
