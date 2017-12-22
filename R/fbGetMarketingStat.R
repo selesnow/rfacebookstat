@@ -11,7 +11,9 @@ fbGetMarketingStat <-
            api_version = "v2.11",
            interval = "day",
            console_type = "progressbar",
+           request_speed = "fast",
            access_token = NULL){
+    
     #Check start time
     start_time <- Sys.time()
     
@@ -24,6 +26,18 @@ fbGetMarketingStat <-
     dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
+    
+    #request step pause
+    if(request_speed %in% ("fast","normal","slow")){
+      pause_time <- switch(request_speed,
+                              "fast" = 0,
+                              "normal" = 1 / 20,
+                              "slow" = 1 / 5)
+    } else if(is.numeric(request_speed)|is.integer(request_speed)){
+      pause_time <- request_speed
+    } else {
+      pause_time <- 0
+    }
     
     #Progress settings
     pb_step <- 1
@@ -58,6 +72,9 @@ fbGetMarketingStat <-
           pb_step <- pb_step + 1
           setTxtProgressBar(pb, pb_step)}
         
+        #Request step pause
+        Sys.sleep(pause_time)
+        
         #Send API request
         answer <- getURL(QueryString)
         request_counter <- request_counter + 1
@@ -72,9 +89,9 @@ fbGetMarketingStat <-
             #First attempt
             attempt <- 1
             if(console_type == "message"){
-            packageStartupMessage("WARNING: User request limit reached", appendLF = T)
-            packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
-            packageStartupMessage("Wait few minutes.", appendLF = T)}
+              packageStartupMessage("WARNING: User request limit reached", appendLF = T)
+              packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
+              packageStartupMessage("Wait few minutes.", appendLF = T)}
             #Start cycle
             while(attempt <= 5){
               if(console_type == "message"){
@@ -129,13 +146,13 @@ fbGetMarketingStat <-
               #First attempt
               attempt <- 1
               if(console_type == "message"){
-              packageStartupMessage("WARNING: User request limit reached", appendLF = T)
-              packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
-              packageStartupMessage("Wait few minutes.", appendLF = T)}
+                packageStartupMessage("WARNING: User request limit reached", appendLF = T)
+                packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
+                packageStartupMessage("Wait few minutes.", appendLF = T)}
               #Start cycle
               while(attempt <= 5){
                 if(console_type == "message"){
-                packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)}
+                  packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)}
                 
                 #Wait one minute and repaete
                 Sys.sleep(61)
