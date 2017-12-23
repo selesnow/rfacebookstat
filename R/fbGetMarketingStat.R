@@ -38,11 +38,15 @@ fbGetMarketingStat <-
     } else {
       pause_time <- 0
     }
-   
-    #Progress settings
-    pb_step <- 1
     
-    if(console_type == "progressbar"){
+    #Check query number
+    if(length(accounts_id) * nrow(dates_df) < 2){
+    console_type <- "message"  
+    }
+    
+    if(console_type == "progressbar"){      
+      #Progress settings
+      pb_step <- 1
       pb <- txtProgressBar(pb_step, length(accounts_id) * nrow(dates_df), style = 3)}
     
     #API request counter
