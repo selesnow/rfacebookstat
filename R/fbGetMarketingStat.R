@@ -32,7 +32,7 @@ fbGetMarketingStat <-
       pause_time <- switch(request_speed,
                               "fast" = 0,
                               "normal" = 1 / 5,
-                              "slow" = 1.5)
+                              "slow" = 2)
     } else if(is.numeric(request_speed)|is.integer(request_speed)){
       pause_time <- request_speed
     } else {
