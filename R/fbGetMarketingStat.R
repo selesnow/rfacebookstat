@@ -20,10 +20,16 @@ fbGetMarketingStat <-
     #Создаём результирующий дата фрейм
     result <- data.frame()
     
+    if(interval == "overall){
+    dates_from <- as.Date(date_start)
+    dates_to   <- as.Date(date_stop)
+    } else {
     #Проверяем выбранный интервал
     dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
     dates_to   <- as.Date(dates_from - 1)
-    dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))
+    dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))}
+
+    #Create time interval data frame
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
     
