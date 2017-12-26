@@ -211,9 +211,12 @@ fbGetMarketingStat <-
       }
       result <- fb_res
     }
+    
+    if(console_type == "progressbar"){  
     #Progressbar close
     setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
-    close(pb)
+    close(pb)}
+    
     #Возвращаем дата фрейм
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
     packageStartupMessage("Data loaded successfully!", appendLF = T)
