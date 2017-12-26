@@ -20,7 +20,7 @@ fbGetMarketingStat <-
     #Создаём результирующий дата фрейм
     result <- data.frame()
     
-    if(interval == "overall){
+    if(interval == "overall"){
     dates_from <- as.Date(date_start)
     dates_to   <- as.Date(date_stop)
     } else {
