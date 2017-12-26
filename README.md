@@ -323,13 +323,17 @@ access_token - Токен достепа полученный с помощью 
 
 ### Синтаксис
 fbGetMarketingStat(accounts_id, 
-                   sortingL, 
+                   sorting, 
                    level, 
                    breakdowns, 
+                   action_breakdowns,
                    fields, 
                    filtering, 
                    date_start, 
                    date_stop, 
+                   interval,
+                   console_type,
+                   request_speed,
                    api_version,
                    access_token)
 
@@ -355,13 +359,20 @@ date_start — начальная дата отчетного периода в 
 
 date_stop — конечная дата отчетного периода в формате YYYY-MM-DDD.
 
-interval - временная разбивка, допустимые значения "day", "week", "month", "quarter", "year"
+interval - временная разбивка, допустимые значения "day", "week", "month", "quarter", "year", "overall"
 
 console_type - текстовое значение, тип ответов в консоли, принимает одно из двух значений:
 * progressbar (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
 * message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, что был запущен механизм обхода пользовательского лимита на количество допустимых запросов к API Facebook.
 
-api_version — версия API Facebook, в формате v*.*, например "v2.8"
+request_speed - скорость оправки запросов к API, в зависимости от уровня доступа вашего приложения установите следующее значение:
+* Уровень доступа к API Development - "slow"
+* Уровень доступа к API Basic - "normal"
+* Уровень доступа к API Standart - "fast"
+Подробно работа с этим аргументом описана [тут](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/).
+Информация об уровнях доступа к API Facebook находится [тут](https://developers.facebook.com/docs/marketing-api/access).
+
+api_version — версия API Facebook, в формате v*.*, например "v2.11"
 
 access_token — токен доступа.
 
