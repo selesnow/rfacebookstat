@@ -1,4 +1,4 @@
-fbGetBusinessManagers <- function(api_version = "v2.11", access_token = NULL){
+fbGetBusinessManagers <- function(api_version = "v2.12", access_token = NULL){
   
   #Check of fill out access_token
   if(is.null(access_token)){
