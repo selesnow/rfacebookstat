@@ -1,5 +1,5 @@
 fbGetAdAccounts <- function(source_id = NULL, 
-                            api_version = "v2.11", 
+                            api_version = "v2.12", 
                             access_token = NULL){
   
   #Check of fill out access_token
