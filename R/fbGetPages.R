@@ -1,5 +1,5 @@
 fbGetPages <-
-function(projects_id = NULL, api_version = "v2.11", access_token = NULL){
+function(projects_id = NULL, api_version = "v2.12", access_token = NULL){
   result <- data.frame()
   for(i in 1:length(projects_id)){
     QueryString <- paste0("https://graph.facebook.com/",api_version,"/",projects_id[i],"/pages?fields=name,id&access_token=",access_token)
