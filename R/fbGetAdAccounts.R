@@ -25,7 +25,7 @@ fbGetAdAccounts <- function(source_id = NULL,
   #start endpoint_cycle
   for(end_point in end_points){
   #Compose query string
-  QueryString <- paste0("https://graph.facebook.com/",api_version,"/",source_id,"/",end_point,"?fields=name,id,account_id,account_status,user_role,age,business,owner,partner,amount_spent,spend_cap,balance,currency,business_city,business_country_code&limit=100&access_token=",access_token)
+  QueryString <- paste0("https://graph.facebook.com/",api_version,"/",source_id,"/",end_point,"?fields=name,id,account_id,account_status,age,business,owner,partner,amount_spent,spend_cap,balance,currency,business_city,business_country_code&limit=100&access_token=",access_token)
   
   #Send query to API server
   answer <- GET(QueryString)
