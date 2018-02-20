@@ -5,7 +5,7 @@ fbUpdateAdAccountUsers <- function(user_ids = NULL,
                                    access_token = NULL){
   
   #Check account_id, token and uid
-  if(is.null(accounts_id)|is.null(access_token)|is.null(uid)){
+  if(is.null(accounts_id)|is.null(access_token)|is.null(user_ids)){
     stop("Arguments user_ids, accounts_id and access_token is require.")
   }
   
