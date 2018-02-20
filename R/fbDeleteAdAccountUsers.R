@@ -12,6 +12,7 @@ fbDeleteAdAccountUsers <-  function(user_ids = NULL, accounts_id = NULL,api_vers
       ans <- DELETE(QueryString)
       ans <- content(ans)
       print(ans)
+      Sys.sleep(3)
     }
   }
 }
