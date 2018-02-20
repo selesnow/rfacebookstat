@@ -9,9 +9,9 @@
     + [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
     + [fbGetBusinessManagers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
     + [fbGetAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccountusers) - Загружает список пользователей из рекламных аккаунтов
-    + [fbGetAdAccountUsersPermissions]() - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
-    + [fbUpdateAdAccountUsers]() - Добавить пользователей в рекламные аккаунты на Facebook.
-    + [fbDeleteAdAccountUsers]() - Удалить пользователей из рекламных аккаунтов в Facebook.
+    + [fbGetAdAccountUsersPermissions](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccountuserspermissions) - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
+    + [fbUpdateAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbupdateadaccountusers) - Добавить пользователей в рекламные аккаунты на Facebook.
+    + [fbDeleteAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbdeleteadaccountusers) - Удалить пользователей из рекламных аккаунтов в Facebook.
     + [fbGetProjects](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetprojects) - Загружает список доступных в вашем бизнес менеджере проектов
     + [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
     + [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
@@ -217,19 +217,19 @@ access_token - Токен достепа полученный с помощью 
 Данная функция загружает список пользователей рекламных аккаунтов с их привилегиями и ролью.
 
 **Расшифровка привилегий:**
-1: ACCOUNT_ADMIN: Имеет права на изменение списка пользователей рекламного аккаунта и привелегий пользователей.
-2: ADMANAGER_READ: Имеет права просмотра рекламных кампаний и объявлений.
-3: ADMANAGER_WRITE:  Имеет права вносить изменения в рекламные аккаунты.
-4: BILLING_READ: Право просмотра информации о платежах
-5: BILLING_WRITE: Права внесения изменений в платёжные данные
-7: REPORTS: Просмотр отчётов
-9, 10 - Право подать заявку на некоторые управляемые аккаунты. В настоящее время не требуется для вызовов API маркетинга.
+<br>1: ACCOUNT_ADMIN: Имеет права на изменение списка пользователей рекламного аккаунта и привелегий пользователей.
+<br>2: ADMANAGER_READ: Имеет права просмотра рекламных кампаний и объявлений.
+<br>3: ADMANAGER_WRITE:  Имеет права вносить изменения в рекламные аккаунты.
+<br>4: BILLING_READ: Право просмотра информации о платежах
+<br>5: BILLING_WRITE: Права внесения изменений в платёжные данные
+<br>7: REPORTS: Просмотр отчётов
+<br>9, 10 - Право подать заявку на некоторые управляемые аккаунты. В настоящее время не требуется для вызовов API маркетинга.
 
 **Расшифровка роли**
-1001 = Администратор
-1002 = Рекламодатель
-1003 = Аналитик
-1004 = Прямой доступ к продажам. Для ограниченных управляемых учетных записей.
+<br>1001 = Администратор
+<br>1002 = Рекламодатель
+<br>1003 = Аналитик
+<br>1004 = Прямой доступ к продажам. Для ограниченных управляемых учетных записей.
 
 ### Синтаксис
 fbUpdateAdAccountUsers(accounts_id = NULL ,api_version = "v2.12", access_token = NULL)
