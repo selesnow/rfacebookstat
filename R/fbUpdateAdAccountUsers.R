@@ -30,6 +30,8 @@ fbUpdateAdAccountUsers <- function(user_ids = NULL,
       #Parse query
       ans <- content(ans)
       #Message
-      print(ans)}
+      print(ans)} 
+      #sleep 3 second before next request
+      Sys.sleep(3)
   }
 }
