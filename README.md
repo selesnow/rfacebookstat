@@ -10,6 +10,8 @@
     + [fbGetBusinessManagers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
     + [fbGetAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccountusers) - Загружает список пользователей из рекламных аккаунтов
     + [fbGetAdAccountUsersPermissions]() - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
+    + [fbUpdateAdAccountUsers]() - Добавить пользователей в рекламные аккаунты на Facebook.
+    + [fbDeleteAdAccountUsers]() - Удалить пользователей из рекламных аккаунтов в Facebook.
     + [fbGetProjects](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetprojects) - Загружает список доступных в вашем бизнес менеджере проектов
     + [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
     + [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
@@ -119,6 +121,12 @@ devtools::install_github('selesnow/rfacebookstat')
     </tr>
     <tr>
         <td><center>fbGetAdAccountUsersPermissions</center></td><td><center>Загружает список пользователей из рекламных аккаунтов с их привилегиями и ролью, по смыслу очень схожа с fbGetAdAccountUsers</center></td>
+    </tr>
+    <tr>
+        <td><center>fbUpdateAdAccountUsers</center></td><td><center>Добавить пользователей в рекламные аккаунты Facebook</center></td>
+    </tr>
+     <tr>
+        <td><center>fbDeleteAdAccountUsers</center></td><td><center>Удалить пользователей из рекламных аккаутов в Facebook</center></td>
     </tr>
     <tr>
         <td><center>fbGetApps</center></td><td><center>Получает список рекламируемых приложений</center></td>
@@ -234,6 +242,55 @@ api_version - Версия API Facebook в формате v*.*, например
 console_type - тип ответов в консоли, принимает одно из двух значений:
     + "progressbar" (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
     + "message" - для вывода информационных сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт обрабатывается, и сколько пользователей по нему загружено.
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+## fbUpdateAdAccountUsers
+### Описание
+Добавляет пользователей в рекламные аккаунты Facebook с определённым набором прав.
+Для того, что бы добавить пользователей в аккаунт вы должны быть админисратором данного аккаунта.
+
+### Синтаксис
+fbUpdateAdAccountUsers(user_ids = NULL, 
+                       role = "advertiser", 
+                       accounts_id = NULL,
+                       api_version = "v2.12",
+                       access_token = NULL)
+
+### Аругменты
+user_ids - Вектор ID пользователей коорых вы хотите добавить в рекламные аккаунты.
+
+accounts_id - Вектор ID рекламных аккаунтов с префиксом act_ в которые вы хотите добавить пользователей, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
+
+api_version - Версия API Facebook в формате v*.*, например v2.10
+
+role - Роль пользователя который будет добалвен в аккаунт, каждая роль имеет свой набор привилегий, допустимые значения:
+    + "administator"- Пользователь будет обладать максимальным доступом и будет иметь право добавлять и удалять пользователей рекламного аккаунта.
+    + "advertiser" (по умолчанию) - Пользователь будет иметь право вносить изменения в рекламные кампании аккаунта.
+    + "ad manager" - Пользователь будет иметь право вносить изменения в рекламные кампании аккаунта.
+    + "analyst" - Пользователь будет иметь доступ к статистике рекламного аккаунта, без возможности внесения правок в рекламные кампании и аккаунт.
+    + "sales" - Пользователь будет иметь ограниченый досуп на управление рекламным аккаунтом.
+    + "direct sales" - Пользователь будет иметь ограниченый досуп на управление рекламным аккаунтом.
+
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+## fbDeleteAdAccountUsers
+### Описание
+Удаляет пользователей из рекламных аккаунтов Facebook с определённым набором прав.
+Для того, что бы удалить пользователей из аккаунта вы должны быть админисратором данного аккаунта.
+
+### Синтаксис
+fbDeleteAdAccountUsers(user_ids = NULL, 
+                       accounts_id = NULL,
+                       api_version = "v2.12",
+                       access_token = NULL)
+
+### Аругменты
+user_ids - Вектор ID пользователей которых вы хотите удалить из рекламные аккаунты.
+
+accounts_id - Вектор ID рекламных аккаунтов с префиксом act_ из которых вы хотите удалить пользователей, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
+
+api_version - Версия API Facebook в формате v*.*, например v2.12
 
 access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
