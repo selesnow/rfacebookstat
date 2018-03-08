@@ -3,7 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
+  <style>
+   .tok_style { 
+    background: #f0f0f0; /* Цвет фона */
+    width: 300px; /* Ширина блока */
+    padding: 10px; /* Поля */
+    font-size: 1.5em; /* Размер шрифта */
+    color: #DCDCDC
+    word-wrap: break-word; /* Перенос слов */ 
+   }
 <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>selesnow.github.io | Alexey Seleznev R packages</title>
 <meta property="og:title" content="selesnow.github.io" />
@@ -98,8 +106,10 @@ document.getElementById('txt1').innerHTML = window.location.href.slice(window.lo
 
 <h1><center>Авторизация для работы с API Facebook с помощью R клиента <b>rfacebookstat</b></center></h1>
 <h2><center>Ваш Токен доступа:</center></h2>
-<p><span id='txt1' style="font-size: 80%; font-family: Verdana, Arial, Helvetica, sans-serif; color: #DCDCDC; white-space: break-word" class="colortext"></span></p>
-
+<div class="tok_style">
+<p><span id='txt1' class="colortext"></span></p>
+</div>
+    
 <p><center><i>Введите значение данного токена в R консоль в качестве ответа на запрос "Enter your token:  ", после чего в R будет создан объект содержащий токен доступа к API Facebook и вы сможете получить данные с помощью функций доступных в пакете rfacebookstat.</center></p>
 
 <p><center>Подробное описание всех доступных функций пакета можно найти <a href="https://selesnow.github.io/rfacebookstat/">тут</a>.</center></p>
