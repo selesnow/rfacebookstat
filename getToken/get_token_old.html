@@ -1,0 +1,49 @@
+
+
+<!doctype html>
+
+<html lang="ru">
+<head>
+<style type="text/css">
+                         .colortext {
+                                color: red; /* Красный цвет выделения */
+								font-family: Impact;
+								font-size: 16px;
+                                    }
+                       </style>
+					   
+</head>
+
+<body>
+
+<script>
+window.onload = function() {
+document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.indexOf('&'));
+}
+</script>
+
+<h1><center>Авторизация для работы с API Facebook с помощью R клиента <b>rfacebookstat</b></center></h1>
+<h2><center>Ваш Токен доступа:</center></h1>
+<h3><center><span id='txt1' class="colortext"></span></center></h1>
+
+<p><center><i>Введите значение данного токена в R консоль в качестве ответа на запрос "Enter your token:  ", после чего в R будет создан объект содержащий токен доступа к API Facebook и вы сможете получить данные с помощью функций доступных в пакете rfacebookstat.</center></p>
+
+<p><center>Подробное описание всех доступных функций пакета можно найти <a href="https://selesnow.github.io/rfacebookstat/">тут</a>.</center></p>
+<p><center>Author: Alexey Seleznev</center></i></p>
+
+<center>
+<div style="border: 2px solid #4682B4; background: #EEE8AA; padding: 15px; border-radius: 9px; font-size: 12px; font-family: Arial; width: 350px;">
+<center>
+<table>
+  <tr>
+    <td><a href="https://www.facebook.com/selesnow"><img src="https://goo.gl/Gdf9U6" height="80"></img></a></td>
+    <td><a href="https://alexeyseleznev.wordpress.com/"><img src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png" height="80"></img></a></td>
+    <td><a href="https://github.com/selesnow/"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" height="80"></img></a></td>
+    <td><a href="https://github.com/selesnow/rfacebookstat"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" height="80"></img></a></td>
+  </tr>
+</table>
+</center>
+</div>
+</center>
+</body>
+</html>
