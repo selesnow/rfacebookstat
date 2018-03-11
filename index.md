@@ -524,7 +524,7 @@ access_token — токен доступа.
 
 Чтобы получить статистику о количестве показов, кликов и затрат на рекламу на уровне аккаунта и в  разрезе регионов, введите следующий код:
 
-```
+```r
 AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
                               level = "account",
                               fields = "account_id,account_name,impressions,clicks,spend",
@@ -537,7 +537,7 @@ AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
 Получите статистику по количеству уникальных показов и уникальных кликов, с фильтром по возрастным группам «18-24», «25-34» и сортировкой данных в порядке убывания количества уникальных показов (поле unique_impressions).
 
 
-```
+```r
 CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
                                    level = "campaign",
                                    fields = "campaign_name,impressions,clicks",
