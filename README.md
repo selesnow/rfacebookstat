@@ -19,7 +19,7 @@ devtools::install_github('selesnow/rfacebookstat')
 
 ### Ссылки
 1. [Документация по работе с пакетом rfacebookstat](https://selesnow.github.io/rfacebookstat/).
-2. Баг репорты, предложения по доработке и улучшению функционала ryandexdirect оставлять [тут](https://github.com/selesnow/rfacebookstat/issues). 
+2. Баг репорты, предложения по доработке и улучшению функционала rfacebookstat оставлять [тут](https://github.com/selesnow/rfacebookstat/issues). 
 3. [Список релизов](https://github.com/selesnow/rfacebookstat/releases).
 
 ### Автор пакета
