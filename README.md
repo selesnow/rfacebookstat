@@ -21,6 +21,7 @@ devtools::install_github('selesnow/rfacebookstat')
 1. [Документация по работе с пакетом rfacebookstat](https://selesnow.github.io/rfacebookstat/).
 2. Баг репорты, предложения по доработке и улучшению функционала rfacebookstat оставлять [тут](https://github.com/selesnow/rfacebookstat/issues). 
 3. [Список релизов](https://github.com/selesnow/rfacebookstat/releases).
+4. [Группа в Вконтакте](https://vk.com/data_club).
 
 ### Автор пакета
 Алексей Селезнёв
