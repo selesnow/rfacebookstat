@@ -58,8 +58,12 @@
 </script>
 <gcse:search></gcse:search>
 
-# rfacebookstat
-# Пакет для загрузки данных из Marketing API Facebook в R.
+# rfacebookstat - Пакет для загрузки данных из Marketing API Facebook в R.
+## Ссылки
+* [Документация](https://selesnow.github.io/rfacebookstat/)
+* [Отчёт об ошибках и доработках](https://github.com/selesnow/rfacebookstat/issues)
+* [Список релизов](https://github.com/selesnow/rfacebookstat/releases)
+* [Группа в Вконтакте](https://vk.com/data_club)
 
 ## Содержание README
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
