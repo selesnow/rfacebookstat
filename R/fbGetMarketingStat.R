@@ -201,15 +201,29 @@ fbGetMarketingStat <-
         }
       }
     }
+    
     #Расплющиваем action
-    if(length(result$actions) > 0){
-      fb_res <- data.frame()
+    if (length(result$actions) > 0){
+      fb_res <- data.table()
+      
       for(row in 1:length(result$actions)) {
+        #if now have action add this row and go to next step
+        if (is.null(result[row, "actions"][[1]]$action_type)) {
+          fb_res <- rbind(fb_res,result[row, ], fill = TRUE)
+          next
+        }
         
-        fb_res <- rbind(fb_res, cbind(result[row,], result[row,]$actions))
+        #get all actions
+        n <- result[row, "actions"][[1]]$action_type
+        #get all values
+        d <- data.frame(t(result[row, "actions"][[1]]$value))
+        #names all actions
+        colnames(d) <- n
+        #add to result
+        fb_res <- rbind(fb_res, cbind(result[row, ! names(result) %in% "actions"], d), fill = TRUE)
         
       }
-      result <- fb_res
+      result <- as.data.frame(fb_res)
     }
     
     if(console_type == "progressbar"){  
