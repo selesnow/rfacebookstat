@@ -143,7 +143,7 @@ fbGetMarketingStat <-
         
         #Adding data to result
         tempData <- answerobject$data
-        result <- rbind(result, tempData)
+        result <- rbind(result, tempData, fill = TRUE)
         
         if (exists("tempData")) {
           rm(tempData)
@@ -197,12 +197,13 @@ fbGetMarketingStat <-
           
           #Adding data to result
           tempData <- answerobject$data
-          result <- rbind(result, tempData)
+          result <- rbind(result, tempData, fill = TRUE)
         }
       }
     }
     
     #Расплющиваем action
+    result <- as.data.frame(result)
     if (length(result$actions) > 0){
       fb_res <- data.table()
       
