@@ -18,7 +18,7 @@ fbGetMarketingStat <-
     start_time <- Sys.time()
     
     #Создаём результирующий дата фрейм
-    result <- data.frame()
+    result <- data.table()
     
     if(interval == "overall"){
     dates_from <- as.Date(date_start)
