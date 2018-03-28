@@ -212,6 +212,8 @@ devtools::install_github('selesnow/rfacebookstat')
 ## Авторизация для доступа к API Facebook
 Для работы с функциями пакета rfacebookstat и доступа к API Facebook вам понадобится токет (маркер), получить его можно либо с помощью представленой ниже формы, или функции `fbGetToken`
 
+### Форма для генерации маркера доступа к API Facebook:
+<Br>
 <form name="f1" method="get" action="https://www.facebook.com/dialog/oauth?">
 <input name="link" type="hidden" value="index.php" />
 ID приложения в Facebook: <br />
@@ -220,8 +222,8 @@ ID приложения в Facebook: <br />
 <input name="redirect_uri" type="hidden" value="https://selesnow.github.io/rfacebookstat/getToken/get_token.html" />
 <input name="response_type" type="hidden" value="token" /> 
 <input name="scope" type="hidden" value="ads_read,business_management,manage_pages,ads_management" /> 
-<input type="submit" name="enter" value="Вход" />
-</form>
+<input type="submit" name="enter" value="Получить токен!" />
+</form> <Br>
 
 ## fbGetToken
 ### Описание
