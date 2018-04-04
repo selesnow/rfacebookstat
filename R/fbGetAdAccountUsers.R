@@ -26,7 +26,17 @@ fbGetAdAccountUsers <- function(accounts_id = NULL ,
   accounts_id <- ifelse(grepl("^act_",accounts_id),accounts_id,paste0("act_",accounts_id))
   
   #result df
-  result <- data.frame(stringsAsFactors = F)
+  result <- data.frame( role                  = character(0),
+                        status                = character(0),
+                        user.name             = character(0),
+                        user.id               = character(0),
+                        business_persona.name = character(0),
+                        business_persona.id   = character(0),
+                        account_id            = character(0),
+                        email                 = character(0),
+                        business.id           = character(0),
+                        business.name         = character(0),
+                        stringsAsFactors = F)
   
   #Create counter variables
   account_number <- 0
@@ -78,11 +88,11 @@ fbGetAdAccountUsers <- function(accounts_id = NULL ,
     flatten_data$account_id <- account
     
     #Add all field list
-    if(is.null(flatten_data$email))                 flatten_data$email <- NA
-    if(is.null(flatten_data$business.id))           flatten_data$business.id <- NA
-    if(is.null(flatten_data$business.name))         flatten_data$business.name <- NA
-    if(is.null(flatten_data$business_persona.id))   flatten_data$business_persona.id <- NA
-    if(is.null(flatten_data$business_persona.name)) flatten_data$business_persona.name <- NA
+    for (col in names(result)){
+      if (is.null(flatten_data[[col]])) {
+        flatten_data[[col]] <- NA
+      }
+    }
     
     #Add to result data.frame
     result <- rbind(result, flatten_data)
