@@ -1,7 +1,7 @@
 fbUpdateAdAccountUsers <- function(user_ids = NULL, 
                                    role = "advertiser", 
                                    accounts_id = NULL,
-                                   api_version = "v2.12",
+                                   api_version = "v3.0",
                                    access_token = NULL){
   
   #Check account_id, token and uid
