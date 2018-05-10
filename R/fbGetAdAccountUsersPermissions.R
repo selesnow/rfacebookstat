@@ -1,5 +1,5 @@
 fbGetAdAccountUsersPermissions <- function(accounts_id = NULL ,
-                                           api_version = "v2.12", 
+                                           api_version = "v3.0", 
                                            console_type = "progressbar",
                                            access_token = NULL){
   
