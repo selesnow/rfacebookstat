@@ -21,14 +21,14 @@ fbGetMarketingStat <-
     result <- data.table()
     
     if(interval == "overall"){
-    dates_from <- as.Date(date_start)
-    dates_to   <- as.Date(date_stop)
+      dates_from <- as.Date(date_start)
+      dates_to   <- as.Date(date_stop)
     } else {
-    #Проверяем выбранный интервал
-    dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
-    dates_to   <- as.Date(dates_from - 1)
-    dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))}
-
+      #Проверяем выбранный интервал
+      dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
+      dates_to   <- as.Date(dates_from - 1)
+      dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))}
+    
     #Create time interval data frame
     dates_df   <- data.frame(dates_from = dates_from,
                              dates_to   = dates_to)
@@ -36,9 +36,9 @@ fbGetMarketingStat <-
     #request step pause
     if(request_speed %in% c("fast","normal","slow")){
       pause_time <- switch(request_speed,
-                              "fast" = 0,
-                              "normal" = 1 / 5,
-                              "slow" = 2)
+                           "fast" = 0,
+                           "normal" = 1 / 5,
+                           "slow" = 2)
     } else if(is.numeric(request_speed)|is.integer(request_speed)){
       pause_time <- request_speed
     } else {
@@ -47,7 +47,7 @@ fbGetMarketingStat <-
     
     #Check query number
     if(length(accounts_id) * nrow(dates_df) < 2){
-    console_type <- "message"  
+      console_type <- "message"  
     }
     
     if(console_type == "progressbar"){      
@@ -60,7 +60,7 @@ fbGetMarketingStat <-
     error_counter   <- 0
     
     for(i in 1:length(accounts_id)){
-      
+     
       #Разбивка по интервалу
       for(dt in 1:nrow(dates_df)){
         #Создаём строку запроса
@@ -81,16 +81,16 @@ fbGetMarketingStat <-
         if(console_type == "progressbar"){
           pb_step <- pb_step + 1
           setTxtProgressBar(pb, pb_step)}
-                      
+        
         #Send API request
-        answer <- getURL(QueryString)
+        answer <- httr::GET(QueryString)
         request_counter <- request_counter + 1
         #Parse result
-        answerobject <- fromJSON(answer)
+        answerobject <- httr::content(answer, as = "parsed")
         
         #Request step pause
         Sys.sleep(pause_time)
-               
+        
         #Check answer on errors
         if (!is.null(answerobject$error)) {
           #Add error in error counter
@@ -115,13 +115,13 @@ fbGetMarketingStat <-
               request_counter <- request_counter + 1
               answerobject <- fromJSON(answer)
               
-             #If many limits up pause time
-             if(error_counter >= 3 & pause_time < 5){
-             if(console_type == "message"){
-                packageStartupMessage("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
+              #If many limits up pause time
+              if(error_counter >= 3 & pause_time < 5){
+                if(console_type == "message"){
+                  packageStartupMessage("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
                 pause_time <- pause_time * 1.5
-             }
-                        
+              }
+              
               #Check new answer
               if(is.null(answerobject$error$message)) {
                 if(console_type == "message"){
@@ -142,7 +142,7 @@ fbGetMarketingStat <-
         }
         
         #Adding data to result
-        tempData <- answerobject$data
+        tempData <- bind_rows(answerobject$data)
         result <- rbind(result, tempData, fill = TRUE)
         
         if (exists("tempData")) {
@@ -151,9 +151,9 @@ fbGetMarketingStat <-
         #Pagination
         while (!is.null(answerobject$paging$`next`)) {
           QueryString <- answerobject$paging$`next`
-          answer <- getURL(QueryString)
+          answer <- httr::GET(QueryString)
           request_counter <- request_counter + 1
-          answerobject <- fromJSON(answer)
+          answerobject <- httr::content(answer, as = "parsed")
           
           #Request step pause
           Sys.sleep(pause_time)
@@ -178,9 +178,9 @@ fbGetMarketingStat <-
                 Sys.sleep(61)
                 
                 #Repeate API request
-                answer <- getURL(QueryString)
+                answer <- httr::GET(QueryString)
                 request_counter <- request_counter + 1
-                answerobject <- fromJSON(answer)
+                answerobject <- httr::content(answer, as = "parsed")
                 
                 #Check new answer
                 if(is.null(answerobject$error$message)) {
@@ -228,9 +228,9 @@ fbGetMarketingStat <-
     }
     
     if(console_type == "progressbar"){  
-    #Progressbar close
-    setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
-    close(pb)}
+      #Progressbar close
+      setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
+      close(pb)}
     
     #Возвращаем дата фрейм
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
