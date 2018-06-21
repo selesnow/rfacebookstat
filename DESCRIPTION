@@ -5,5 +5,5 @@ Version: 1.6.6
 Date: 2016-12-12
 Author: Alexey Seleznev
 Description: Load data from facebook marketing API into R.
-Imports: data.table, httr, RCurl, bitops, jsonlite
+Imports: data.table, httr, RCurl, bitops, jsonlite, dplyr
 License: none
