@@ -99,6 +99,10 @@ li.menu {
     + [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
     + [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
     + [fbGetAdAccounts](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
+    + [fbGetCampaigns]() - Загрузить список всех рекламных кампаний из рекламного аккаунта.
+    + [fbGetAdSets]() - Загрузка списка групп объявлений из рекламного аккаунта.
+    + [fbGetAds]() - Загрузка списка объявлений из рекламного аккаунта.
+    + [fbGetAdCreative]() - Загрузка контента объявлений из рекламного аккаунта.
     + [fbGetMarketingStat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetmarketingstat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
 + [Пример работы с пакетом rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Пример-работы-с-пакетом-rfacebookstat)
 + [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
@@ -222,6 +226,18 @@ devtools::install_github('selesnow/rfacebookstat')
     </tr>
     <tr>
         <td><center>fbGetAdAccounts</center></td><td><center>Получает список доступных рекламных аккаунтов</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetCampaigns</center></td><td><center>Получает список всех рекламных кампаний из рекламного аккаунтов Facebook</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetAdSets</center></td><td><center>Получает список всех групп объявлений из рекламных аккаунтов</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetAds</center></td><td><center>Получает список всех объявлений из рекламных аккаунтов</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetAdCreative</center></td><td><center>Получает список контента всех объявлений из рекламных аккаунтов</center>   </td>
     </tr>
     <tr>
         <td><center>fbGetMarketingStat</center></td><td><center>Получает статистику из рекламного кабинета</center></td>
@@ -509,6 +525,57 @@ access_token - Токен достепа полученный с помощью 
     </tr>
     <tr>
         <td><center>owner.name</center></td><td><center>Имя владельца рекламного аккаунта</center></td>
+    </tr>
+</table>
+
+## fbGetCampaigns
+### Описание
+Функция возвращает список всех рекламных кампаний из рекламного аккаунта Facebook.
+
+### Синтаксис
+fbGetCampaigns(accounts_id, api_version, access_token)
+
+### Аругменты
+accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+
+api_version - Версия API Facebook в формате v*.*, например v3.0
+   
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+### Структура возвращаемого дата фрейма
+<table>
+    <tr>
+        <td><center>Поле</center></td><td><center>Описание</center></td>
+    </tr>
+    <tr>
+        <td><center>id</center></td><td><center>Идентификатор кампании.</center></td>
+    </tr>
+    <tr>
+        <td><center>name</center></td><td><center>Название кампании.</center></td>
+    </tr>
+    <tr>
+        <td><center>created_time</center></td><td><center>Время создания.</center></td>
+    </tr>
+    <tr>
+        <td><center>budget_remaining</center></td><td><center>Оставшийся бюджет.</center></td>
+    </tr>
+    <tr>
+        <td><center>buying_type</center></td><td><center>Тип покупки, возможные значения AUCTION (по умолчанию), RESERVED (для объявлений с охватом и частотой) </center></td>
+    </tr>
+    <tr>
+        <td><center>status</center></td><td><center>Статус рекламной кампании, возможные значения ACTIVE, PAUSED, DELETED, ARCHIVED, Если этот статус PAUSED, все его активные рекламные блоки и объявления будут приостановлены и будут иметь effective_status CAMPAIGN_PAUSED. Поле возвращает то же значение, что и configure_status.</center></td>
+    </tr>
+    <tr>
+        <td><center>configured_status</center></td><td><center>Статус рекламной кампании, возможные значения ACTIVE, PAUSED, DELETED, ARCHIVED, Если этот статус PAUSED, все его активные рекламные блоки и объявления будут приостановлены и будут иметь effective_status CAMPAIGN_PAUSED. Рекомендуется использовать поле status.</center></td>
+    </tr>
+    <tr>
+        <td><center>account_id</center></td><td><center>Идентификатор рекламного аккаунта к которому принадлежит данная рекламная кампания.</center></td>
+    </tr>
+    <tr>
+        <td><center>source_campaign_id</center></td><td><center>Идентификатор исходной рекламной кампании, из которой была скопирована текущая рекламная кампания.</center></td>
+    </tr>
+    <tr>
+        <td><center>spend_cap</center></td><td><center>Лимит бюджета для рекламной кампании.</center></td>
     </tr>
 </table>
 
