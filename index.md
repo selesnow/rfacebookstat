@@ -189,7 +189,7 @@ devtools::install_github('selesnow/rfacebookstat')
 
 ## Функции пакета rfacebookstat
 
-На данный момент в пакете rfacebookstat доступно 7 функций.
+На данный момент в пакете rfacebookstat доступно 16 функций, с помощью которых вы можете получить любой объект из бизнес менеджера или рекламного кабинета, а так же загрузить статистику по эффективности ведения рекламы на Facebook.
 <table>
     <tr>
         <td><center>Функция</center></td><td><center>Описание</center></td>
@@ -679,6 +679,65 @@ access_token - Токен достепа полученный с помощью 
      <tr>
     <td><center>effective_status</center></td><td><center>Актуальный статус объявления, данный статус учитывает статус родительской группы объявлений и рекламной кампании. Возможные значения: ACTIVE, PAUSED, DELETED, PENDING_REVIEW, DISAPPROVED, PREAPPROVED, PENDING_BILLING_INFO, CAMPAIGN_PAUSED, ARCHIVED, ADSET_PAUSED</center></td>
     </tr>   
+</table>
+
+## fbGetAdCreative
+### Описание
+Функция возвращает список контента объявлений из рекламного аккаунта Facebook.
+
+### Синтаксис
+fbGetAdCreative(accounts_id, api_version, access_token)
+
+### Аругменты
+accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+
+api_version - Версия API Facebook в формате v*.*, например v3.0
+   
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+### Структура возвращаемого дата фрейма
+<table>
+    <tr>
+        <td><center>Поле</center></td><td><center>Описание</center></td>
+    </tr>
+    <tr>
+        <td><center>id</center></td><td><center>Идентификатор креатива.</center></td>
+    </tr>
+    <tr>
+        <td><center>name</center></td><td><center>Название креатива.</center></td>
+    </tr>
+    <tr>
+        <td><center>status</center></td><td><center>Статус креатива.</center></td>
+    </tr>
+     <tr>
+     <td><center>url_tags</center></td><td><center>Набор GET параметров, включая все UTM метки которые добавляются к URL объявления.</center></td>
+    </tr>
+    <tr>
+     <td><center>account_id</center></td><td><center>ID рекламного аккаунта.</center></td>
+    </tr>
+    <tr>
+     <td><center>page_id</center></td><td><center>ID страницы в Facebook на которое будет перенаправлены пользователи кликнувшие на рекламное объявление.</center></td>
+    </tr>
+    <td><center>link</center></td><td><center>URL на который перенапрапралвтся пользователи кликнувшие по объявлению.</center></td>
+    </tr>
+    </tr>
+    <td><center>message</center></td><td><center>Основной текст объявления.</center></td>
+    </tr>
+    </tr>
+    <td><center>caption</center></td><td><center>Подпись к ссылке.</center></td>
+    </tr>
+    </tr>
+    <td><center>caption</center></td><td><center>Подпись к ссылке.</center></td>
+    </tr>
+    </tr>
+    <td><center>attachment_style</center></td><td><center>Стиль креатива, возможные значения: link, default.</center></td>
+    </tr>
+    </tr>
+    <td><center>description</center></td><td><center>Описание.</center></td>
+    </tr>
+    </tr>
+    <td><center>image_hash</center></td><td><center>Хеш изображения прикреплённого к объявлению.</center></td>
+    </tr>
 </table>
 
 ## fbGetMarketingStat
