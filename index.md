@@ -579,6 +579,57 @@ access_token - Токен достепа полученный с помощью 
     </tr>
 </table>
 
+## fbGetAdSets
+### Описание
+Функция возвращает список всех групп объявленйий из рекламного аккаунта Facebook.
+
+### Синтаксис
+fbGetAdSets(accounts_id, api_version, access_token)
+
+### Аругменты
+accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+
+api_version - Версия API Facebook в формате v*.*, например v3.0
+   
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+### Структура возвращаемого дата фрейма
+<table>
+    <tr>
+        <td><center>Поле</center></td><td><center>Описание</center></td>
+    </tr>
+    <tr>
+        <td><center>id</center></td><td><center>Идентификатор группы объявлений.</center></td>
+    </tr>
+    <tr>
+        <td><center>name</center></td><td><center>Название группы объявлений.</center></td>
+    </tr>
+    <tr>
+        <td><center>account_id</center></td><td><center>ID рекламного аккаунта.</center></td>
+    </tr>
+    <tr>
+        <td><center>budget_remaining</center></td><td><center>Оставшийся бюджет.</center></td>
+    </tr>
+    <tr>
+        <td><center>configured_status</center></td><td><center>Статус установленный на уровне группы объявлений. Он может отличаться от фактического статуса из-за его родительской кампании. Предпочитаете вместо этого использовать «статус».</center></td>
+    </tr>
+    <tr>
+        <td><center>effective_status</center></td><td><center>Статус группы объявлений, который может быть либо его собственным статусом, либо вызван его родительской кампанией.</center></td>
+    </tr>
+    <tr>
+        <td><center>status</center></td><td><center>Статус установленый на уровне группы объявлений. Он может отличаться от фактического статуса из-за его родительской кампании. Поле возвращает то же значение, что и 'configure_status'.</center></td>
+    </tr>
+    <tr>
+        <td><center>created_time</center></td><td><center>Время создания группы объявлений.</center></td>
+    </tr>
+    <tr>
+        <td><center>bid_strategy</center></td><td><center>Стратегия назначения ставок для группы объявления.</center></td>
+    </tr>
+    <tr>
+        <td><center>pacing_type</center></td><td><center>Тип показа объявлений, стандартный или планированные показы.</center></td>
+    </tr>
+</table>
+
 ## fbGetMarketingStat
 ### Описание
 Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
