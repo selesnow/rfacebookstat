@@ -630,6 +630,57 @@ access_token - Токен достепа полученный с помощью 
     </tr>
 </table>
 
+## fbGetAds
+### Описание
+Функция возвращает список всех объявленйий из рекламного аккаунта Facebook.
+
+### Синтаксис
+fbGetAds(accounts_id, api_version, access_token)
+
+### Аругменты
+accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+
+api_version - Версия API Facebook в формате v*.*, например v3.0
+   
+access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+
+### Структура возвращаемого дата фрейма
+<table>
+    <tr>
+        <td><center>Поле</center></td><td><center>Описание</center></td>
+    </tr>
+    <tr>
+        <td><center>id</center></td><td><center>Идентификатор объявления.</center></td>
+    </tr>
+    <tr>
+        <td><center>creative_id</center></td><td><center>Идентификатор креатива который будет использоваться этим объявлением.</center></td>
+    </tr>
+    <tr>
+        <td><center>adset_id</center></td><td><center>ID группы объявлений.</center></td>
+    </tr>
+    <tr>
+        <td><center>campaign_id</center></td><td><center>ID рекламной кампании.</center></td>
+    </tr>
+    <tr>
+        <td><center>account_id</center></td><td><center>ID рекламного аккаунта.</center></td>
+    </tr>
+    <tr>
+        <td><center>account_id</center></td><td><center>ID рекламного аккаунта.</center></td>
+    </tr>
+    <tr>
+        <td><center>bid_amount</center></td><td><center>Ставка для данного объявления, которая будет использоваться в аукционе.</center></td>
+    </tr>
+    <tr>
+        <td><center>bid_type</center></td><td><center>Тип ставки, возможные значения:CPC, CPM, MULTI_PREMIUM, ABSOLUTE_OCPM, CPA.</center></td>
+    </tr>
+    <tr>
+        <td><center>configured_status</center></td><td><center>Статус установленный для данного объявления, в данном статусе не учитывается статус родительской группы объявлений или рекламной кампании.</center></td>
+    </tr>
+     <tr>
+    <td><center>effective_status</center></td><td><center>Актуальный статус объявления, данный статус учитывает статус родительской группы объявлений и рекламной кампании. Возможные значения: ACTIVE, PAUSED, DELETED, PENDING_REVIEW, DISAPPROVED, PREAPPROVED, PENDING_BILLING_INFO, CAMPAIGN_PAUSED, ARCHIVED, ADSET_PAUSED</center></td>
+    </tr>   
+</table>
+
 ## fbGetMarketingStat
 ### Описание
 Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
