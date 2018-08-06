@@ -1,5 +1,5 @@
 fbGetAds <- function(accounts_id = NULL,
-                     api_version = 'v3.0',
+                     api_version = 'v3.1',
                      access_token = NULL){
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",accounts_id,"/ads?fields=id,name,object_url,adlabels,adset_id,bid_amount,bid_type,campaign_id,account_id,configured_status,effective_status,creative&limit=1000&access_token=",access_token)
   
