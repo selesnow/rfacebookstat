@@ -1,4 +1,4 @@
-fbDeleteAdAccountUsers <-  function(user_ids = NULL, accounts_id = NULL,api_version = "v3.0",access_token = NULL){
+fbDeleteAdAccountUsers <-  function(user_ids = NULL, accounts_id = NULL,api_version = "v3.1",access_token = NULL){
   
   if(is.null(accounts_id)|is.null(access_token)){
     stop("Arguments accounts_id and access_token is require.")
