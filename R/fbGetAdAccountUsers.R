@@ -1,5 +1,5 @@
 fbGetAdAccountUsers <- function(accounts_id = NULL ,
-                       api_version = "v3.0", 
+                       api_version = "v3.1", 
                        console_type = "progressbar",
                        access_token = NULL){
   
