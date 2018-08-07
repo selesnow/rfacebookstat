@@ -8,7 +8,7 @@ fbGetMarketingStat <-
            filtering = NULL,
            date_start = Sys.Date() - 30,
            date_stop = Sys.Date(),
-           api_version = "v3.0",
+           api_version = "v3.1",
            interval = "day",
            console_type = "progressbar",
            request_speed = "normal",
