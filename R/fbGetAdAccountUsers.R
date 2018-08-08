@@ -14,8 +14,11 @@ fbGetAdAccountUsers <- function(accounts_id = NULL ,
   if(getOption("stringsAsFactors")){
     options(stringsAsFactors = F)
     factor_change <- TRUE
-  }
+   }
   
+    if (length(accounts_id) == 1) {
+    console_type <- "message"
+   }
   #Progress settings
   pb_step <- 1
   
