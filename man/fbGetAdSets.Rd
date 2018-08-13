@@ -4,7 +4,7 @@
 \title{Get creative list from facebook marketing API}
 \description{Get ads creatives list with parameters from facebook marketing API. An ad set is a group of ads that share the same daily or lifetime budget, schedule, bid type, bid info, and targeting data. Ad sets enable you to group ads according to your criteria, and you can retrieve the ad-related statistics that apply to a set. }
 \usage{
-fbGetAdSets(accounts_id = NULL, api_version = 'v3.0', access_token = NULL)
+fbGetAdSets(accounts_id = NULL, api_version = 'v3.1', access_token = NULL)
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
@@ -28,16 +28,19 @@ LOWEST_COST_WITH_BID_CAP: Designed to get the most results for your budget based
 TARGET_COST: Maintains a stable average cost based on your optimization_goal as you raise your ad set budget. Select this strategy if you care most about maintaining stable average costs for your ads. However, note that this strategy may be less cost-efficient than the lowest cost strategy. If you select this, you must provide a target cost with the bid_amount field. Target cost bid strategy is also known as manual average-cost bidding. Learn more in Ads Help Center, About bid strategies: Target cost.
 Note: If you enable campaign budget optimization, you should set bid_strategy at the parent campaign level.}
 \item{10. pacing_type}{Defines the pacing type, standard by default or using ad scheduling}
+}
 
 \author{Alexey Seleznev}
 
 
 \examples{
+\dontrun{
 library(rfacebookstat)
 fb_token <- fbGetToken(app_id = 0000000)
 adsets <- fbGetAdSets(accounts_id  = "act_11111111111111111",
                       api_version  = 'v3.0',
                       access_token = fb_token)
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

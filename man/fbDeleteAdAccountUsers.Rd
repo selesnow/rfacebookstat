@@ -3,7 +3,10 @@
 \title{Delete users from ad accounts.}
 \description{fbDeleteAdAccountUsers is method for remove users access from ad accounts.}
 \usage{
-fbDeleteAdAccountUsers(user_ids = NULL, accounts_id = NULL,api_version = "v2.12",access_token = NULL)
+fbDeleteAdAccountUsers(user_ids = NULL, 
+                       accounts_id = NULL,
+					   api_version = "v3.1",
+					   access_token = NULL)
 }
 
 \arguments{
@@ -20,6 +23,7 @@ You need 'Administrator' access to the ad account to remove users
 \author{Alexey Seleznev}
 
 \examples{
+\dontrun{
 #Attach package
 library(rfacebookstat)
 #Get token, where 0000000000000 is id of your app in facebook
@@ -29,5 +33,5 @@ fbDeleteAdAccountUsers(user_ids = c(001,002),
                        accounts_id = c("act_0001","act_0002"), 
                        api_version = "v2.12",
                        access_token = "abcdef123456" )
-
+}
 }

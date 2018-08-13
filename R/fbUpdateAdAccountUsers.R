@@ -26,7 +26,7 @@ fbUpdateAdAccountUsers <- function(user_ids = NULL,
       #Compose query
       QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account_id,"/users?uid=",uid,"&role=",role,"&access_token=",access_token)
       #Send query
-      ans <- POST(QueryString)
+      ans <- httr::POST(QueryString)
       #Parse query
       ans <- content(ans)
       #Message

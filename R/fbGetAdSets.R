@@ -21,3 +21,4 @@ fbGetAdSets <- function(accounts_id = NULL,
 
   result <- bind_rows(result)
   return(result)}
+

@@ -26,7 +26,6 @@ fbGetBusinessManagers <- function(api_version = "v3.1", access_token = NULL){
   result <- rbind(result, raw$data)
   
   #Pagination
-  #Запуск процесса пейджинации
   while(!is.null(raw$paging$`next`)){
     QueryString <- raw$paging$`next`
     answer <- GET(QueryString)

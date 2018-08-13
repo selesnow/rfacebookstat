@@ -4,7 +4,9 @@
 \title{Get pages list}
 \description{Load data about all avable pages}
 \usage{
-fbGetPages(projects_id = NULL, api_version = "v2.8", access_token = NULL)
+fbGetPages(projects_id = NULL, 
+           api_version = "v3.1", 
+		   access_token = NULL)
 }
 
 \arguments{
@@ -19,5 +21,9 @@ fbGetPages(projects_id = NULL, api_version = "v2.8", access_token = NULL)
 \author{Alexey Seleznev}
 
 \examples{
-fbPages <- fbGetPages(projects_id = "xxxxxxxxxxxxx", api_version = "v2.8", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+\dontrun{
+fbPages <- fbGetPages(projects_id = "xxxxxxxxxxxxx", 
+                      api_version = "v2.8", 
+					  access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+}
 }

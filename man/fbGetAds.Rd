@@ -4,7 +4,8 @@
 \title{Get ads list from facebook marketing API}
 \description{Get ads list with parameters from facebook marketing API. Contains information to display an ad and associate it an ad set. Each ad is associated with an ad set and all ads in a set have the same daily or lifetime budget, schedule, and targeting. Creating multiple ads in an ad set helps optimize their delivery based on variations in images, links, video, text or placements.}
 \usage{
-fbGetAds(accounts_id = NULL, api_version = 'v3.0', access_token = NULL)
+fbGetAds(accounts_id = NULL, api_version = "v3.1",
+         access_token = NULL)
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
@@ -30,11 +31,13 @@ Data frame with ads list.
 
 
 \examples{
+\dontrun{
 library(rfacebookstat)
 fb_token <- fbGetToken(app_id = 0000000)
 ads <- fbGetAds(accounts_id  = "act_11111111111111111",
                 api_version  = 'v3.0',
                 access_token = fb_token)
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

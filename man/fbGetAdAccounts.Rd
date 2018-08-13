@@ -3,7 +3,9 @@
 \title{Get avable ad account list.}
 \description{fbGetAdAccounts get data frame with avable in your bussines manager ad account list in R.}
 \usage{
-fbGetAdAccounts(source_id = NULL, api_version = "v2.10", access_token = NULL)
+fbGetAdAccounts(source_id = NULL, 
+                api_version = "v3.1", 
+				access_token = NULL)
 }
 
 \arguments{
@@ -19,5 +21,10 @@ Data frame with ad account list.
 \author{Alexey Seleznev}
 
 \examples{
-fbAccounts <- fbGetAdAccounts(source_id = "xxxxxxxxxxxxx", api_version = "v2.10", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+\dontrun{
+fbAccounts <- fbGetAdAccounts(source_id = "xxxxxxxxxxxxx",
+                              api_version = "v2.10", 
+							  access_token = "xxxxxxxx")
+							  
+}
 }

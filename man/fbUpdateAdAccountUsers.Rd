@@ -3,7 +3,11 @@
 \title{Add users and update permission list.}
 \description{fbUpdateAdAccountUsers add users and update permission list for users in ad accounts at facebook.}
 \usage{
-fbDeleteAdAccountUsers(user_ids = NULL, role = "advertiser", accounts_id = NULL, api_version = "v2.12", access_token = NULL)
+fbUpdateAdAccountUsers(user_ids = NULL, 
+                       role = "advertiser", 
+					   accounts_id = NULL, 
+					   api_version = "v3.1", 
+					   access_token = NULL)
 }
 
 \arguments{
@@ -39,6 +43,7 @@ For more details go link (https://developers.facebook.com/docs/marketing-api/adu
 \author{Alexey Seleznev}
 
 \examples{
+\dontrun{
 #Attach package
 library(rfacebookstat)
 
@@ -46,9 +51,10 @@ library(rfacebookstat)
 tk <- fbGetToken(0000000000000) 
 
 #Add user with id 001 and 002 to accounts act_0001 and act_0002
-fbUpdateAdAccountUsers(user_ids = c("001","002") 
+fbUpdateAdAccountUsers(user_ids = c("001","002"), 
                        accounts_id = c("act_0001","act_0002"), 
                        role = "advertiser",
                        api_version = "v2.12",
                        access_token = tk)
+}
 }

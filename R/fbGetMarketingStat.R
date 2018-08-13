@@ -4,7 +4,7 @@ fbGetMarketingStat <-
            level = "account",
            breakdowns = NULL,
            action_breakdowns = NULL,
-           fields ="account_id,account_name,campaign_name,impressions,clicks,unique_clicks,reach,spend",
+           fields = "account_id,campaign_name,impressions,clicks,reach,spend",
            filtering = NULL,
            date_start = Sys.Date() - 30,
            date_stop = Sys.Date(),
@@ -17,14 +17,14 @@ fbGetMarketingStat <-
     #Check start time
     start_time <- Sys.time()
     
-    #Создаём результирующий дата фрейм
+    #Create result DF
     result <- data.table()
     
     if(interval == "overall"){
       dates_from <- as.Date(date_start)
       dates_to   <- as.Date(date_stop)
     } else {
-      #Проверяем выбранный интервал
+      #Check dates interval
       dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
       dates_to   <- as.Date(dates_from - 1)
       dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))}
@@ -53,7 +53,7 @@ fbGetMarketingStat <-
     if(console_type == "progressbar"){      
       #Progress settings
       pb_step <- 1
-      pb <- txtProgressBar(pb_step, length(accounts_id) * nrow(dates_df), style = 3)}
+      pb <- utils::txtProgressBar(pb_step, length(accounts_id) * nrow(dates_df), style = 3)}
     
     #API request counter
     request_counter <- 0
@@ -61,9 +61,9 @@ fbGetMarketingStat <-
     
     for(i in 1:length(accounts_id)){
      
-      #Разбивка по интервалу
+      #Intervals flatten
       for(dt in 1:nrow(dates_df)){
-        #Создаём строку запроса
+        #Create query string
         QueryString <- gsub("&{1,5}","&",
                             paste(paste0("https://graph.facebook.com/",api_version,"/",accounts_id[i],"/insights?"),
                                   ifelse(is.null(sorting),"",paste0("sort=",sorting)),
@@ -80,7 +80,7 @@ fbGetMarketingStat <-
         #Progresbar step
         if(console_type == "progressbar"){
           pb_step <- pb_step + 1
-          setTxtProgressBar(pb, pb_step)}
+          utils::setTxtProgressBar(pb, pb_step)}
         
         #Send API request
         answer <- httr::GET(QueryString)
@@ -202,7 +202,7 @@ fbGetMarketingStat <-
       }
     }
     
-    #Расплющиваем action
+    #Flatten action
     result <- as.data.frame(result)
     if (length(result$actions) > 0){
       fb_res <- data.table()
@@ -229,10 +229,10 @@ fbGetMarketingStat <-
     
     if(console_type == "progressbar"){  
       #Progressbar close
-      setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
+      utils::setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
       close(pb)}
     
-    #Возвращаем дата фрейм
+    #Out messages
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
     packageStartupMessage("Data loaded successfully!", appendLF = T)
     packageStartupMessage(paste0("Loaded ",nrow(result)," rows."), appendLF = T)

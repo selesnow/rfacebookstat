@@ -4,7 +4,9 @@
 \title{Get creative list from facebook marketing API}
 \description{Get ads creatives list with parameters from facebook marketing API. Format which provides layout and contains content for the ad. }
 \usage{
-fbGetAdCreative(accounts_id = NULL, api_version = 'v3.0', access_token = NULL)
+fbGetAdCreative(accounts_id = NULL, 
+                api_version = "v3.1", 
+				access_token = NULL)
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
@@ -32,11 +34,13 @@ Data frame with ads list.
 
 
 \examples{
+\dontrun{
 library(rfacebookstat)
 fb_token <- fbGetToken(app_id = 0000000)
 ads_creative <- fbGetAdCreative(accounts_id  = "act_11111111111111111",
                                 api_version  = 'v3.0',
                                 access_token = fb_token)
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -3,7 +3,8 @@
 \title{Get ad account user list with him permissions.}
 \description{fbGetAdAccountUsersPermissions get ad account user list with him permissions. in R.}
 \usage{
-fbGetAdAccountUsersPermissions(accounts_id = NULL ,api_version = "v2.12", access_token = NULL)
+fbGetAdAccountUsersPermissions(accounts_id = NULL, api_version = "v3.1", console_type
+                   = "progressbar", access_token = NULL)
 }
 
 \arguments{
@@ -20,5 +21,9 @@ Data frame with ad account user permissions list.
 \author{Alexey Seleznev}
 
 \examples{
-accountUsers <- fbGetAdAccountUsersPermissions(accounts_id = c("act_00001","act_00002"), api_version = "v2.10", access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+\dontrun{
+UP <- fbGetAdAccountUsersPermissions(accounts_id = c("act_00001","act_00002"), 
+                                     api_version = "v2.10", 
+	    						     access_token = "xxxxxx")
+}
 }

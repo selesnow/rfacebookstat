@@ -9,7 +9,7 @@ fbDeleteAdAccountUsers <-  function(user_ids = NULL, accounts_id = NULL,api_vers
     for(uid in user_ids){
       print(paste0("Account ",account_id))
       QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account_id,"/users/",uid,"?access_token=",access_token)
-      ans <- DELETE(QueryString)
+      ans <- httr::DELETE(QueryString)
       ans <- content(ans)
       print(ans)
       Sys.sleep(3)
