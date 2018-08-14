@@ -14,7 +14,7 @@
 Для установки пакета запустите приведённый ниже код в RStudio или R консоли.
 Установка из главного репозитория CRAN:
 ```r
-install.packages("rfacebookstat", repos = "https://cran.r-project.org/")
+install.packages("rfacebookstat")
 ```
 Устновка наиболее актульной dev версии пакета:
 ```r
