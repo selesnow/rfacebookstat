@@ -6,6 +6,8 @@
 
 # rfacebookstat
 
+![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](http://www.rdocumentation.org/packages/rfacebookstat)
+
 ## Краткое описание.
 
 Пакет для загрузки данных из [Marketing API Facebook](https://developers.facebook.com/docs/marketing-apis?locale=ru_RU) в R, а так же с помощью пакета вы можете управлять доступами пользователей к рекламный аккаунтам на Facebook.
