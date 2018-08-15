@@ -84,6 +84,9 @@ li.menu {
 * [Список релизов](https://github.com/selesnow/rfacebookstat/releases)
 * [Группа в Вконтакте](https://vk.com/data_club)
 
+## CRAN
+[![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](http://www.rdocumentation.org/packages/rfacebookstat)
+
 ## Содержание README
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
 + [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
