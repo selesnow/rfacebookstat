@@ -7,6 +7,10 @@ fbGetLongTimeToken <-
     raw_token <- GET(link)
     token_list <- content(raw_token)
     
+    if(!is.null(token_list$error)) {
+      error <- token_list$error
+      message(error)
+    }
     message("Token changed successfully")
     message("New longtime token: ", token_list$access_token)
     message("Expires in ", Sys.time() + as.numeric(token_list$expires_in, units = "secs"))
