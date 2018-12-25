@@ -126,6 +126,8 @@ li.nm_li {
 ## Содержание README
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
 + [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
++ [Пример кода для работы с API Facebook Marketing](пример-кода-для-работы-с-rfacebookstat)
++ [Безопасность использования пакета rfacebookstat](безопасность-использования-rfacebookstat)
 + [Функции пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Функции-пакета-rfacebookstat)
     + [fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken) - Получить токен для работы с API Facebook.
     + [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
