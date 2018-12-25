@@ -231,6 +231,95 @@ if(!"devtools" %in% installed.packages()[,1]){install.packages("devtools")}
 devtools::install_github('selesnow/rfacebookstat')
 ```
 
+## Пример кода для работы с rfacebookstat
+
+```r
+# Установка и подключение пакета rfacebookstat
+devtools::install_github("selesnow/ryandexdirect")
+library(rfacebookstat)
+
+# авторизация в API
+# краткосрочный токен
+my_st_token <- fbGetToken(app_id = 5546236457236574327)
+
+# долгосрочный токен
+fb_token    <- fbGetLongTimeToken(client_id = 5546236457236574327,
+                                  client_secret = "uhcninh3y98nfyy49r8y98fy938",
+                                  fb_exchange_token = my_st_token)
+
+# Загрузка объектов API
+# бизнес менеджеры
+my_fb_bm   <- fbGetBusinessManagers(access_token = fb_token)
+
+# проекты из бизнес менеджера
+my_fb_proj <- fbGetProjects(bussiness_id = my_fb_bm$id,
+                            access_token = fb_token)
+# рекламные аккаунты
+my_fb_acc  <- fbGetAdAccounts(source_id = my_fb_bm$id,
+                              access_token = fb_token)
+# страницы
+my_fb_page <- fbGetPages(projects_id = my_fb_proj$id, access_token = fb_token)
+# приложения
+my_fb_apps <- fbGetApps(projects_id = my_fb_proj$id, access_token = fb_token)
+
+# Объекты рекламного аккаунта
+# кампании
+my_fb_camp <- fbGetCampaigns(accounts_id = "act_262115113",
+                             access_token = fb_token)
+
+# группы объявлений
+my_fb_adsets <- fbGetAdSets(accounts_id = "act_262115113",
+                            access_token = fb_token)
+# объявления
+my_fb_ads    <- fbGetAds(accounts_id = my_fb_acc$id[7],
+                         access_token = fb_token)
+
+# контент объявлений
+my_fb_ad_content <- fbGetAdCreative(accounts_id = "act_262115113",
+                                    access_token = fb_token)
+
+# загрузка статистики
+my_fb_stats <- fbGetMarketingStat(accounts_id = "act_262115113",
+                                  level = "campaign",
+                                  fields = "account_name,campaign_name,impressions,clicks",
+                                  breakdowns = "device_platform",
+                                  date_start = "2018-08-01",
+                                  date_stop = "2018-08-07",
+                                  interval = "day",
+                                  access_token = fb_token)
+
+
+# управление пользователями
+# получить список пользователей
+fb_acc_user <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
+                                   access_token = fb_token,
+                                   console_type = "message")
+
+# удалить пользователя из рекламного аккаунта
+fbDeleteAdAccountUsers(user_ids = "823041644481205",
+                       accounts_id  =  "act_262115113",
+                       access_token = fb_token,
+                       api_version = "v3.1")
+
+# добавить пользователя в рекламный аккаунт
+fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
+                                    access_token = fb_token,
+                                    console_type = "message")
+```
+
+## Безопасность использования rfacebookstat
+
+Вся работа с API Facebook Marketing происходит через зарегистрированное вами приложение.
+О том, как устроен процесс аутентификации в Facebook Marketing API подробно описано [тут](https://developers.facebook.com/docs/marketing-api/access/). 
+
+Для прохождения авторизации в пакете rfacebookstat есть функция `fbGetToken`, реализуется через одноэтапную аутентификацию. Никакой опасности в том, что ваш токен будет перехвачен через отчёты Google Analytics нет, скрин того, как в Google Analytics выглядит посещение страницы генерации токена.
+
+![](http://img.netpeak.ua/alsey/154297756690_kiss_14kb.png)
+
+Пакет rfacebookstat был опубликован в официальном хранилище пакетов для языка R - [CRAN](https://CRAN.R-project.org/package=rym), перед публикаций в котором все пакеты проходят модерацию командой профессионалов, поэтому это так же может являться дополнительной гарантией того, что использование пакета является безопасным.
+
+К тому же код пакета rfacebookstat открыт, и находится в свободном доступе на [GitHub](https://github.com/selesnow/rfacebookstat/tree/master/R), в связи с чем перед его использованием, вы можете посмотреть код любой его функции.
+
 ## Функции пакета rfacebookstat
 
 На данный момент в пакете rfacebookstat доступно 16 функций, с помощью которых вы можете получить любой объект из бизнес менеджера или рекламного кабинета, а так же загрузить статистику по эффективности ведения рекламы на Facebook.
