@@ -1,18 +1,18 @@
 fbGetMarketingStat <-
-  function(accounts_id = NULL,
-           sorting = NULL,
-           level = "account",
-           breakdowns = NULL,
+  function(accounts_id       = NULL,
+           sorting           = NULL,
+           level             = "account",
+           breakdowns        = NULL,
            action_breakdowns = NULL,
-           fields = "account_id,campaign_name,impressions,clicks,reach,spend",
-           filtering = NULL,
-           date_start = Sys.Date() - 30,
-           date_stop = Sys.Date(),
-           api_version = "v3.1",
-           interval = "day",
-           console_type = "progressbar",
-           request_speed = "normal",
-           access_token = NULL){
+           fields            = "account_id,campaign_name,impressions,clicks,reach,spend",
+           filtering         = NULL,
+           date_start        = Sys.Date() - 30,
+           date_stop         = Sys.Date(),
+           api_version       = "v3.2",
+           interval          = "day",
+           console_type      = "progressbar",
+           request_speed     = "normal",
+           access_token      = NULL){
     
     #Check start time
     start_time <- Sys.time()
@@ -60,7 +60,7 @@ fbGetMarketingStat <-
     error_counter   <- 0
     
     for(i in 1:length(accounts_id)){
-     
+      
       #Intervals flatten
       for(dt in 1:nrow(dates_df)){
         #Create query string
@@ -84,6 +84,15 @@ fbGetMarketingStat <-
         
         #Send API request
         answer <- httr::GET(QueryString)
+        
+          if (  fromJSON(headers(answer)$`x-ad-account-usage`)$acc_id_util_pct > 80 ) {
+            
+            if(console_type == "message"){
+              message("WARNNG: You API limit spent: ", fromJSON(headers(answer)$`x-ad-account-usage`)$acc_id_util_pct )
+              pause_time <- pause_time * 1.5
+            }
+          }
+        
         request_counter <- request_counter + 1
         #Parse result
         answerobject <- httr::content(answer, as = "parsed")
@@ -111,9 +120,9 @@ fbGetMarketingStat <-
               Sys.sleep(61)
               
               #Repeate API request
-              answer <- getURL(QueryString)
+              answer <- httr::GET(QueryString)
               request_counter <- request_counter + 1
-              answerobject <- fromJSON(answer)
+              answerobject <- httr::content(answer, as = "parsed")
               
               #If many limits up pause time
               if(error_counter >= 3 & pause_time < 5){
