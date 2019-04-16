@@ -6,7 +6,8 @@ Date: 2019-04-16
 Author: Alexey Seleznev <selesnow@gmail.com>
 Maintainer: Alexey Seleznev <selesnow@gmail.com>
 Description: Load data by campaigns, ads, ad sets and insights, ad account and 
-    business manager from Facebook Marketing API into R. For more details see official documents by Facebook Marketing API <https://developers.facebook.com/docs/marketing-apis/>.
+    business manager from Facebook Marketing API into R. For more details see 
+    official documents by Facebook Marketing API <https://developers.facebook.com/docs/marketing-apis/>.
 Depends: R (>= 3.0.0)
 BugReports: https://github.com/selesnow/rfacebookstat/issues
 Imports: data.table, httr, RCurl, bitops, jsonlite, dplyr
