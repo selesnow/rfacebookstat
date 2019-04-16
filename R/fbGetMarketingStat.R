@@ -14,11 +14,17 @@ fbGetMarketingStat <-
            request_speed     = "normal",
            access_token      = NULL){
     
-    #Check start time
+    # Check start time
     start_time <- Sys.time()
     
-    #Create result DF
+    # Create result DF
     result <- data.table()
+    
+    # clear field list
+    fields <- gsub("[\\s\\n\\t]", 
+                   "", 
+                   fields, 
+                   perl = TRUE)
     
     if(interval == "overall"){
       dates_from <- as.Date(date_start)
