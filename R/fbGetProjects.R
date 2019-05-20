@@ -1,5 +1,7 @@
 fbGetProjects <-
-function(bussiness_id = NULL, api_version = "v3.1", access_token = NULL){
+function(bussiness_id = getOption("rfacebookstat.business_id"), 
+         api_version = getOption("rfacebookstat.api_version"), 
+		 access_token = getOption("rfacebookstat.access_token")){
   
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",bussiness_id,"/businessprojects?access_token=",access_token)
   answer <- getURL(QueryString)

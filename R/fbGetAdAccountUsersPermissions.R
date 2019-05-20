@@ -1,7 +1,7 @@
-fbGetAdAccountUsersPermissions <- function(accounts_id = NULL ,
-                                           api_version = "v3.1",
+fbGetAdAccountUsersPermissions <- function(accounts_id = getOption("rfacebookstat.accounts_id") ,
+                                           api_version = getOption("rfacebookstat.api_version"),
                                            console_type = "progressbar",
-                                           access_token = NULL){
+                                           access_token = getOption("rfacebookstat.access_token")){
 
   if(is.null(accounts_id)|is.null(access_token)){
     stop("Arguments accounts_id and access_token is require.")

@@ -1,5 +1,7 @@
 fbGetApps <-
-function(projects_id = NULL, api_version = "v3.1", access_token = NULL){
+function(projects_id = NULL, 
+         api_version = getOption("rfacebookstat.api_version"), 
+         access_token = getOption("rfacebookstat.access_token")){
   result <- data.frame()
   for(i in 1:length(projects_id)){
     QueryString <- paste0("https://graph.facebook.com/",api_version,"/",projects_id[i],"/apps?fields=name,id&access_token=",access_token)

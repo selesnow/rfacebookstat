@@ -47,6 +47,28 @@ fbGetMarketingStat <-
 
     if ( is.na(answer_class) ) answer_class <- "actions"
     
+    # filters handing to JSON
+    if ( ! is.null(filtering) ) {
+      if ( ! validate(filtering)[[1]] ) {
+        
+        filters <- list()
+        
+		for ( f in filtering ) {
+		  temp_fil    <- str_split(f, " ")
+		  temp_filter <- list(field    = temp_fil[[1]][1],
+							  operator = temp_fil[[1]][2])
+		  
+		  if ( temp_fil[[1]][2] %in% c("IN_RANGE", "NOT_IN_RANGE", "IN", "NOT_IN") ) {
+			temp_filter$value <- str_split(temp_fil[[1]][3], ",")[[1]]
+		  } else {
+			temp_filter$value <- temp_fil[[1]][3]
+		  }
+		  filters <- append(filters, list(temp_filter))
+		}
+        filtering <- toJSON(filters, auto_unbox = T)
+      }
+    }
+    
     if(interval == "overall"){
       dates_from <- as.Date(date_start)
       dates_to   <- as.Date(date_stop)
@@ -112,7 +134,7 @@ fbGetMarketingStat <-
                                          limit              = 5000,
                                          access_token       = access_token))
         # check limit
-        queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df )
+        queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time  )
         
         # reapet query if out of apilimit
         while ( queryrep ) {
@@ -129,7 +151,7 @@ fbGetMarketingStat <-
                                            limit              = 5000,
                                            access_token       = access_token))
           
-          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df )
+          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
         }
         
         request_counter <- request_counter + 1
@@ -227,7 +249,7 @@ fbGetMarketingStat <-
           answer <- httr::GET(QueryString)
           
           # check limit
-          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df )
+          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
           
           # reapet query if out of apilimit
           while ( queryrep ) {
@@ -244,7 +266,7 @@ fbGetMarketingStat <-
                                              limit              = 5000,
                                              access_token       = access_token))
             
-            queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df )
+            queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
           }
           
           request_counter <- request_counter + 1

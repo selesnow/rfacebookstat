@@ -1,6 +1,6 @@
-fbGetAdAccounts <- function(source_id = NULL, 
-                            api_version = "v3.1", 
-                            access_token = NULL){
+fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"), 
+                            api_version  = getOption("rfacebookstat.api_version"), 
+                            access_token = getOption("rfacebookstat.access_token")){
   
   #Check of fill out access_token
   if(is.null(access_token)){

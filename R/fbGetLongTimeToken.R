@@ -1,5 +1,5 @@
 fbGetLongTimeToken <-
-  function(client_id= NULL,client_secret = NULL,fb_exchange_token = NULL){
+  function(client_id = NULL,client_secret = NULL,fb_exchange_token = NULL){
     if(is.null(client_id)|is.null(client_secret)|is.null(fb_exchange_token)){
       stop("Enter your Client ID, client_secret and short time token!")
     }

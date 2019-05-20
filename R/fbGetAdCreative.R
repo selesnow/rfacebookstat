@@ -1,6 +1,6 @@
-fbGetAdCreative <- function(accounts_id = NULL,
-                            api_version = 'v3.1',
-                            access_token = NULL){
+fbGetAdCreative <- function(accounts_id = getOption("rfacebookstat.accounts_id"),
+                            api_version = getOption("rfacebookstat.api_version"),
+                            access_token = getOption("rfacebookstat.access_token")){
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",accounts_id,"/adcreatives?fields=ad_id,name,status,url_tags,object_story_spec,account_id&limit=1000&access_token=",access_token)
   
   res <- data.frame()

@@ -1,6 +1,6 @@
-fbGetAds <- function(accounts_id = NULL,
-                     api_version = 'v3.1',
-                     access_token = NULL){
+fbGetAds <- function(accounts_id = getOption("rfacebookstat.accounts_id"),
+                     api_version = getOption("rfacebookstat.api_version"),
+                     access_token = getOption("rfacebookstat.access_token")){
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",accounts_id,"/ads?fields=id,name,object_url,adlabels,adset_id,bid_amount,bid_type,campaign_id,account_id,configured_status,effective_status,creative&limit=1000",
                                                 "&filtering=[{'field':'ad.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
                                                 "&access_token=",access_token)

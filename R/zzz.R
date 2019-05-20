@@ -13,6 +13,7 @@ rfacebookstatWelcomeMessage <- function(){
          "Welcome to rfacebookstat version ", utils::packageDescription("rfacebookstat")$Version, "\n",
          "\n",
          "Author:   Alexey Seleznev (Head of analytics dept at Netpeak).\n",
+		 "Telegram channel: https://t.me/R4marketing \n",
          "Email:    selesnow@gmail.com\n",
          "Blog:     https://alexeyseleznev.wordpress.com \n",
          "Facebook: https://facebook.com/selesnown \n",
@@ -27,4 +28,18 @@ rfacebookstatWelcomeMessage <- function(){
          "\tTo suppress this message use:  ", "suppressPackageStartupMessages(library(rfacebookstat))\n",
          "---------------------\n"
   )
+}
+
+    
+.onLoad <- function(libname, pkgname) {
+  op <- options()
+  op.rfacebookstat <- list(rfacebookstat.api_version  = "v3.3",
+                           rfacebookstat.access_token = NULL,
+                           rfacebookstat.accounts_id  = NULL,
+						   rfacebookstat.business_id  = NULL)
+					   
+  toset <- !(names(op.rfacebookstat) %in% names(op))
+  if (any(toset)) options(op.rfacebookstat[toset])
+  
+  invisible()
 }
