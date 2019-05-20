@@ -3,11 +3,12 @@
 \title{Add users and update permission list.}
 \description{fbUpdateAdAccountUsers add users and update permission list for users in ad accounts at facebook.}
 \usage{
-fbUpdateAdAccountUsers(user_ids = NULL, 
-                       role = "advertiser", 
-					   accounts_id = NULL, 
-					   api_version = "v3.1", 
-					   access_token = NULL)
+fbUpdateAdAccountUsers(
+   user_ids = NULL, 
+   role = "advertiser", 
+   accounts_id = getOption("rfacebookstat.accounts_id"), 
+   api_version = getOption("rfacebookstat.api_version"), 
+   access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{

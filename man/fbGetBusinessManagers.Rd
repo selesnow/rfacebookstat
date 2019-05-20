@@ -3,7 +3,8 @@
 \title{Get avable business Managers.}
 \description{fbGetBusinessManagers get data frame with avable bussines managers list in R.}
 \usage{
-fbGetBusinessManagers(api_version = "v3.1", access_token = NULL)
+fbGetBusinessManagers(api_version = getOption("rfacebookstat.api_version"), 
+                      access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{

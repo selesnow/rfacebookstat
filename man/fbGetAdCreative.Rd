@@ -4,9 +4,9 @@
 \title{Get creative list from facebook marketing API}
 \description{Get ads creatives list with parameters from facebook marketing API. Format which provides layout and contains content for the ad. }
 \usage{
-fbGetAdCreative(accounts_id = NULL, 
-                api_version = "v3.1", 
-				access_token = NULL)
+fbGetAdCreative(accounts_id = getOption("rfacebookstat.accounts_id"), 
+                api_version = getOption("rfacebookstat.api_version"), 
+				access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}

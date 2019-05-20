@@ -1,0 +1,320 @@
+---
+title: "Загрузки статистики из рекламных аккаунтов Facebook"
+author: "Алексей Селезнёв"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  eval=FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Для загрузки статистических данных из рекламных аккаунтов Facebook в пакете `rfacebookstat` необходимо использовать функцию `fbGetMarketingStat`.
+
+## Аргументы функции `fbGetMarketingStat`
+
+Функция имеет множество аргументов с помощью которых вы можете максимально точно обозначить формат получаемых из API Facebook данных.
+
+* *accounts_id* - ID рекламных аккаунтов, перед ID необходимо указать префикс `act_`, вы можете указать вектор из ID аккаунтов если требуется загрузить данные из набора аккаунтов. По умолчанию запрашивает значение опции *rfacebookstat.accounts_id*.
+* *sorting* - Поле для сортировки полученных данных, так же вы можете указать направление добавив "_ascending" или "_descending" в поле сортировки. Например "reach_descending". Для действий вы можете сортировать по типу действия в форме "actions: <action_type>". Например, ["actions: link_click_ascending"]. Вы можете задать только одно поле для сортировки.
+* *level* - Уровень группировки данных, принимает одно из следующих значений: ad, adset, campaign, account. По умолчанию имеет значение account.
+* *action_breakdowns* - Разбивки по действиям, более подробно о них можно узнать в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown) к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.
+* *breakdowns* - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender) к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.
+* *fields* - Поля которые вы хотите загрузить из API, полный список всех полей доступен по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/parameters#fields).
+* *filtering* - Текстовая строка или вектор. Филтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.
+* *date_start* - Дата начала отчётного периода.
+* *date_stop* - Дата завершения рабочего отчётного периода.
+* *request_speed* - Скорость отправки запросов, возможные значения "normal", "fast" или "slow". Так же можно задать числовое значение, которое будет задавть количество секунд в паузе между отправкой запросов к API.
+* *api_version* - Версия API к которой будет отвравлен запрос, по умолчанию берётся хначение из опции *rfacebookstat.api_version*.
+* *action_report_time* - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с `action_report_time = "impression"`, вы увидите конверсию 1 января. Когда вы запросите API с помощью `action_report_time = "conversion"`, вы увидите преобразование 2 января.
+* *interval* - Группировка по временному интервалу, возможные значения: day, week, month, quarter, year.
+* *console_type* - Тип выводимых в консоль данных, возможные значения progressbar, message.
+* *access_token* - Токен доступа к API полученный с помощью функции `fbGetToken`, по умолчанию запрашивается значение опции. *rfacebookstat.access_token*
+
+## Пример запроса статистики
+
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+
+fb_data <- fbGetMarketingStat(
+                  level              = "campaign",
+                  fields             = "campaign_name,
+                                        impressions,
+                                        clicks,
+                                        spend,
+                                        actions",
+                  date_start         = "2019-05-01",
+                  date_stop          = "2019-05-10")
+```
+
+Выше приведён простейший способ загрузки стастистики по показам, кликам, тратам и действиям в разреще дней и рекламных кампаний.
+Использование опций *rfacebookstat.access_token* и *rfacebookstat.accounts_id* не является обязательным, но поможет вам избежать дублирование этих параметров в аргументах всех функций пакета, поэтому я рекомендую именно такой способ установки значений accout_id, access_token, business_id и api_version.
+
+## Разбивки (breakdowns)
+Разивки помогают помогают обогощать ваши данные за счёт дополнительных полей и группировок, на данный момент поддерживаются следующие разбивки:
+
+* ad_format_asset
+* age
+* body_asset
+* call_to_action_asset
+* country
+* description_asset
+* gender
+* image_asset
+* impression_device
+* link_url_asset
+* product_id
+* region
+* title_asset
+* video_asset
+* dma
+* frequency_value
+* hourly_stats_aggregated_by_advertiser_time_zone
+* hourly_stats_aggregated_by_audience_time_zone
+* place_page_id
+* publisher_platform
+* platform_position
+* device_platform
+
+Актульный список группировок всегда можно найти в официальной документации API Facebook по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender).
+
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+
+fb_data_breakdowns <- fbGetMarketingStat(
+  level              = "campaign",
+  fields             = "campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions",
+  breakdowns         = "region",
+  date_start         = "2019-05-01",
+  date_stop          = "2019-05-10")
+```
+
+## Разбивки по действиям (action_breakdowns)
+Вы можете сгруппировать результаты в поле *actions*. Аргумент *action_breakdowns* позволяет применить указанные ниже разбивки.
+
+* action_device - Устройство, на котором произошло отслеживаемое событие конверсии. Например, «ПК», если человек выполнил конверсию с ПК.
+* action_destination - Куда переходят люди, нажав вашу рекламу. Это может быть ваша Страница Facebook, внешний URL-адрес пикселя конверсий или приложение, сконфигурированное с помощью комплекта разработчика ПО.
+* action_reaction - Количество реакций на ваши объявления или продвигаемые публикации. Кнопка реакций в рекламе позволяет людям по-разному отреагировать на ее содержание. Можно выбрать "Нравится", "Супер", "Ха-ха", "Ух ты!", "Сочувствую" или "Возмутительно".
+* action_target_id - Идентификатор места назначения, в которое переходят люди, нажавшие на ссылку в вашей рекламе. Это может быть ваша Страница Facebook, внешний URL вашего пикселя конверсий, или приложение, сконфигурированное с помощью SDK.
+* action_type - Тип действий, выполненных в отношении вашей рекламы, Страницы, приложения или мероприятия после показа объявления кому-либо, даже если эти люди не нажимали объявления. Типы действий включают отметки «Нравится» Страницы, установки приложений, конверсии, ответы на мероприятия и т.д.
+
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+
+fb_data_action_breakdowns <- fbGetMarketingStat(
+  level              = "campaign",
+  fields             = "campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions",
+  action_breakdowns  = "action_reaction",
+  date_start         = "2019-05-01",
+  date_stop          = "2019-05-10")
+```
+
+### Описание полей возвращаемых в ращбивке action_type
+* app_custom_event.fb_mobile_achievement_unlocked: Разблокированные функции в мобильном приложении
+* app_custom_event.fb_mobile_activate_app: Запуски мобильного приложения
+* app_custom_event.fb_mobile_add_payment_info: Сведения об оплате в мобильном приложении
+* app_custom_event.fb_mobile_add_to_cart: Добавления в корзину в мобильном приложении
+* app_custom_event.fb_mobile_add_to_wishlist: Добавления в список желаний в мобильном приложении
+* app_custom_event.fb_mobile_complete_registration: Регистрации в мобильном приложении
+* app_custom_event.fb_mobile_content_view: Просмотры материалов мобильного приложения
+* app_custom_event.fb_mobile_initiated_checkout: Оформление заказов в мобильном приложении
+* app_custom_event.fb_mobile_level_achieved: Достижения в мобильном приложении
+* app_custom_event.fb_mobile_purchase: Покупки в мобильном приложении
+* app_custom_event.fb_mobile_rate: Оценки в мобильном приложении
+* app_custom_event.fb_mobile_search: Поисковые запросы в мобильном приложении
+* app_custom_event.fb_mobile_spent_credits: Траты кредитов в мобильном приложении
+* app_custom_event.fb_mobile_tutorial_completion: Использования обучающей программы в мобильном приложении
+* app_custom_event.other: Другие действия в мобильном приложении
+* app_install: Установки приложения
+* app_use: Использования приложения
+* checkin: Посещения
+* comment: Комментарии к публикации
+* credit_spent: Траты кредитов
+* games.plays: Количество раз, когда играли в вашу игру
+* landing_page_view: Просмотры целевой страницы
+* leadgen.other: Лиды (Форма)
+* like: Отметки «Нравится» Страницы
+* link_click: Количество кликов на ссылку
+* mobile_app_install: Установки мобильного приложения
+* offsite_conversion.custom.<custom_conv_id>: Индивидуально настроенные рекламодателем конверсии
+* offsite_conversion.fb_pixel_add_payment_info: Добавление платежной информации
+* offsite_conversion.fb_pixel_add_to_cart: Добавления товаров в корзину
+* offsite_conversion.fb_pixel_add_to_wishlist: Добавления в список пожеланий
+* offsite_conversion.fb_pixel_complete_registration: Завершенная регистрация
+* offsite_conversion.fb_pixel_custom: Специально настроенные события пикселя, заданные рекламодателем
+* offsite_conversion.fb_pixel_initiate_checkout: Инициирует оформление заказа
+* offsite_conversion.fb_pixel_lead: Потенциальные клиенты
+* offsite_conversion.fb_pixel_purchase: Покупки
+* offsite_conversion.fb_pixel_search: Поиск
+* offsite_conversion.fb_pixel_view_content: Просматривает контент
+* onsite_conversion.flow_complete: Завершенные рабочие процессы на Facebook
+* onsite_conversion.messaging_block: Заблокированные переписки
+* onsite_conversion.messaging_conversation_started_7d: Начата переписка
+* onsite_conversion.messaging_first_reply: Новые переписки
+* onsite_conversion.post_save: Сохранения публикации
+* onsite_conversion.purchase: Покупки на Facebook
+* outbound_click: Исходящие клики
+* photo_view: Отметки фотографии Страницы
+* post: Репосты публикации
+* post_reaction: Реакции на публикацию
+* rsvp: Ответы на мероприятие
+* video_view: 3-секундные просмотры видео
+
+
+
+## Применить одновременно несколько разбивок
+Некоторые разбивки можно применять одновременно.
+Типы группирования, помеченные звездочкой (*), можно объединить с action_type, action_target_id и action_destination (название action_target_id).
+
+* action_type *
+* action_target_id *
+* action_device *
+* action_device, impression_device *
+* action_device, publisher_platform *
+* action_device, publisher_platform, impression_device *
+* action_device, publisher_platform, platform_position *
+* action_device, publisher_platform, platform_position, impression_device *
+* action_reaction
+* action_type, action_reaction
+* age *
+* gender *
+* age, gender *
+* country *
+* region *
+* publisher_platform *
+* publisher_platform, impression_device *
+* publisher_platform, platform_position *
+* publisher_platform, platform_position, impression_device *
+* product_id *
+
+## Фильтрация данных
+Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент `filtering`.
+Указывать выражение для фильтрации ы можете в упрошённом формате или в виде JSON объектов, ниже я приведу пример использования обоих вариантов.
+
+Для фильтрации вам необходимо указать поле по которому вы будете фильтровать данные, оператор и значение.
+Допустимые операторы для фильтрации: EQUAL, NOT_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, IN_RANGE, NOT_IN_RANGE, CONTAIN, NOT_CONTAIN, IN, NOT_IN, STARTS_WITH, ANY, ALL, AFTER, BEFORE, NONE
+
+### Пример фильтрации в упрощенном формате
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+fb_data <- fbGetMarketingStat(
+  level              = "campaign",
+  fields             = "campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions",
+  filtering          = "impressions LESS_THAN 5000",
+  date_start         = "2019-05-01",
+  date_stop          = "2019-05-10")
+```
+
+В приведённом примере мы указали фильтр `impressions LESS_THAN 5000` и таким образом оставили строки в которых поле impressions имеет значение менее 5000.
+
+Если вам необходимо использовать множественный оператор (IN_RANGE, NOT_IN_RANGE, IN, NOT_IN) то в упрошенном формате запись будет выглядеть так: `"publisher_platform IN instagram,facebook"`. Важно не ставить проблемы между списком значений.
+
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+fb_data <- fbGetMarketingStat(
+  level              = "campaign",
+  fields             = "campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions",
+  filtering          = "publisher_platform IN instagram,facebook",
+  breakdowns         = "publisher_platform",
+  date_start         = "2019-05-01",
+  date_stop          = "2019-05-10")
+```
+
+Если вы хотите применить несколько фиьтров то вы можете передать в аргумент `filtering` вектор из выражений, например: `c("clicks LESS_THAN 500", "impressions GREATER_THAN 1000")`.
+
+```{r}
+library(rfacebookstat)
+
+options(rfacebookstat.access_token = "ваш токен",
+        rfacebookstat.accounts_id  = "act_000000000")
+fb_data <- fbGetMarketingStat(
+  level              = "campaign",
+  fields             = "campaign_name,
+                        impressions,
+                        clicks,
+                        spend,
+                        actions",
+  filtering          = c("clicks LESS_THAN 500", "impressions GREATER_THAN 1000"),
+  date_start         = "2019-05-01",
+  date_stop          = "2019-05-10")
+```
+
+### Пример фильтрации в JSON формате
+Как я уже писал выше вы можете описывать фильтры в виде JSON объектов, но такая запись будет более громозка. Давайте  приведу вам аналогию с представленными выше фильтрами.
+
+Упрошённый формат: `"impressions LESS_THAN 5000"`
+
+JSON: `"[{"field":"impressions","operator":"LESS_THAN","value":"5000"}]"`
+
+---
+
+Упрошённый формат: `"publisher_platform IN instagram,facebook"`
+
+JSON: `[{"field":"publisher_platform","operator":"IN","value":["instagram","facebook"]}]`
+
+---
+
+Упрошённый формат: `c("clicks LESS_THAN 500", "impressions GREATER_THAN 1000")`
+
+JSON: `[{"field":"clicks","operator":"LESS_THAN","value":"500"},{"field":"impressions","operator":"GREATER_THAN","value":"1000"}]`
+
+## Лимиты API и аргумент request_speed
+По использованию аргумента `request_speed` есть целая [статья](https://bit.ly/2JS8hon), но я всё же немного опишу зачем данный аргумент нужен.
+
+В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/docs/marketing-api/access) API Facebook):
+
+* Разработка- Тестирование приложений с помощью API.
+* Стандартный уровень доступа для управления рекламой - Дополнительные ресурсы, например менее строгие ограничения количества обращений, а также возможность принять участие в программе для партнеров Facebook.
+
+По умолчанию все создаваемые вами приложения получают уровень "Разработка". Данный уровень имеет серьёзные ограничения на количество отправляемых в API запросов. Функция `fbGetMarketingStat` при использовании аргумента `interval` равным `"day"` загружает данные по дням, и на каждый день отправляет отделый запрос в API.
+
+Так же отдельно разделяются запросы если вы загружаете данные сразу по несколько аккаунтам, таким образом если вы планируете загрузить даннеы с 1 января по 21 января по 3ём аккаунтам функция отправит (31 * 3) 93 запроса к API.
+
+В случае если вы имеете стандартный доступ то для вас это не будет проблемой и вы можете установить `request_speed = "fast"`, но для приложений с уровнем доступа "Разработка" такой объём отправляемых запросов может выйти далеко за лимиты API, от части `fbGetMarketingStat` умеет обходить такие лимиты каждый раз уходя в бан при их привышении, но скорость загрузки данных при попадает в бан будет очень низкий, иногда бан может составлять 5 минут.
+
+Поэтому если ваше приложение имеет уровень доступа "Разработке" при загрузке данных по дням за длительный период рекомендуется использовать `request_speed = "slow"`. Если значениеи "slow" помогает вы можете самостоятельно задавать паузу в секундах между запросами, например `request_speed = 4` будет задавать 4 секундую паузу между отправкой запросов.
+
+Для получения стандартного доступа требуется перейти в [ваше приложение](https://developers.facebook.com/apps/) в раздел настроек API Marketing и отправить заявку на "Ads Management Standart Access".
+
+![Приложение](https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34443272_2211780812182292_5001620180766294016_n.png?_nc_cat=103&_nc_ht=scontent.fiev11-1.fna&oh=379c9cf5735395ecc4b1fe8461315672&oe=5D6B775C)
+
+![Приложение](https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34715564_167271114122355_8203937888174342144_n.png?_nc_cat=101&_nc_ht=scontent.fiev11-1.fna&oh=1119ca1d6709422a3105a93205729d02&oe=5D684F9B)

@@ -4,8 +4,8 @@
 \title{Get all the apps under a project}
 \description{Get data frame with list apps under a project.}
 \usage{
-fbGetApps(projects_id = NULL, api_version = "v3.1", 
-          access_token = NULL)
+fbGetApps(projects_id = NULL, api_version = getOption("rfacebookstat.api_version"), 
+          access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
   \item{projects_id}{ Your project ID.}

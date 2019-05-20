@@ -5,8 +5,8 @@
 \description{Load data about all avable pages}
 \usage{
 fbGetPages(projects_id = NULL, 
-           api_version = "v3.1", 
-		   access_token = NULL)
+           api_version = getOption("rfacebookstat.api_version"), 
+		   access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{

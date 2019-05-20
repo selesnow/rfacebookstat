@@ -3,10 +3,11 @@
 \title{Delete users from ad accounts.}
 \description{fbDeleteAdAccountUsers is method for remove users access from ad accounts.}
 \usage{
-fbDeleteAdAccountUsers(user_ids = NULL, 
-                       accounts_id = NULL,
-					   api_version = "v3.1",
-					   access_token = NULL)
+fbDeleteAdAccountUsers(
+    user_ids = NULL, 
+    accounts_id = getOption("rfacebookstat.accounts_id"),
+	api_version = getOption("rfacebookstat.api_version"),
+	access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{

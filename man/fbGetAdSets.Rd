@@ -4,7 +4,9 @@
 \title{Get creative list from facebook marketing API}
 \description{Get ads creatives list with parameters from facebook marketing API. An ad set is a group of ads that share the same daily or lifetime budget, schedule, bid type, bid info, and targeting data. Ad sets enable you to group ads according to your criteria, and you can retrieve the ad-related statistics that apply to a set. }
 \usage{
-fbGetAdSets(accounts_id = NULL, api_version = 'v3.1', access_token = NULL)
+fbGetAdSets(accounts_id = getOption("rfacebookstat.accounts_id"), 
+ api_version = getOption("rfacebookstat.api_version"), 
+ access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
