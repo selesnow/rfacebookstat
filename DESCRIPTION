@@ -1,14 +1,17 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 1.8.7.9008
-Date: 2019-05-16
+Version: 1.8.7.9013
+Date: 2019-05-20
 Author: Alexey Seleznev <selesnow@gmail.com>
 Maintainer: Alexey Seleznev <selesnow@gmail.com>
-Description: Load data by campaigns, ads, ad sets and insights, ad account and 
-    business manager from Facebook Marketing API into R. For more details see official documents by Facebook Marketing API <https://developers.facebook.com/docs/marketing-apis/>.
+Description: Load data by campaigns, ads, ad sets and insights, ad account and business manager from Facebook Marketing API into R. For more details see official documents by Facebook Marketing API <https://developers.facebook.com/docs/marketing-apis/>.
 Depends: R (>= 3.0.0)
 BugReports: https://github.com/selesnow/rfacebookstat/issues
 Imports: data.table, httr, RCurl, bitops, jsonlite, dplyr, purrr, tidyr, stringr
 URL: http://selesnow.github.io/rfacebookstat
 License: GPL-2
+VignetteBuilder: knitr
+Suggests: knitr, rmarkdown
+Encoding: UTF-8
+Language: ru
