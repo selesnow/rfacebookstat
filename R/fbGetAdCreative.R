@@ -22,12 +22,13 @@ fbGetAdCreative <- function(accounts_id = getOption("rfacebookstat.accounts_id")
                        url_tags =  ifelse(is.null(pars_answer$data[[obj]]$url_tags), NA, pars_answer$data[[obj]]$url_tags), 
                        account_id =  ifelse(is.null(pars_answer$data[[obj]]$account_id), NA, pars_answer$data[[obj]]$account_id),
                        page_id = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$page_id), NA, pars_answer$data[[obj]]$object_story_spec$page_id),
-                       link = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$link), NA, pars_answer$data[[obj]]$object_story_spec$link_data$link),
-                       message = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$message), NA, pars_answer$data[[obj]]$object_story_spec$link_data$message),
-                       caption = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$caption), NA, pars_answer$data[[obj]]$object_story_spec$link_data$caption),
-                       attachment_style = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style), NA, pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style),
-                       description = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$description), NA, pars_answer$data[[obj]]$object_story_spec$link_data$description),
-                       image_hash = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$image_hash), NA,pars_answer$data[[obj]]$object_story_spec$link_data$image_hash)))
+                       link = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$link), NA, pars_answer$data[[obj]]$object_story_spec$link_data$link),
+                       link_nested = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$child_attachments), NA, paste0(lapply(pars_answer$data[[obj]]$object_story_spec$link_data$child_attachments, function (x) paste0(x$link)), collapse = ";")), 
+                       message = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$message), NA, pars_answer$data[[obj]]$object_story_spec$link_data$message),
+                       caption = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$caption), NA, pars_answer$data[[obj]]$object_story_spec$link_data$caption),
+                       attachment_style = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style), NA, pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style),
+                       description = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$description), NA, pars_answer$data[[obj]]$object_story_spec$link_data$description),
+                       image_hash = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$image_hash), NA,pars_answer$data[[obj]]$object_story_spec$link_data$image_hash)))
   }
   
   # paging
@@ -46,12 +47,13 @@ fbGetAdCreative <- function(accounts_id = getOption("rfacebookstat.accounts_id")
                          url_tags =  ifelse(is.null(pars_answer$data[[obj]]$url_tags), NA, pars_answer$data[[obj]]$url_tags), 
                          account_id =  ifelse(is.null(pars_answer$data[[obj]]$account_id), NA, pars_answer$data[[obj]]$account_id),
                          page_id = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$page_id), NA, pars_answer$data[[obj]]$object_story_spec$page_id),
-                         link = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$link), NA, pars_answer$data[[obj]]$object_story_spec$link_data$link),
-                         message = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$message), NA, pars_answer$data[[obj]]$object_story_spec$link_data$message),
-                         caption = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$caption), NA, pars_answer$data[[obj]]$object_story_spec$link_data$caption),
-                         attachment_style = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style), NA, pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style),
-                         description = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$description), NA, pars_answer$data[[obj]]$object_story_spec$link_data$description),
-                         image_hash = ifelse( is.null(pars_answer$data[[obj]]$object_story_spec$link_data$image_hash), NA,pars_answer$data[[obj]]$object_story_spec$link_data$image_hash)))
+                         link = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$link), NA, pars_answer$data[[obj]]$object_story_spec$link_data$link),
+                         link_nested = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$child_attachments), NA, paste0(lapply(pars_answer$data[[obj]]$object_story_spec$link_data$child_attachments, function (x) paste0(x$link)), collapse = ";")), 
+                         message = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$message), NA, pars_answer$data[[obj]]$object_story_spec$link_data$message),
+                         caption = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$caption), NA, pars_answer$data[[obj]]$object_story_spec$link_data$caption),
+                         attachment_style = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style), NA, pars_answer$data[[obj]]$object_story_spec$link_data$attachment_style),
+                         description = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$description), NA, pars_answer$data[[obj]]$object_story_spec$link_data$description),
+                         image_hash = ifelse(is.null(pars_answer$data[[obj]]$object_story_spec$link_data$image_hash), NA,pars_answer$data[[obj]]$object_story_spec$link_data$image_hash)))
     }
   }
   return(res)
