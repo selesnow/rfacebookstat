@@ -17,7 +17,7 @@ fbAction <- function(x, ...) {
 # ============
 # actions
 # ============
-fbAction.actions <- function( obj ) {
+fbAction.default <- function( obj ) {
  
   # action breakdown handing
     tempData <- list()
