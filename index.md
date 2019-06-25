@@ -113,7 +113,7 @@ li.nm_li {
 
 <Br>
 
-# rfacebookstat - Пакет для загрузки данных из Marketing API Facebook в R.
+# rfacebookstat - Пакет для загрузки данных из Marketing API Facebook в R. <a href='https:/selesnow/github.io/ryandexdirect'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
 ## Ссылки
 * [Документация](https://selesnow.github.io/rfacebookstat/)
 * [Отчёт об ошибках и доработках](https://github.com/selesnow/rfacebookstat/issues)
