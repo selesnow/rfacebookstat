@@ -12,6 +12,10 @@
 [![rpackages.io rank](http://www.rpackages.io/badge/rfacebookstat.svg)](http://www.rpackages.io/package/rfacebookstat)
 [![](https://cranlogs.r-pkg.org/badges/rfacebookstat)](https://cran.r-project.org/package=rfacebookstat)
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png" height="200">
+</p>
+
 ## Краткое описание.
 
 Пакет для загрузки данных из [Marketing API Facebook](https://developers.facebook.com/docs/marketing-apis?locale=ru_RU) в R, а так же с помощью пакета вы можете управлять доступами пользователей к рекламный аккаунтам на Facebook.
