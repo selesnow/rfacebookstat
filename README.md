@@ -16,11 +16,12 @@
 ## Краткое описание.
 
 Пакет для загрузки данных из [Marketing API Facebook](https://developers.facebook.com/docs/marketing-apis?locale=ru_RU) в R, а так же с помощью пакета вы можете управлять доступами пользователей к рекламный аккаунтам на Facebook.
-[![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
 ## Достижения
 
 1. rfacebookstat попал в [top 40 пакетов](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/), опубликованных на CRAN в августе 2018 года.
+
+[![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
 
 ## Установка пакета rfacebookstat
