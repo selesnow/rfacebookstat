@@ -4,12 +4,17 @@
 \title{Get all the apps under a project}
 \description{Get data frame with list apps under a project.}
 \usage{
-fbGetApps(projects_id = NULL, api_version = getOption("rfacebookstat.api_version"), 
-          access_token = getOption("rfacebookstat.access_token"))
+fbGetApps(accounts_id  = getOption("rfacebookstat.accounts_id"), 
+         api_version  = getOption("rfacebookstat.api_version"), 
+         username     = getOption("rfacebookstat.username"),
+         token_path   = fbTokenPath(),
+         access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
-  \item{projects_id}{ Your project ID.}
+  \item{accounts_id}{Facebook Ad Account ID.}
   \item{api_version}{Current Facebook API version.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
 }
 
@@ -22,12 +27,8 @@ Data frame with apps list.
 
 \examples{
 \dontrun{
-fbApps <- fbGetApps(projects_id = "xxxxxxxxxxxxx", 
-                    api_version = "v2.8",
- 					access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+accounts <- fbGetAccounts()
+fbApps <- fbGetApps(accounts$id)
 }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

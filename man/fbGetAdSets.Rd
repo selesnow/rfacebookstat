@@ -6,11 +6,15 @@
 \usage{
 fbGetAdSets(accounts_id = getOption("rfacebookstat.accounts_id"), 
  api_version = getOption("rfacebookstat.api_version"), 
+ username     = getOption("rfacebookstat.username"),
+ token_path   = fbTokenPath(),
  access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
   \item{api_version}{Current Facebook API version.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
 }
 
@@ -45,7 +49,3 @@ adsets <- fbGetAdSets(accounts_id  = "act_11111111111111111",
 }
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

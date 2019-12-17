@@ -2,10 +2,34 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
                                 business_id  = getOption("rfacebookstat.business_id"),
                                 api_version  = getOption("rfacebookstat.api_version"),
                                 console_type = "progressbar",
+                                username     = getOption("rfacebookstat.username"),
+                                token_path   = fbTokenPath(),
                                 access_token = getOption("rfacebookstat.access_token")){
   
-  if(is.null(accounts_id)|is.null(access_token)){
-    stop("Arguments accounts_id and access_token is require.")
+  # auth 
+  if ( is.null(access_token) ) {    
+    
+    if ( Sys.getenv("RFB_API_TOKEN") != "" )  {
+	    access_token <- Sys.getenv("RFB_API_TOKEN")    
+ 	} else {
+        access_token <- fbAuth(username   = username, 
+                               token_path = token_path)$access_token
+    }
+  }
+  
+  if ( class(access_token) == "fb_access_token" ) {
+    
+    access_token <- access_token$access_token
+    
+  }
+  
+  # load account list
+  if ( is.null(accounts_id) ) {
+    
+    message("...Loading your account list.")
+    accounts_id <- suppressMessages(fbGetAdAccounts()$id)
+    message("...Loading users from ", length(accounts_id), " account", ifelse( length(accounts_id) > 1, "s", "" ))
+    
   }
   
   #check stringAsFactor
@@ -20,11 +44,17 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
   if (length(accounts_id) == 1) {
     console_type <- "message"
   }
+  
+  # attributes
+  rq_ids      <- list()
+  out_headers <- list()
+  
   #Progress settings
   pb_step <- 1
   
-  if(console_type == "progressbar"){
-    pb <- utils::txtProgressBar(pb_step, length(accounts_id), style = 3)}
+  if ( console_type == "progressbar" ) {
+    pb <- utils::txtProgressBar(pb_step, length(accounts_id), style = 3)
+  }
   
   #Check account ids
   accounts_id <- ifelse(grepl("^act_",accounts_id),accounts_id,paste0("act_",accounts_id))
@@ -40,7 +70,7 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
                         email                 = character(0),
                         business.id           = character(0),
                         business.name         = character(0),
-                        stringsAsFactors = F)
+                        stringsAsFactors      = F)
   
   #Create counter variables
   account_number <- 0
@@ -49,6 +79,8 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
   #Start message
   if(console_type == "message"){
     packageStartupMessage("Processing...", appendLF = T)}
+  
+  
   
   #start cycle
   for(account in accounts_id){
@@ -68,6 +100,10 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
     
     #Send request
     answer <- httr::GET(QueryString)
+    
+    # attr
+    rq_ids      <- append(rq_ids, setNames(list(status_code(answer)), answer$headers$`x-fb-trace-id`))
+    out_headers <- append(out_headers, setNames(list(headers(answer)), answer$headers$`x-fb-trace-id`))
     
     raw <- fromJSON(httr::content(answer, "text", "application/json",encoding = "UTF-8"))
     
@@ -116,6 +152,10 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
     pb_step <- pb_step + 1
     utils::setTxtProgressBar(pb, length(accounts_id))
     close(pb)}
+	
+  # set attributes
+  attr(result, "request_ids") <- rq_ids
+  attr(result, "headers")     <- out_headers
   
   #Loaded data info message
   packageStartupMessage("Done", appendLF = T)

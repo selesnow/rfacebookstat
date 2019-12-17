@@ -4,13 +4,17 @@
 \title{Get ads list from facebook marketing API}
 \description{Get ads list with parameters from facebook marketing API. Contains information to display an ad and associate it an ad set. Each ad is associated with an ad set and all ads in a set have the same daily or lifetime budget, schedule, and targeting. Creating multiple ads in an ad set helps optimize their delivery based on variations in images, links, video, text or placements.}
 \usage{
-fbGetAds(accounts_id = getOption("rfacebookstat.accounts_id"), 
-         api_version = getOption("rfacebookstat.api_version"),
+fbGetAds(accounts_id  = getOption("rfacebookstat.accounts_id"), 
+         api_version  = getOption("rfacebookstat.api_version"),
+		 username     = getOption("rfacebookstat.username"),
+	     token_path   = fbTokenPath(),
          access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
   \item{api_version}{Current Facebook API version.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
 }
 
@@ -41,7 +45,3 @@ ads <- fbGetAds(accounts_id  = "act_11111111111111111",
 }
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

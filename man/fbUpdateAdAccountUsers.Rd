@@ -4,10 +4,12 @@
 \description{fbUpdateAdAccountUsers add users and update permission list for users in ad accounts at facebook.}
 \usage{
 fbUpdateAdAccountUsers(
-   user_ids = NULL, 
-   role = "advertiser", 
-   accounts_id = getOption("rfacebookstat.accounts_id"), 
-   api_version = getOption("rfacebookstat.api_version"), 
+   user_ids     = NULL, 
+   role         = "advertiser", 
+   accounts_id  = getOption("rfacebookstat.accounts_id"), 
+   api_version  = getOption("rfacebookstat.api_version"), 
+   username     = getOption("rfacebookstat.username"),
+   token_path   = fbTokenPath(),
    access_token = getOption("rfacebookstat.access_token"))
 }
 
@@ -16,6 +18,8 @@ fbUpdateAdAccountUsers(
   \item{role}{Character or integer value, one of administator, advertiser, ad manager, analyst, sales, direct sales, 1001, 1002, 1003,1004 (https://developers.facebook.com/docs/marketing-api/aduser/v2.12).}
   \item{access_token}{Your facebook API token.}
   \item{user_ids}{vector with users ids who need remove from ad account.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{api_version}{Current Facebook API version.}
 }
 

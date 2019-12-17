@@ -8,6 +8,8 @@ fbGetAdAccountUsers(
 	business_id  = getOption("rfacebookstat.business_id"),
     api_version  = getOption("rfacebookstat.api_version"), 
 	console_type = "progressbar", 
+	username     = getOption("rfacebookstat.username"),
+	token_path   = fbTokenPath(),
 	access_token = getOption("rfacebookstat.access_token"))
 }
 
@@ -16,6 +18,8 @@ fbGetAdAccountUsers(
   \item{business_id}{ID by your Business Manager}
   \item{access_token}{Your facebook API token.}
   \item{console_type}{Console output type, "progressbar" or "message"}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{api_version}{Current Facebook API version.}
 }
 

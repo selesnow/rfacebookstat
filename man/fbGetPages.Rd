@@ -4,14 +4,18 @@
 \title{Get pages list}
 \description{Load data about all avable pages}
 \usage{
-fbGetPages(projects_id = NULL, 
-           api_version = getOption("rfacebookstat.api_version"), 
-		   access_token = getOption("rfacebookstat.access_token"))
+fbGetPages(accounts_id  = getOption("rfacebookstat.accounts_id"), 
+           api_version  = getOption("rfacebookstat.api_version"), 
+           username     = getOption("rfacebookstat.username"),
+           token_path   = fbTokenPath(),
+           access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{
-  \item{projects_id}{ Your project ID.}
+  \item{accounts_id}{Facebook Ad Account ID.}
   \item{api_version}{Current Facebook API version.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
 }
 
@@ -22,8 +26,7 @@ fbGetPages(projects_id = NULL,
 
 \examples{
 \dontrun{
-fbPages <- fbGetPages(projects_id = "xxxxxxxxxxxxx", 
-                      api_version = "v2.8", 
-					  access_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+accounts <- fbGetAccounts()
+fbPages <- fbGetPages(accounts$id)
 }
 }

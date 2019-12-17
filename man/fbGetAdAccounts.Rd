@@ -3,14 +3,18 @@
 \title{Get avable ad account list.}
 \description{fbGetAdAccounts get data frame with avable in your bussines manager ad account list in R.}
 \usage{
-fbGetAdAccounts(source_id = getOption("rfacebookstat.business_id"), 
-                api_version = getOption("rfacebookstat.api_version"), 
+fbGetAdAccounts(source_id    = getOption("rfacebookstat.business_id"), 
+                api_version  = getOption("rfacebookstat.api_version"), 
+                username     = getOption("rfacebookstat.username"),
+                token_path   = fbTokenPath(),
 				access_token = getOption("rfacebookstat.access_token"))
 }
 
 \arguments{
   \item{source_id}{ Your business manager or project ID.}
   \item{access_token}{Your facebook API token.}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{api_version}{Current Facebook API version.}
 }
 

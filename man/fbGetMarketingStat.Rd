@@ -10,10 +10,12 @@ fbGetMarketingStat(
 	action_breakdowns = NULL, 
 	fields = "account_id,campaign_name,impressions,clicks,reach,spend",
     filtering = NULL, date_start = Sys.Date() - 30,
-    date_stop = Sys.Date(), 
+    date_stop = Sys.Date(), attribution_window = NULL,
 	api_version = getOption("rfacebookstat.api_version"), 
 	action_report_time = NULL, interval = "day", 
-	console_type = "progressbar", request_speed = "normal", 
+	console_type = "progressbar", request_speed = "normal",
+    username = getOption("rfacebookstat.username"),
+    token_path = fbTokenPath(),	
 	access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
@@ -26,11 +28,14 @@ fbGetMarketingStat(
   \item{filtering}{Vector of filtring or JSON string with array of filtring parameters, on example \code{"ad.effective_status IN ARCHIVED"} \code{[{/'field/':/'ad.effective_status/',/'operator/':/'IN/',/'value/':[/'ARCHIVED/']}}, see filtring block for more examples}
   \item{date_start}{Start reporting date.}
   \item{date_stop}{End reporting day}
+  \item{attribution_window}{The conversion attribution window provides timeframes that define when we attribute an event to an ad on Facebook. See Attribution Window sections.}
   \item{request_speed}{Speed beetwen API request, "normal", "fast" or "slow", depend of you API access level.}
   \item{api_version}{Current Facebook API version.}
   \item{action_report_time}{Determines the report time of action stats.}
   \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"}
   \item{console_type}{Character value for manage console output message, one of "progressbar", "message". By default = "progressbar". See more at Detail}
+  \item{username}{your username on Facebook}
+  \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token}
 }
 
@@ -104,6 +109,32 @@ Grouping types marked with an asterisk (*) can be combined with action_type, act
   \item publisher_platform, platform_position, impression_device *
   \item product_id *
 }
+}
+
+\section{Attribution Window}{
+The conversion attribution window provides time intervals that determine the attribution period of an event for advertising on Facebook.
+For background information, see Facebook Ads Help Center, How Attribution Reporting Works. We measure the actions that occur when a conversion event occurs and look back in time 1-day, 7-days, and 28 days.
+To view actions attributed to different attribution windows, use \code{attribution_window}.
+
+\describe{
+  \item{account_default}{Use the account level attribution window setting}
+  \item{default}{The FB default attribution window is 1 day views, 28 day clicks}
+  \item{inline}{Inline attribution only (0 day views, 0 day clicks)}
+  \item{1d_view}{1 day views, 0 day clicks}
+  \item{7d_view}{7 day views, 0 day clicks}
+  \item{28d_view}{28 day views, 0 day clicks}
+  \item{1d_click}{0 day views, 1 day clicks}
+  \item{7d_click}{0 day views, 7 day clicks}
+  \item{28d_click}{0 day views, 28 day clicks}
+  \item{1d_view_1d_click}{1 day views, 1 day clicks}
+  \item{7d_view_1d_click}{7 day views, 1 day clicks}
+  \item{28d_view_1d_click}{28 day views, 1 day clicks}
+  \item{1d_view_7d_click}{1 day views, 7 day clicks}
+  \item{1d_view_28d_click}{1 day views, 28 day clicks}
+  \item{28d_view_28d_click}{28 day views, 28 day clicks}
+ }
+
+Also you can get more than one attribution window in one request, for example \code{attribution_window = c('default', '1d_view', '28d_view', '28d_click')}
 }
 
 \section{Filtering}{

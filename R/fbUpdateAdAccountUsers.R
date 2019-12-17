@@ -2,7 +2,26 @@ fbUpdateAdAccountUsers <- function(user_ids = NULL,
                                    role = "advertiser", 
                                    accounts_id = getOption("rfacebookstat.accounts_id"),
                                    api_version = getOption("rfacebookstat.api_version"),
+                                   username     = getOption("rfacebookstat.username"),
+                                   token_path   = fbTokenPath(),
                                    access_token = getOption("rfacebookstat.access_token")){
+  
+  # auth 
+  if ( is.null(access_token) ) {    
+    
+    if ( Sys.getenv("RFB_API_TOKEN") != "" )  {
+	    access_token <- Sys.getenv("RFB_API_TOKEN")    
+ 	} else {
+        access_token <- fbAuth(username   = username, 
+                               token_path = token_path)$access_token
+    }
+  }
+  
+  if ( class(access_token) == "fb_access_token" ) {
+    
+    access_token <- access_token$access_token
+    
+  }
   
   #Check account_id, token and uid
   if(is.null(accounts_id)|is.null(access_token)|is.null(user_ids)){
