@@ -115,6 +115,7 @@ li.nm_li {
 [![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
 ## Содержание README
++ [Видео уроки по работе с пакетом rfacebookstat]()
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
 + [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
 + [Пример кода для работы с API Facebook Marketing](пример-кода-для-работы-с-rfacebookstat)
@@ -138,6 +139,20 @@ li.nm_li {
     + [fbGetMarketingStat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetmarketingstat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
 + [Пример работы с пакетом rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Пример-работы-с-пакетом-rfacebookstat)
 + [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
+
+## Видео уроки по работе с пакетом rfacebooktat
+Наиболее простой способ разобраться с функционалом пакета и научиться работать с его помощью с Facebook Marketing API является просмотрт серии из 6 коротких видео уроков.
+
+Вы можете сразу перейти к просмотру всего [плейлиста](https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R) на YouTube.
+
+Или же перейти к просмотру интересующего вас урока:
+
+1. [Простая авторизация в Facebook Marketing API](https://www.youtube.com/watch?v=SgcxDqZ-5Qg&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=2&t=0s)
+2. [Авторизация в Facebook Marketing API через собственное приложение](https://www.youtube.com/watch?v=VLhsQDAyx5E&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=3&t=0s)
+3. [Автоматическая авторизация, файл .Renviron](https://www.youtube.com/watch?v=oZhV1U5fMZ0&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=4&t=0s)
+4. [Автоматическая авторизация и создание переменных среды на Windows](https://www.youtube.com/watch?v=zoNvu2T6IFc&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=5&t=0s)
+5. [Опции пакета и загрузка объектов из рекламных кабинетов Facebook](https://www.youtube.com/watch?v=ZaOvO5k6Ses&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=6&t=0s)
+6. [Загрузка статистики, конверсии и окна атрибуции в Facebook Marketing API](https://www.youtube.com/watch?v=hc_hknCWZc4&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=7&t=0s)
 
 ## Начало работы с API Facebook
 Для начала работы с API Facebook необходимо создать приложение:
