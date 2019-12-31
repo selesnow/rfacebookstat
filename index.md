@@ -622,8 +622,6 @@ fbGetPages(accounts_is, api_version, access_token)
 ## fbGetAdAccounts
 ### Описание
 Функция возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbGetAdAccounts(source_id, api_version, access_token )
