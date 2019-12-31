@@ -438,6 +438,8 @@ ID приложения в Facebook: <br />
 ### Дополнительная документация
 Наиболее подробное описание процесса авторизации, настройки пакета `rfacebookstat` и то как надо работать с функцией `fbAuth()` можно найти в виньетке ["Авторизация в API facebook"](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-authorization.html)
 
+<details><summary>Подробное описание</summary>
+
 ### Аргументы
 * app_id - Идентификатор приложения
 * app_secret - Секрет приложения
@@ -445,12 +447,14 @@ ID приложения в Facebook: <br />
 * token_path - Путь к папке в которой вы хотите создать файл для хранения учётных данных
 * reauth - Переавторизоваться под указанным в username пользователем, если вы уже ранее запрашивали для него учётные данные
 * skip_option - Игнорировать опции и переменные окружения при авторизации
+</details>
 
 ## fbGetToken (Устаревшая функция)
 ### Описание
 Функция предназначена для получения краткосрочного токена для доступа к API Facebook.
 
 <details><summary>Подробное описание</summary>
+	
 ### Синтаксис
 fbGetToken(app_id = 000000000)
 
@@ -475,6 +479,8 @@ MyFBToken <- fbGetToken(app_id = 1111111111111111)
 ### Описание
 Данная функция меняет краткосрочный токен с сроком 2 часа на долгосрочный токен который действителен на протяжении двух месяцев.
 
+<details><summary>Подробное описание</summary>
+	
 ### Синтаксис
 fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
 
@@ -484,11 +490,14 @@ client_id - ID вашего приложени в Facebook
 client_secret - Секрет вашего приложения в Facebook 
 
 fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
-
+</details>
+	
 ## fbGetBusinessManagers
 ### Описание
 Данная функция загружает список доступных бизнес менеджеров с некоторыми их параметрами.
 
+<details><summary>Подробное описание</summary>
+	
 ### Синтаксис
 fbGetBusinessManagers(api_version = "v2.10", access_token = NULL)
 
@@ -496,7 +505,8 @@ fbGetBusinessManagers(api_version = "v2.10", access_token = NULL)
 api_version - Версия API Facebook в формате v*.*, например v2.10
 
 access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeTokenn
-
+</details>
+	
 ## fbGetAdAccountUsers
 ### Описание
 Данная функция загружает список пользователей рекламных аккаунтов.
