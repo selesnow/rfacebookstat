@@ -843,8 +843,6 @@ fbGetAds(accounts_id, api_version, access_token)
 ## fbGetAdCreative
 ### Описание
 Функция возвращает список контента объявлений из рекламного аккаунта Facebook.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbGetAdCreative(accounts_id, api_version, access_token)
