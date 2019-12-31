@@ -141,6 +141,8 @@ li.nm_li {
     + [fbGetAdSets](#fbGetAdSets) - Загрузка списка групп объявлений из рекламного аккаунта.
     + [fbGetAds](#fbGetAds) - Загрузка списка объявлений из рекламного аккаунта.
     + [fbGetAdCreative](#fbGetAdCreative) - Загрузка контента объявлений из рекламного аккаунта.
+    + [fbGetAdVideos](#fbGetAdVideos) - Загрузить список видео рекламируемых в ваших рекламных аккаунтах
+    + [fbGetAdAccountsConversions](#fbGetAdAccountsConversions) - Загрузаить список настроенных в ваших рекламных аккаунтах пользовательских конверсий
     + [fbGetMarketingStat](#fbGetMarketingStat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
 + [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
 
