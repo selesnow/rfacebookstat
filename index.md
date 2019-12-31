@@ -141,6 +141,9 @@ li.nm_li {
 + [Пример работы с пакетом rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Пример-работы-с-пакетом-rfacebookstat)
 + [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
 
+## Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019
+<iframe width="560" height="315" src="https://www.youtube.com/embed/de1QW80FsiA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Видео уроки по работе с пакетом rfacebooktat
 Наиболее простой способ разобраться с функционалом пакета и научиться работать с его помощью с Facebook Marketing API является просмотрт серии из 6 коротких видео уроков.
 
