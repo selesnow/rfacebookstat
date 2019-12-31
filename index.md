@@ -122,6 +122,8 @@ li.nm_li {
 + [Устновка пакета](#Установка-пакета-rfacebookstat)
 + [Пример кода для работы с API Facebook Marketing](#пример-кода-для-работы-с-rfacebookstat)
 + [Безопасность использования пакета rfacebookstat](#безопасность-использования-rfacebookstat)
++ [Опции пакета rfacebookstat](#опции-пакета-rfacebookstat)
++ [Переменные среды в пакете rfacebookstat](#переменные-среды-в-пакете-rfacebookstat)
 + [Функции пакета rfacebookstat](#Функции-пакета-rfacebookstat)
     + [fbAuth](#fbAuth) - Авторизация в API Facebook
     + [fbGetSettings](#fbAuth) - Получить текущие настройки пакета
