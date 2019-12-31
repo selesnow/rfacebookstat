@@ -116,7 +116,7 @@ li.nm_li {
 
 ## Содержание README
 + [Видео уроки по работе с пакетом rfacebookstat](#видео-уроки-по-работе-с-пакетом-rfacebooktat)
-+ [Виньетки с подробной документацией к пакету]()
++ [Виньетки с подробной документацией к пакету](#виньетки-с-подробной-документацией-к-пакету)
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
 + [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
 + [Пример кода для работы с API Facebook Marketing](пример-кода-для-работы-с-rfacebookstat)
