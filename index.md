@@ -115,6 +115,7 @@ li.nm_li {
 [![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
 ## Содержание README
++ [Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019]()
 + [Видео уроки по работе с пакетом rfacebookstat](#видео-уроки-по-работе-с-пакетом-rfacebooktat)
 + [Виньетки с подробной документацией к пакету](#виньетки-с-подробной-документацией-к-пакету)
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
