@@ -446,10 +446,11 @@ ID приложения в Facebook: <br />
 * reauth - Переавторизоваться под указанным в username пользователем, если вы уже ранее запрашивали для него учётные данные
 * skip_option - Игнорировать опции и переменные окружения при авторизации
 
-## fbGetToken
+## fbGetToken (Устаревшая функция)
 ### Описание
 Функция предназначена для получения краткосрочного токена для доступа к API Facebook.
 
+<details><summary>Подробное описание</summary>
 ### Синтаксис
 fbGetToken(app_id = 000000000)
 
@@ -468,8 +469,9 @@ MyFBToken <- fbGetToken(app_id = 1111111111111111)
 
 После того как вы подтвердите доступ, нажав ОК вы попадаете на страницу https://selesnow.github.io/rfacebookstat/getToken/get_token.html, на которой будет сгенерирован токен доступа к API Facebook.
 <p align="center"><img src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" data-canonical-src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" style="max-width:100%;"></p>
+</details>
 
-## fbGetLongTimeToken
+## fbGetLongTimeToken (Устаревшая функция)
 ### Описание
 Данная функция меняет краткосрочный токен с сроком 2 часа на долгосрочный токен который действителен на протяжении двух месяцев.
 
