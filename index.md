@@ -115,31 +115,31 @@ li.nm_li {
 [![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
 ## Содержание README
-+ [Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019]()
++ [Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019](#доклад-о-пакете-rfacebookstat-с-конференции-analyze-lviv-2019)
 + [Видео уроки по работе с пакетом rfacebookstat](#видео-уроки-по-работе-с-пакетом-rfacebooktat)
 + [Виньетки с подробной документацией к пакету](#виньетки-с-подробной-документацией-к-пакету)
-+ [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
-+ [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
-+ [Пример кода для работы с API Facebook Marketing](пример-кода-для-работы-с-rfacebookstat)
-+ [Безопасность использования пакета rfacebookstat](безопасность-использования-rfacebookstat)
-+ [Функции пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Функции-пакета-rfacebookstat)
-    + [fbGetToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgettoken) - Получить токен для работы с API Facebook.
-    + [fbGetLongTimeToken](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
-    + [fbGetBusinessManagers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
-    + [fbGetAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccountusers) - Загружает список пользователей из рекламных аккаунтов
-    + [fbGetAdAccountUsersPermissions](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccountuserspermissions) - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
-    + [fbUpdateAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbupdateadaccountusers) - Добавить пользователей в рекламные аккаунты на Facebook.
-    + [fbDeleteAdAccountUsers](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbdeleteadaccountusers) - Удалить пользователей из рекламных аккаунтов в Facebook.
-    + [fbGetProjects](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetprojects) - Загружает список доступных в вашем бизнес менеджере проектов
-    + [fbGetApps](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
-    + [fbGetPages](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
-    + [fbGetAdAccounts](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetadaccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
-    + [fbGetCampaigns]() - Загрузить список всех рекламных кампаний из рекламного аккаунта.
-    + [fbGetAdSets]() - Загрузка списка групп объявлений из рекламного аккаунта.
-    + [fbGetAds]() - Загрузка списка объявлений из рекламного аккаунта.
-    + [fbGetAdCreative]() - Загрузка контента объявлений из рекламного аккаунта.
-    + [fbGetMarketingStat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#fbgetmarketingstat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
-+ [Пример работы с пакетом rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Пример-работы-с-пакетом-rfacebookstat)
++ [Начало работы с API Facebook](#Начало-работы-с-api-facebook)
++ [Устновка пакета](#Установка-пакета-rfacebookstat)
++ [Пример кода для работы с API Facebook Marketing](#пример-кода-для-работы-с-rfacebookstat)
++ [Безопасность использования пакета rfacebookstat](#безопасность-использования-rfacebookstat)
++ [Функции пакета rfacebookstat](#Функции-пакета-rfacebookstat)
+    + [fbAuth]() - Авторизация в API Facebook
+    + [fbGetSettings](#fbAuth) - 
+    + [fbGetToken](#fbgettoken) - Получить токен для работы с API Facebook.
+    + [fbGetLongTimeToken](#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
+    + [fbGetBusinessManagers](#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
+    + [fbGetAdAccountUsers](#fbgetadaccountusers) - Загружает список пользователей из рекламных аккаунтов
+    + [fbGetAdAccountUsersPermissions](#fbgetadaccountuserspermissions) - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
+    + [fbUpdateAdAccountUsers](#fbupdateadaccountusers) - Добавить пользователей в рекламные аккаунты на Facebook.
+    + [fbDeleteAdAccountUsers](#fbdeleteadaccountusers) - Удалить пользователей из рекламных аккаунтов в Facebook.
+    + [fbGetApps](d#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
+    + [fbGetPages](#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
+    + [fbGetAdAccounts](#fbGetAdAccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
+    + [fbGetCampaigns](#fbGetCampaigns) - Загрузить список всех рекламных кампаний из рекламного аккаунта.
+    + [fbGetAdSets](#fbGetAdSets) - Загрузка списка групп объявлений из рекламного аккаунта.
+    + [fbGetAds](#fbGetAds) - Загрузка списка объявлений из рекламного аккаунта.
+    + [fbGetAdCreative](#fbGetAdCreative) - Загрузка контента объявлений из рекламного аккаунта.
+    + [fbGetMarketingStat](#fbGetMarketingStat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
 + [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
 
 ## Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019
