@@ -116,6 +116,7 @@ li.nm_li {
 
 ## Содержание README
 + [Видео уроки по работе с пакетом rfacebookstat](#видео-уроки-по-работе-с-пакетом-rfacebooktat)
++ [Виньетки с подробной документацией к пакету]()
 + [Начало работы с API Facebook](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Начало-работы-с-api-facebook)
 + [Устновка пакета](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Установка-пакета-rfacebookstat)
 + [Пример кода для работы с API Facebook Marketing](пример-кода-для-работы-с-rfacebookstat)
@@ -153,6 +154,12 @@ li.nm_li {
 4. [Автоматическая авторизация и создание переменных среды на Windows](https://www.youtube.com/watch?v=zoNvu2T6IFc&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=5&t=0s)
 5. [Опции пакета и загрузка объектов из рекламных кабинетов Facebook](https://www.youtube.com/watch?v=ZaOvO5k6Ses&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=6&t=0s)
 6. [Загрузка статистики, конверсии и окна атрибуции в Facebook Marketing API](https://www.youtube.com/watch?v=hc_hknCWZc4&list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R&index=7&t=0s)
+
+## Виньетки с подробной документацией к пакету
+На данный момент в пакет входит 2 виньетки, посмотреть их можно либо по ссылкам либо используя внутренную документацию:
+
+* [Авторизация в API facebook](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-authorization.html): `vignette('rfacebookstat-authorization', package = 'rfacebookstat')`
+* [Загрузки статистики из рекламных аккаунтов Facebook](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-get-statistics.html): `vignette('rfacebookstat-get-statistics', package = 'rfacebookstat')`
 
 ## Начало работы с API Facebook
 Для начала работы с API Facebook необходимо создать приложение:
@@ -423,6 +430,21 @@ ID приложения в Facebook: <br />
 </form> 
 </center>    
 <Br>
+
+## fbAuth
+### Описание
+Авторизация в API Facebook. Если ответить `y` на вопрос `“Do you want save your access token into rds file C:/my_develop_workshop/ppc_report_2/.rfb_auth.rds for use it between R sessions ?` то после прохождения процесса авторизации создаёт в указанной папке файл с учётными данными.
+
+### Дополнительная документация
+Наиболее подробное описание процесса авторизации, настройки пакета `rfacebookstat` и то как надо работать с функцией `fbAuth()` можно найти в виньетке ["Авторизация в API facebook"](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-authorization.html)
+
+### Аргументы
+* app_id - Идентификатор приложения
+* app_secret - Секрет приложения
+* username - Ваш логин на Facebook
+* token_path - Путь к папке в которой вы хотите создать файл для хранения учётных данных
+* reauth - Переавторизоваться под указанным в username пользователем, если вы уже ранее запрашивали для него учётные данные
+* skip_option - Игнорировать опции и переменные окружения при авторизации
 
 ## fbGetToken
 ### Описание
