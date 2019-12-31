@@ -125,8 +125,8 @@ li.nm_li {
 + [Опции пакета rfacebookstat](#опции-пакета-rfacebookstat)
 + [Переменные среды в пакете rfacebookstat](#переменные-среды-в-пакете-rfacebookstat)
 + [Функции пакета rfacebookstat](#Функции-пакета-rfacebookstat)
-    + [fbAuth](#fbAuth) - Авторизация в API Facebook
-    + [fbGetSettings](#fbAuth) - Получить текущие настройки пакета
+    + [fbAuth](#fbauth) - Авторизация в API Facebook
+    + [fbGetSettings](#fbgetsettings) - Получить текущие настройки пакета
     + [fbGetToken](#fbgettoken) - Получить токен для работы с API Facebook.
     + [fbGetLongTimeToken](#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
     + [fbGetBusinessManagers](#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
@@ -134,17 +134,17 @@ li.nm_li {
     + [fbGetAdAccountUsersPermissions](#fbgetadaccountuserspermissions) - Загружает список пользователей с их привилегиями и ролью для рекламного аккаунта.
     + [fbUpdateAdAccountUsers](#fbupdateadaccountusers) - Добавить пользователей в рекламные аккаунты на Facebook.
     + [fbDeleteAdAccountUsers](#fbdeleteadaccountusers) - Удалить пользователей из рекламных аккаунтов в Facebook.
-    + [fbGetApps](d#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
+    + [fbGetApps](#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
     + [fbGetPages](#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
-    + [fbGetAdAccounts](#fbGetAdAccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
-    + [fbGetCampaigns](#fbGetCampaigns) - Загрузить список всех рекламных кампаний из рекламного аккаунта.
-    + [fbGetAdSets](#fbGetAdSets) - Загрузка списка групп объявлений из рекламного аккаунта.
-    + [fbGetAds](#fbGetAds) - Загрузка списка объявлений из рекламного аккаунта.
-    + [fbGetAdCreative](#fbGetAdCreative) - Загрузка контента объявлений из рекламного аккаунта.
-    + [fbGetAdVideos](#fbGetAdVideos) - Загрузить список видео рекламируемых в ваших рекламных аккаунтах
-    + [fbGetAdAccountsConversions](#fbGetAdAccountsConversions) - Загрузаить список настроенных в ваших рекламных аккаунтах пользовательских конверсий
-    + [fbGetMarketingStat](#fbGetMarketingStat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
-+ [Об авторе пакета rfacebookstat](https://github.com/selesnow/rfacebookstat/blob/master/README.md#Автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
+    + [fbGetAdAccounts](#fbgetadaccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
+    + [fbGetCampaigns](#fbgetcampaigns) - Загрузить список всех рекламных кампаний из рекламного аккаунта.
+    + [fbGetAdSets](#fbgetadsets) - Загрузка списка групп объявлений из рекламного аккаунта.
+    + [fbGetAds](#fbgetads) - Загрузка списка объявлений из рекламного аккаунта.
+    + [fbGetAdCreative](#fbgetadcreative) - Загрузка контента объявлений из рекламного аккаунта.
+    + [fbGetAdVideos](#fbgetadvideos) - Загрузить список видео рекламируемых в ваших рекламных аккаунтах
+    + [fbGetAdAccountsConversions](#fbgetadaccountsconversions) - Загрузаить список настроенных в ваших рекламных аккаунтах пользовательских конверсий
+    + [fbGetMarketingStat](#fbgetmarketingstat) - Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
++ [Об авторе пакета rfacebookstat](#автор-пакета-Алексей-Селезнёв-head-of-analytics-dept-at-netpeak)
 
 ## Доклад о пакете rfacebookstat с конференции Analyze Lviv 2019
 <iframe width="560" height="315" src="https://www.youtube.com/embed/de1QW80FsiA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
