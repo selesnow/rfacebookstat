@@ -438,19 +438,13 @@ ID приложения в Facebook: <br />
 ### Дополнительная документация:
 Наиболее подробное описание процесса авторизации, настройки пакета `rfacebookstat` и то как надо работать с функцией `fbAuth()` можно найти в виньетке ["Авторизация в API facebook"](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-authorization.html)
 
-<details><summary>Подробное описание</summary>
-
-<h4>Аргументы</h4>
-<ul>
-<li>app_id - Идентификатор приложения</li>
-<li>app_secret - Секрет приложения</li>
-<li>username - Ваш логин на Facebook</li>
-<li>token_path - Путь к папке в которой вы хотите создать файл для хранения учётных данных</li>
-<li>reauth - Переавторизоваться под указанным в username пользователем, если вы уже ранее запрашивали для него учётные данные</li>
-<li>skip_option - Игнорировать опции и переменные окружения при авторизации</li>
-</ul>
-</details>
-
+### Аргументы:
+* app_id - Идентификатор приложения
+* app_secret - Секрет приложения
+* username - Ваш логин на Facebook
+* token_path - Путь к папке в которой вы хотите создать файл для хранения учётных данных
+* reauth - Переавторизоваться под указанным в username пользователем, если вы уже ранее запрашивали для него учётные данные
+* skip_option - Игнорировать опции и переменные окружения при авторизации
 
 ## fbGetSettings
 ### Описание:
@@ -459,13 +453,11 @@ ID приложения в Facebook: <br />
 ## fbGetToken (Устаревшая функция)
 ### Описание:
 Функция предназначена для получения краткосрочного токена для доступа к API Facebook.
-
-<details><summary>Подробное описание</summary>
 	
-### Синтаксис
+### Синтаксис:
 fbGetToken(app_id = 000000000)
 
-### Аргументы
+### Аргументы:
 * app_id - ID вашего приложени в Facebook
 
 ### Пример прохождения процесса аутентификации
@@ -480,14 +472,11 @@ MyFBToken <- fbGetToken(app_id = 1111111111111111)
 
 После того как вы подтвердите доступ, нажав ОК вы попадаете на страницу https://selesnow.github.io/rfacebookstat/getToken/get_token.html, на которой будет сгенерирован токен доступа к API Facebook.
 <p align="center"><img src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" data-canonical-src="http://img.netpeak.ua/alsey/150609968097_kiss_70kb.png" style="max-width:100%;"></p>
-</details>
 
 ## fbGetLongTimeToken (Устаревшая функция)
 ### Описание:
 Данная функция меняет краткосрочный токен с сроком 2 часа на долгосрочный токен который действителен на протяжении двух месяцев.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
 
@@ -495,28 +484,22 @@ fbGetLongTimeToken(client_id,client_secret,fb_exchange_token)
 * client_id - ID вашего приложени в Facebook
 * client_secret - Секрет вашего приложения в Facebook 
 * fb_exchange_token - Значение краткосрочного токена полученного с помощью функции fbGetToken
-</details>
 	
 ## fbGetBusinessManagers
 ### Описание
 Данная функция загружает список доступных бизнес менеджеров с некоторыми их параметрами.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetBusinessManagers(api_version = "v2.10", access_token = NULL)
 
 ### Аругменты
 * api_version - Версия API Facebook в формате v*.*, например v2.10
 * access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeTokenn
-</details>
 	
 ## fbGetAdAccountUsers
 ### Описание:
 Данная функция загружает список пользователей рекламных аккаунтов.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetAdAccountUsers(accounts_id = NULL ,api_version = "v2.10", access_token = NULL)
 
@@ -530,14 +513,11 @@ fbGetAdAccountUsers(accounts_id = NULL ,api_version = "v2.10", access_token = NU
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
-	
+
 ## fbGetAdAccountUsersPermissions
 ### Описание
 Данная функция загружает список пользователей рекламных аккаунтов с их привилегиями и ролью.
-
-<details><summary>Подробное описание</summary>
-	
+ 
 **Расшифровка привилегий:**
 <br>1: ACCOUNT_ADMIN: Имеет права на изменение списка пользователей рекламного аккаунта и привелегий пользователей.
 <br>2: ADMANAGER_READ: Имеет права просмотра рекламных кампаний и объявлений.
@@ -565,14 +545,11 @@ fbUpdateAdAccountUsers(accounts_id = NULL, access_token = NULL)
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
-	
+
 ## fbUpdateAdAccountUsers
 ### Описание
 Добавляет пользователей в рекламные аккаунты Facebook с определённым набором прав.
 Для того, что бы добавить пользователей в аккаунт вы должны быть админисратором данного аккаунта.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbUpdateAdAccountUsers(user_ids = NULL, 
@@ -594,15 +571,12 @@ fbUpdateAdAccountUsers(user_ids = NULL,
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
-	
+
 ## fbDeleteAdAccountUsers
 ### Описание
 Удаляет пользователей из рекламных аккаунтов Facebook с определённым набором прав.
 Для того, что бы удалить пользователей из аккаунта вы должны быть админисратором данного аккаунта.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbDeleteAdAccountUsers(user_ids = NULL, 
                        accounts_id = NULL,
@@ -617,14 +591,10 @@ fbDeleteAdAccountUsers(user_ids = NULL,
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
-</details>
-	
 ## fbGetApps
 ### Описание
 Данная функция возвращает набор данных со списком аккаунтов в вашем бизнес менеджере.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetApps(accounts_is, api_version, access_token)
 
@@ -634,13 +604,10 @@ fbGetApps(accounts_is, api_version, access_token)
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
 	
 ## fbGetPages
 ### Описание
 Функция возвращает список всех страниц по конкретному проекту бизнес менеджера.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbGetPages(accounts_is, api_version, access_token)
@@ -651,7 +618,6 @@ fbGetPages(accounts_is, api_version, access_token)
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
 	
 ## fbGetAdAccounts
 ### Описание
@@ -722,14 +688,11 @@ fbGetAdAccounts(source_id, api_version, access_token )
         <td><center>owner.name</center></td><td><center>Имя владельца рекламного аккаунта</center></td>
     </tr>
 </table>
-</details>
 	
 ## fbGetCampaigns
 ### Описание
 Функция возвращает список всех рекламных кампаний из рекламного аккаунта Facebook.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetCampaigns(accounts_id, api_version, access_token)
 
@@ -776,14 +739,11 @@ fbGetCampaigns(accounts_id, api_version, access_token)
         <td><center>spend_cap</center></td><td><center>Лимит бюджета для рекламной кампании.</center></td>
     </tr>
 </table>
-</details>
 	
 ## fbGetAdSets
 ### Описание
 Функция возвращает список всех групп объявленйий из рекламного аккаунта Facebook.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetAdSets(accounts_id, api_version, access_token)
 
@@ -830,13 +790,10 @@ fbGetAdSets(accounts_id, api_version, access_token)
         <td><center>pacing_type</center></td><td><center>Тип показа объявлений, стандартный или планированные показы.</center></td>
     </tr>
 </table>
-</details>
 	
 ## fbGetAds
 ### Описание
 Функция возвращает список всех объявленйий из рекламного аккаунта Facebook.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbGetAds(accounts_id, api_version, access_token)
@@ -884,7 +841,6 @@ fbGetAds(accounts_id, api_version, access_token)
     <td><center>effective_status</center></td><td><center>Актуальный статус объявления, данный статус учитывает статус родительской группы объявлений и рекламной кампании. Возможные значения: ACTIVE, PAUSED, DELETED, PENDING_REVIEW, DISAPPROVED, PREAPPROVED, PENDING_BILLING_INFO, CAMPAIGN_PAUSED, ARCHIVED, ADSET_PAUSED</center></td>
     </tr>   
 </table>
-</details>
 	
 ## fbGetAdCreative
 ### Описание
@@ -946,14 +902,11 @@ fbGetAdCreative(accounts_id, api_version, access_token)
     <td><center>image_hash</center></td><td><center>Хеш изображения прикреплённого к объявлению.</center></td>
     </tr>
 </table>
-</details>
 
 ## fbGetAdVideos
 ### Описание
 Функция возвращает список рекламируемых видео из рекламного аккаунта Facebook.
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetAdVideos(accounts_id, api_version, access_token, username, token_path)
 
@@ -963,13 +916,10 @@ fbGetAdVideos(accounts_id, api_version, access_token, username, token_path)
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
 
 ## fbGetAdAccountsConversions
 ### Описание
 Функция возвращает список настроенных в рекламных аккаунтах пользовательских конверсий из рекламного аккаунта Facebook.
-
-<details><summary>Подробное описание</summary>
 	
 ### Синтаксис
 fbGetAdAccountsConversions(accounts_id, api_version, access_token, username, token_path)
@@ -980,7 +930,6 @@ fbGetAdAccountsConversions(accounts_id, api_version, access_token, username, tok
 * access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
 * username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
 * token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
-</details>
 	
 ## fbGetMarketingStat
 ### Описание
@@ -989,8 +938,6 @@ fbGetAdAccountsConversions(accounts_id, api_version, access_token, username, tok
 ### Дополнительная документация
 Работа с данной функцией, и всё её аргументы подробно рассмотренны в виньетке ["Загрузки статистики из рекламных аккаунтов Facebook"](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-get-statistics.html)
 
-<details><summary>Подробное описание</summary>
-	
 ### Синтаксис
 fbGetMarketingStat(accounts_id, 
                    sorting, 
@@ -1033,7 +980,6 @@ fbGetMarketingStat(accounts_id,
 
 * api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
 * access_token — токен доступа.
-</details>
 	                                                       
 ---
 
