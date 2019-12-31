@@ -123,8 +123,8 @@ li.nm_li {
 + [Пример кода для работы с API Facebook Marketing](#пример-кода-для-работы-с-rfacebookstat)
 + [Безопасность использования пакета rfacebookstat](#безопасность-использования-rfacebookstat)
 + [Функции пакета rfacebookstat](#Функции-пакета-rfacebookstat)
-    + [fbAuth]() - Авторизация в API Facebook
-    + [fbGetSettings](#fbAuth) - 
+    + [fbAuth](#fbAuth) - Авторизация в API Facebook
+    + [fbGetSettings](#fbAuth) - Получить текущие настройки пакета
     + [fbGetToken](#fbgettoken) - Получить токен для работы с API Facebook.
     + [fbGetLongTimeToken](#fbgetlongtimetoken) - Заменяет краткорсочный токен на долгосрочный.
     + [fbGetBusinessManagers](#fbgetbusinessmanagers) - Загружает список доступных бизнес менеджеров
@@ -350,6 +350,52 @@ fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
 + [manage_pages](https://developers.facebook.com/docs/facebook-login/permissions/#reference-manage_pages) - Позволяет rfacebookstat получать доступ к Страницам и Приложениям, которые человек администрирует.
 
 При этом пакет rfacebookstat не передаёт третим лицам, включая автора пакета, собираемые им данные, и доступы к рекламным и прочим источникам. Вся информация и доступы полученные rfacebookstat используется только вами, и людьми которым вы сами её предоставили.
+
+## Опции пакета rfacebookstat
+Опции помогают вам избежать дублирования кода во всех функциях пакета. На данный момент в `rfacebookstat` поддерживаются следующие опции:
+
+* rfacebookstat.api_version - Версия API к которой пакет будет направлять запросы, не рекомендуется изменять эту опцию;
+* rfacebookstat.access_token - Ваш токен доступа, также не рекомендуется хранить его текстом в ваших скриптах;
+* rfacebookstat.accounts_id - ID аккаунтов которые вы используете в скрипте по умолчанию, можно задавать вектором;
+* racebookstat.business_id - ID бизнес менеджера который вы планируете использовать в скрипте по умолчанию
+* rfacebookstat.token_path - Путь к папке, где хранятся файлы с учётными данными;
+* rfacebookstat.username - Имя пользователя facebook;
+* rfacebookstat.app_id - ID созданного вами приложения в Facebook для авторизации;
+* rfacebookstat.app_secret - Секрет созданного вами приложения в Facebook.
+
+Установленные опции работают в ходе вашей текущей R сессии, в связи с чем через опции рекомендуется задать список рекламных аккаунтов.
+
+### Пример установки опций
+```r
+library(rfacebookstat)
+
+options(rfacebookstat.accounts_id = c("act_111", 
+                                      "act_222", 
+				      "act_333"))
+
+fbGetSettings()
+```
+
+## Переменные среды в пакете rfacebookstat
+Переменные среды позволяют вам на глобальном уровне задать некоторые настройки пакета, что позволит вам не устанавливать их в каждом новом скрипте через опции или аргументы функций.
+
+Задать опции можно с помощью специальных утилит вашей операционной системы, файла *.Renviron* или команды `Sys.setenv()`.
+
+## Имена переменных среды в rfacebookstat
+* RFB_TOKEN_PATH - Путь к папке в которой у вас хранится файл с раширением *.rfb_auth.rds*, в котором хранятся учётные данные.
+* RFB_USER - Имя пользователя Facebook, который вы указали в аргументе username при прохождении авторизации с помощью функции `fbAuth()`.
+* RFB_API_TOKEN - Полученный с помощью функции `fbAuth()` токен доступа к API.
+
+### Пример установки переменных среды
+```r
+Sys.setenv(RFB_USER="seleznev_a", 
+           RFB_TOKEN_PATH="D:/fb_auth_store")
+
+library(rfacebookstat)
+fbGetSettings()
+```
+
+Через переменные среды рекомендуется устанавливать значения пользователя Facebook и путь к папаке с фалом в котором хранятся учётные данные.
 
 ## Функции пакета rfacebookstat
 
