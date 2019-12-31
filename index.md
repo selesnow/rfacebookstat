@@ -518,12 +518,15 @@ fbGetBusinessManagers(api_version = "v2.10", access_token = NULL)
 fbGetAdAccountUsers(accounts_id = NULL ,api_version = "v2.10", access_token = NULL)
 
 ### Аругменты
-* accounts_id - Вектор ID рекламных аккаунтов с префиксом act_, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
 * api_version - Версия API Facebook в формате v*.*, например v2.10
 * console_type - тип ответов в консоли, принимает одно из двух значений:
     * "progressbar" (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
     * "message" - для вывода информационных сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт обрабатывается, и сколько пользователей по нему загружено.
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbGetAdAccountUsersPermissions
@@ -551,13 +554,14 @@ fbGetAdAccountUsers(accounts_id = NULL ,api_version = "v2.10", access_token = NU
 fbUpdateAdAccountUsers(accounts_id = NULL, access_token = NULL)
 
 ### Аругменты
-* accounts_id - Вектор ID рекламных аккаунтов с префиксом act_, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
-* api_version - Версия API Facebook в формате v*.*, например v5.0, не рекомендуется менять значение по умолчанию
-
 * console_type - тип ответов в консоли, принимает одно из двух значений:
     * "progressbar" (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
     * "message" - для вывода информационных сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт обрабатывается, и сколько пользователей по нему загружено.
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbUpdateAdAccountUsers
@@ -575,8 +579,6 @@ fbUpdateAdAccountUsers(user_ids = NULL,
 
 ### Аругменты
 * user_ids - Вектор ID пользователей коорых вы хотите добавить в рекламные аккаунты.
-* accounts_id - Вектор ID рекламных аккаунтов с префиксом act_ в которые вы хотите добавить пользователей, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
-* api_version - Версия API Facebook в формате v*.*, например v2.10
 * role - Роль пользователя который будет добалвен в аккаунт, каждая роль имеет свой набор привилегий, допустимые значения:
     * "administator"- Пользователь будет обладать максимальным доступом и будет иметь право добавлять и удалять пользователей рекламного аккаунта.
     * "advertiser" (по умолчанию) - Пользователь будет иметь право вносить изменения в рекламные кампании аккаунта.
@@ -584,7 +586,11 @@ fbUpdateAdAccountUsers(user_ids = NULL,
     * "analyst" - Пользователь будет иметь доступ к статистике рекламного аккаунта, без возможности внесения правок в рекламные кампании и аккаунт.
     * "sales" - Пользователь будет иметь ограниченый досуп на управление рекламным аккаунтом.
     * "direct sales" - Пользователь будет иметь ограниченый досуп на управление рекламным аккаунтом.
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbDeleteAdAccountUsers
@@ -602,9 +608,12 @@ fbDeleteAdAccountUsers(user_ids = NULL,
 
 ### Аругменты
 * user_ids - Вектор ID пользователей которых вы хотите удалить из рекламные аккаунты.
-* accounts_id - Вектор ID рекламных аккаунтов с префиксом act_ из которых вы хотите удалить пользователей, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
-* api_version - Версия API Facebook в формате v*.*, например v5.0, не рекомендуется менять значение по умолчанию
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
+
 </details>
 	
 ## fbGetApps
@@ -617,9 +626,11 @@ fbDeleteAdAccountUsers(user_ids = NULL,
 fbGetApps(accounts_is, api_version, access_token)
 
 ### Аругменты
-* projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
-* api_version - Версия API Facebook в формате v*.*, например v2.8
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbGetPages
@@ -632,9 +643,11 @@ fbGetApps(accounts_is, api_version, access_token)
 fbGetPages(accounts_is, api_version, access_token)
 
 ### Аругменты
-* accounts_id - ID аккаунта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции `fbGetAdAccounts()`
-* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbGetAdAccounts
@@ -647,12 +660,11 @@ fbGetPages(accounts_is, api_version, access_token)
 fbGetAdAccounts(source_id, api_version, access_token )
 
 ### Аругменты
-* source_id - ID проекта или бизнес менеджера в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects, если не указать никакое значение в аргументе source_id функция вернёт список всех доступных вам рекламных аккаунтов.
-* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
-* console_type - тип ответов в консоли, принимает одно из двух значений:
-* progressbar (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
-* message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт в данный момент обрабатывается, и о том сколько пользователей по каждому из аккаунтов найдено.   
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* source_id - ID пользователя или бизнес менеджера в котором ведётся реклама приложени, если не указать никакое значение в аргументе source_id функция вернёт список всех доступных вам рекламных аккаунтов.
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -719,9 +731,11 @@ fbGetAdAccounts(source_id, api_version, access_token )
 fbGetCampaigns(accounts_id, api_version, access_token)
 
 ### Аругменты
-* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -771,9 +785,11 @@ fbGetCampaigns(accounts_id, api_version, access_token)
 fbGetAdSets(accounts_id, api_version, access_token)
 
 ### Аругменты
-* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-* api_version - Версия API Facebook в формате v*.*, например v3.0
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -823,9 +839,11 @@ fbGetAdSets(accounts_id, api_version, access_token)
 fbGetAds(accounts_id, api_version, access_token)
 
 ### Аругменты
-* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-* api_version - Версия API Facebook в формате v*.*, например v3.0
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -875,9 +893,11 @@ fbGetAds(accounts_id, api_version, access_token)
 fbGetAdCreative(accounts_id, api_version, access_token)
 
 ### Аругменты
-* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
-* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -1011,39 +1031,7 @@ fbGetMarketingStat(accounts_id,
 * api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
 * access_token — токен доступа.
 </details>
-	
-## Пример работы с пакетом rfacebookstat
-
-Перед тем как запускать описанные ниже примеры, необходимо получить API-токен и сохраните его в объект token.
-`token <- fbGetToken(app_id = 00000000000000)`
-
-Чтобы получить статистику о количестве показов, кликов и затрат на рекламу на уровне аккаунта и в  разрезе регионов, введите следующий код:
-
-```r
-AccStat <- fbGetMarketingStat(accounts_id = «act_0000000000»,
-                              level = "account",
-                              fields = "account_id,account_name,impressions,clicks,spend",
-                              breakdowns = "region",
-                              date_start = "2016-11-01",
-                              date_stop = "2016-11-30",
-                              access_token = token)
-```
-
-Получите статистику по количеству уникальных показов и уникальных кликов, с фильтром по возрастным группам «18-24», «25-34» и сортировкой данных в порядке убывания количества уникальных показов (поле unique_impressions).
-
-
-```r
-CampStat <-     fbGetMarketingStat(accounts_id = "act_0000000000",
-                                   level = "campaign",
-                                   fields = "campaign_name,impressions,clicks",
-                                   breakdowns = "age",
-                                   sorting = "unique_impressions_descending",
-                                   filtering = "[{'field':'age','operator':'IN','value':['18-24','25-34']}]",
-                                   date_start = "2016-10-01",
-                                   date_stop = "2016-10-10",
-                                   access_token = token)
-```
-                                                       
+	                                                       
 ---
 
 ## *Автор пакета: Алексей Селезнёв, Head of Analytics Dept. at Netpeak*
