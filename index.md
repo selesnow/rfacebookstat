@@ -246,72 +246,70 @@ devtools::install_github('selesnow/rfacebookstat')
 devtools::install_github("selesnow/ryandexdirect")
 library(rfacebookstat)
 
-# авторизация в API
-# краткосрочный токен
-my_st_token <- fbGetToken(app_id = 5546236457236574327)
+# опции для авторизации
+options(rfacebookstat.username = "Ваш логин на FACEBOOK",
+        rfacebookstat.token_path = "Путь к папаке где будут храниться учётные данные")
 
-# долгосрочный токен
-fb_token    <- fbGetLongTimeToken(client_id = 5546236457236574327,
-                                  client_secret = "uhcninh3y98nfyy49r8y98fy938",
-                                  fb_exchange_token = my_st_token)
+# авторизация в API
+fbAuth()
 
 # Загрузка объектов API
 # бизнес менеджеры
-my_fb_bm   <- fbGetBusinessManagers(access_token = fb_token)
+my_fb_bm   <- fbGetBusinessManagers()
 
-# проекты из бизнес менеджера
-my_fb_proj <- fbGetProjects(bussiness_id = my_fb_bm$id,
-                            access_token = fb_token)
 # рекламные аккаунты
 my_fb_acc  <- fbGetAdAccounts(source_id = my_fb_bm$id,
                               access_token = fb_token)
-# страницы
-my_fb_page <- fbGetPages(projects_id = my_fb_proj$id, access_token = fb_token)
-# приложения
-my_fb_apps <- fbGetApps(projects_id = my_fb_proj$id, access_token = fb_token)
 
+# опции для выбора рекламных аккаутов
+options(rfacebookstat.accounts_id = c("act_111", 
+                                      "act_222", 
+				      "act_333"))
 # Объекты рекламного аккаунта
 # кампании
-my_fb_camp <- fbGetCampaigns(accounts_id = "act_262115113",
-                             access_token = fb_token)
+my_fb_camp <- fbGetCampaigns()
 
 # группы объявлений
-my_fb_adsets <- fbGetAdSets(accounts_id = "act_262115113",
-                            access_token = fb_token)
+my_fb_adsets <- fbGetAdSets()
+
 # объявления
-my_fb_ads    <- fbGetAds(accounts_id = my_fb_acc$id[7],
-                         access_token = fb_token)
+my_fb_ads    <- fbGetAds()
 
 # контент объявлений
-my_fb_ad_content <- fbGetAdCreative(accounts_id = "act_262115113",
-                                    access_token = fb_token)
+my_fb_ad_content <- fbGetAdCreative()
+
+# страницы
+my_fb_page <- fbGetPages()
+
+# приложения
+my_fb_apps <- fbGetApps()
+
+# рекламируемые видео
+my_fb_videos <- fbGetAdVideos()
+
+# список настроенных кастомных конверсий
+my_fb_conversions <- fbGetAdAccountsConversions()
 
 # загрузка статистики
-my_fb_stats <- fbGetMarketingStat(accounts_id = "act_262115113",
-                                  level = "campaign",
+my_fb_stats <- fbGetMarketingStat(level = "campaign",
                                   fields = "account_name,campaign_name,impressions,clicks",
                                   breakdowns = "device_platform",
                                   date_start = "2018-08-01",
                                   date_stop = "2018-08-07",
-                                  interval = "day",
-                                  access_token = fb_token)
+                                  interval = "day")
 
 
 # управление пользователями
 # получить список пользователей
 fb_acc_user <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
-                                   access_token = fb_token,
                                    console_type = "message")
 
 # удалить пользователя из рекламного аккаунта
 fbDeleteAdAccountUsers(user_ids = "823041644481205",
-                       accounts_id  =  "act_262115113",
-                       access_token = fb_token,
-                       api_version = "v3.1")
+                       accounts_id  =  "act_262115113")
 
 # добавить пользователя в рекламный аккаунт
 fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
-                                    access_token = fb_token,
                                     console_type = "message")
 ```
 
@@ -350,7 +348,10 @@ fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
         <td><center>Функция</center></td><td><center>Описание</center></td>
     </tr>
     <tr>
-        <td><center>fbGetToken</center></td><td><center>Получает окен для доступа к API Facebook</center></td>
+        <td><center>fbAuth</center></td><td><center>Авторизация в API</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetToken</center></td><td><center>Получает краткосрочный токен для доступа к API Facebook</center></td>
     </tr>
      <tr>
         <td><center>fbGetLongTimeToken</center></td><td><center>Меняет краткосрочный на долгосрочный токен</center></td>
@@ -377,7 +378,10 @@ fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
         <td><center>fbGetPages</center></td><td><center>Получает список рекламируемых страниц</center></td>
     </tr>
     <tr>
-        <td><center>fbGetProjects</center></td><td><center>Получает список проектов доступных в бизнес менеджере</center></td>
+        <td><center>fbGetAdVideos</center></td><td><center>Получает список рекламируемых видео</center></td>
+    </tr>
+    <tr>
+        <td><center>fbGetAdAccountsConversions</center></td><td><center>Получает список настроенных в рекламных аккаунтах пользовательских конверсий</center></td>
     </tr>
     <tr>
         <td><center>fbGetAdAccounts</center></td><td><center>Получает список доступных рекламных аккаунтов</center></td>
