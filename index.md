@@ -449,6 +449,10 @@ ID приложения в Facebook: <br />
 * skip_option - Игнорировать опции и переменные окружения при авторизации
 </details>
 
+## fbGetSettings
+### Описание:
+Функция возвращает текущие настройки применённые к пакету rfacebookstat
+
 ## fbGetToken (Устаревшая функция)
 ### Описание:
 Функция предназначена для получения краткосрочного токена для доступа к API Facebook.
@@ -919,6 +923,40 @@ fbGetAdCreative(accounts_id, api_version, access_token)
     <td><center>image_hash</center></td><td><center>Хеш изображения прикреплённого к объявлению.</center></td>
     </tr>
 </table>
+</details>
+
+## fbGetAdVideos
+### Описание
+Функция возвращает список рекламируемых видео из рекламного аккаунта Facebook.
+
+<details><summary>Подробное описание</summary>
+	
+### Синтаксис
+fbGetAdVideos(accounts_id, api_version, access_token, username, token_path)
+
+### Аругменты
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
+</details>
+
+## fbGetAdAccountsConversions
+### Описание
+Функция возвращает список настроенных в рекламных аккаунтах пользовательских конверсий из рекламного аккаунта Facebook.
+
+<details><summary>Подробное описание</summary>
+	
+### Синтаксис
+fbGetAdAccountsConversions(accounts_id, api_version, access_token, username, token_path)
+
+### Аругменты
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции `fbGetAccounts()` указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000". По умолчанию запршивается из опции `rfacebookstat.accounts_id `
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
+* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
+* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
 </details>
 	
 ## fbGetMarketingStat
