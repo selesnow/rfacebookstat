@@ -351,6 +351,9 @@ fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
         <td><center>fbAuth</center></td><td><center>Авторизация в API</center></td>
     </tr>
     <tr>
+        <td><center>fbGetSettings</center></td><td><center>Выводит в консоль текущие настройки пакета</center></td>
+    </tr>
+    <tr>
         <td><center>fbGetToken</center></td><td><center>Получает краткосрочный токен для доступа к API Facebook</center></td>
     </tr>
      <tr>
@@ -508,7 +511,7 @@ access_token - Токен достепа полученный с помощью 
 <br>1004 = Прямой доступ к продажам. Для ограниченных управляемых учетных записей.
 
 ### Синтаксис
-fbUpdateAdAccountUsers(accounts_id = NULL ,api_version = "v2.12", access_token = NULL)
+fbUpdateAdAccountUsers(accounts_id = NULL, access_token = NULL)
 
 ### Аругменты
 accounts_id - Вектор ID рекламных аккаунтов с префиксом act_, получить список всех доступны рекламных аккаунтов можно с помощью функции `fbGetAdAccounts`
@@ -530,7 +533,6 @@ access_token - Токен достепа полученный с помощью 
 fbUpdateAdAccountUsers(user_ids = NULL, 
                        role = "advertiser", 
                        accounts_id = NULL,
-                       api_version = "v2.12",
                        access_token = NULL)
 
 ### Аругменты
@@ -570,29 +572,12 @@ api_version - Версия API Facebook в формате v*.*, например
 
 access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
-## fbGetProjects
-### Описание
-Данная функция загружает список доступных в вашем бизнес менеджере проектов
-
-### Синтаксис
-fbGetProjects(bussiness_id, api_version, access_token)
-
-### Аругменты
-bussiness_id - ID вашего бизнес менеджера, посмотреть ID можно перейдя в основном меню бизнес менеджера в "Настройки Business Manager" на вкладку "Информация о компании".
-<p align="center">
-<img src="http://img.netpeak.ua/alsey/148190852785_kiss_43kb.png" data-canonical-src="http://img.netpeak.ua/alsey/148190852785_kiss_43kb.png" style="max-width:100%;">
-</p>
-
-api_version - Версия API Facebook в формате v*.*, например v2.8
-
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
-
 ## fbGetApps
 ### Описание
 Данная функция возвращает набор данных со списком аккаунтов в вашем бизнес менеджере.
 
 ### Синтаксис
-fbGetApps(projects_id, api_version, access_token)
+fbGetApps(accounts_is, api_version, access_token)
 
 ### Аругменты
 projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
@@ -606,14 +591,13 @@ access_token - Токен достепа полученный с помощью 
 Функция возвращает список всех страниц по конкретному проекту бизнес менеджера.
 
 ### Синтаксис
-fbGetPages(projects_id, api_version, access_token)
+fbGetPages(accounts_is, api_version, access_token)
 
 ### Аругменты
 projects_id - ID проекта в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects
 
-api_version - Версия API Facebook в формате v*.*, например v2.8
-
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ## fbGetAdAccounts
 ### Описание
@@ -625,13 +609,11 @@ fbGetAdAccounts(source_id, api_version, access_token )
 ### Аругменты
 source_id - ID проекта или бизнес менеджера в котором ведётся реклама приложени, список ID всех доступных вам проектов можно получить с помощью функции fbGetProjects, если не указать никакое значение в аргументе source_id функция вернёт список всех доступных вам рекламных аккаунтов.
 
-api_version - Версия API Facebook в формате v*.*, например v2.8
-
-console_type - тип ответов в консоли, принимает одно из двух значений:
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
+* console_type - тип ответов в консоли, принимает одно из двух значений:
 * progressbar (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
-* message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт в данный момент обрабатывается, и о том сколько пользователей по каждому из аккаунтов найдено.
-    
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, какой аккаунт в данный момент обрабатывается, и о том сколько пользователей по каждому из аккаунтов найдено.   
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -695,11 +677,9 @@ access_token - Токен достепа полученный с помощью 
 fbGetCampaigns(accounts_id, api_version, access_token)
 
 ### Аругменты
-accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-
-api_version - Версия API Facebook в формате v*.*, например v3.0
-   
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -746,11 +726,9 @@ access_token - Токен достепа полученный с помощью 
 fbGetAdSets(accounts_id, api_version, access_token)
 
 ### Аругменты
-accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-
-api_version - Версия API Facebook в формате v*.*, например v3.0
-   
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+* api_version - Версия API Facebook в формате v*.*, например v3.0
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -797,11 +775,9 @@ access_token - Токен достепа полученный с помощью 
 fbGetAds(accounts_id, api_version, access_token)
 
 ### Аругменты
-accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-
-api_version - Версия API Facebook в формате v*.*, например v3.0
-   
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+* api_version - Версия API Facebook в формате v*.*, например v3.0
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -848,11 +824,9 @@ access_token - Токен достепа полученный с помощью 
 fbGetAdCreative(accounts_id, api_version, access_token)
 
 ### Аругменты
-accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-
-api_version - Версия API Facebook в формате v*.*, например v3.0
-   
-access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, или же с помощью функции fbGetAccounts указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
+* access_token - Токен достепа полученный с помощью функции fbGetToken или fbGetLongTimeToken
 
 ### Структура возвращаемого дата фрейма
 <table>
@@ -903,6 +877,9 @@ access_token - Токен достепа полученный с помощью 
 ### Описание
 Основная функция пакета с помощью который вы можете получить статистику по своим рекламным аккаунтам.
 
+### Дополнительная документация
+Работа с данной функцией, и всё её аргументы подробно рассмотренны в виньетке ["Загрузки статистики из рекламных аккаунтов Facebook"](https://cran.r-project.org/web/packages/rfacebookstat/vignettes/rfacebookstat-get-statistics.html)
+
 ### Синтаксис
 fbGetMarketingStat(accounts_id, 
                    sorting, 
@@ -920,43 +897,31 @@ fbGetMarketingStat(accounts_id,
                    access_token)
 
 ### Аругменты
-accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
-
-sorting — cортировка данных. Необязательный аргумент. На входе принимает список полей и направление сортировки (по возрастанию или по убыванию). Пример: reach_descending, impressions_ascending.
-
-level — уровень детализации данных. Обязательный аргумент. Принимает значения ad, adset, campaign, account. Пример — level = "account".
-
-fields — список полей, по которым вы планируете получить данные. Обязательный аргумент. Пример: fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend". Актуальный список всех доступных полей можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/fields/).
-
-filtering — фильтр данных. Необязательный аргумент. Фильтры задаются в виде JSON объектов «ключ:значение». Необходимо прописать три свойства:
-
-+ field — поле, по которому будет осуществляться фильтрация;
-+ operator — оператор логического значения ('EQUAL', 'NOT_EQUAL', 'GREATER_THAN', 'GREATER_THAN_OR_EQUAL', 'LESS_THAN', 'LESS_THAN_OR_EQUAL', 'IN_RANGE', 'NOT_IN_RANGE', 'CONTAIN', 'NOT_CONTAIN', 'IN', 'NOT_IN', 'ANY', 'ALL', 'NONE');
-+ value — значения, по которому будет фильтроваться указанное поле.
+* accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
+* sorting — cортировка данных. Необязательный аргумент. На входе принимает список полей и направление сортировки (по возрастанию или по убыванию). Пример: reach_descending, impressions_ascending.
+* level — уровень детализации данных. Обязательный аргумент. Принимает значения ad, adset, campaign, account. Пример — level = "account".
+* fields — список полей, по которым вы планируете получить данные. Обязательный аргумент. Пример: fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend". Актуальный список всех доступных полей можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/fields/).
+* filtering — фильтр данных. Необязательный аргумент. Фильтры задаются в виде JSON объектов «ключ:значение». Необходимо прописать три свойства:
+    + field — поле, по которому будет осуществляться фильтрация;
+    + operator — оператор логического значения ('EQUAL', 'NOT_EQUAL', 'GREATER_THAN', 'GREATER_THAN_OR_EQUAL', 'LESS_THAN', 'LESS_THAN_OR_EQUAL', 'IN_RANGE', 'NOT_IN_RANGE', 'CONTAIN', 'NOT_CONTAIN', 'IN', 'NOT_IN', 'ANY', 'ALL', 'NONE');
+    + value — значения, по которому будет фильтроваться указанное поле.
 Пример: filtering = "[{'field':'publisher_platform','operator':'IN','value':['instagram']}]
-
-breakdowns — аргумент, с помощью которого можно получить данные в разбивке на различные сегменты. Список доступных срезов информации, а так же информацию о том как они могут друг с другом сочитаться можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns/).
-
-date_start — начальная дата отчетного периода в формате YYYY-MM-DDD.
-
-date_stop — конечная дата отчетного периода в формате YYYY-MM-DDD.
-
-interval - временная разбивка, допустимые значения "day", "week", "month", "quarter", "year", "overall"
-
-console_type - текстовое значение, тип ответов в консоли, принимает одно из двух значений:
-* progressbar (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
-* message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, что был запущен механизм обхода пользовательского лимита на количество допустимых запросов к API Facebook.
-
-request_speed - скорость оправки запросов к API, в зависимости от уровня доступа вашего приложения установите следующее значение:
-* Уровень доступа к API Development - "slow"
-* Уровень доступа к API Basic - "normal"
-* Уровень доступа к API Standart - "fast"
+* breakdowns — аргумент, с помощью которого можно получить данные в разбивке на различные сегменты. Список доступных срезов информации, а так же информацию о том как они могут друг с другом сочитаться можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns/).
+* date_start — начальная дата отчетного периода в формате YYYY-MM-DDD.
+* date_stop — конечная дата отчетного периода в формате YYYY-MM-DDD.
+* interval - временная разбивка, допустимые значения "day", "week", "month", "quarter", "year", "overall"
+* console_type - текстовое значение, тип ответов в консоли, принимает одно из двух значений:
+    * progressbar (по умолчанию) - для вывода в консоли прогресс бара, отображающего % загруженных даных.
+    * message - для вывода сообщений о процессе загрузки, например вывод сообщений о том, что был запущен механизм обхода пользовательского лимита на количество допустимых запросов к API Facebook.
+* request_speed - скорость оправки запросов к API, в зависимости от уровня доступа вашего приложения установите следующее значение:
+    * Уровень доступа к API Development - "slow"
+    * Уровень доступа к API Basic - "normal"
+    * Уровень доступа к API Standart - "fast"
 Подробно работа с этим аргументом описана [тут](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/).
 Информация об уровнях доступа к API Facebook находится [тут](https://developers.facebook.com/docs/marketing-api/access).
 
-api_version — версия API Facebook, в формате v*.*, например "v2.11"
-
-access_token — токен доступа.
+* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
+* access_token — токен доступа.
 
 ## Пример работы с пакетом rfacebookstat
 
