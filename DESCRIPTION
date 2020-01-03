@@ -15,8 +15,8 @@ Imports:
 	 jsonlite, 
 	 dplyr, 
 	 purrr, 
-	 tidyr, 
-	 stringr (>= 1.0.0), 
+	 tidyr (>= 1.0.0), 
+	 stringr, 
 	 tidyselect
 URL: http://selesnow.github.io/rfacebookstat
 License: GPL-2
