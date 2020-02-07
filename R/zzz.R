@@ -99,14 +99,14 @@ rfacebookstatWelcomeMessage <- function(){
   }
   
   op <- options()
-  op.rfacebookstat <- list(rfacebookstat.api_version  = "v5.0",
+  op.rfacebookstat <- list(rfacebookstat.api_version  = "v6.0",
                            rfacebookstat.access_token = fb_token,
                            rfacebookstat.accounts_id  = NULL,
-						   rfacebookstat.business_id  = NULL,
-						   rfacebookstat.token_path   = fb_token_path,
-						   rfacebookstat.username     = fb_user,
-						   rfacebookstat.app_id       = 176943372709235,
-						   rfacebookstat.app_secret   = "94b55b4f2396e50f6e8780377fe1bab6")
+                           rfacebookstat.business_id  = NULL,
+                           rfacebookstat.token_path   = fb_token_path,
+                           rfacebookstat.username     = fb_user,
+                           rfacebookstat.app_id       = 176943372709235,
+                           rfacebookstat.app_secret   = "94b55b4f2396e50f6e8780377fe1bab6")
 					   
   toset <- !(names(op.rfacebookstat) %in% names(op))
   if (any(toset)) options(op.rfacebookstat[toset])
