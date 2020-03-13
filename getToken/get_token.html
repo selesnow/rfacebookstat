@@ -38,12 +38,11 @@
 <script>
 window.onload = function() {
 document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.indexOf('&'));
-}
-</script>
 
-<script>
-navigator.clipboard.writeText(document.getElementById('txt1').innerHTML);
-window.setTimeout("document.location.href='https://selesnow.github.io/rfacebookstat/';", 30000);
+token = document.getElementById('txt1').innerHTML
+navigator.clipboard.writeText(token);
+window.setTimeout("document.location.href='/rfacebookstat/';", 30000);
+}
 </script>
     
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
