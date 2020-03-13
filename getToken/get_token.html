@@ -39,9 +39,9 @@
 window.onload = function() {
 document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.indexOf('&'));
 
-token = document.getElementById('txt1').innerHTML
+token = document.getElementById('txt1').innerHTML;
 navigator.clipboard.writeText(token);
-window.setTimeout("document.location.href='/rfacebookstat/';", 30000);
+//window.setTimeout("document.location.href='/rfacebookstat/';", 30000);
 }
 </script>
     
