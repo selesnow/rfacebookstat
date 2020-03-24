@@ -253,3 +253,9 @@ fbGetSettings <- function() {
   }
   
 }
+
+# revoke app privilegies
+fbRevokeAppPrivilegies <- 
+   function( app_id = getOption("rfacebookstat.app_id") ) {
+  browseURL(str_interp("https://www.facebook.com/settings/?tab=business_tools&initial_open_app_id=${app_id}"))
+}
