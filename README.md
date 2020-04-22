@@ -23,6 +23,8 @@
 
 [![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
+## Поддержать проект
+Вы можете поддержать проект любой произвольной суммой перейдя по этой [ссылке](https://secure.wayforpay.com/button/b6dd4a7083fe0).
 
 ## Установка пакета rfacebookstat
 Для установки пакета запустите приведённый ниже код в RStudio или R консоли.
