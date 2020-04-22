@@ -102,6 +102,13 @@ li.nm_li {
 
 # rfacebookstat - Пакет для загрузки данных из Marketing API Facebook в R. <a href='https:/selesnow/github.io/ryandexdirect'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
 
+# Поддержать проект
+Вы можете поддержать проект любой произвольной суммой воспользовавшись кнопкой или перейдя по этой [ссылке](https://secure.wayforpay.com/button/b6dd4a7083fe0).
+
+<script type="text/javascript" id="widget-wfp-script" src="https://secure.wayforpay.com/server/pay-widget.js?ref=button"></script>
+<script type="text/javascript">function runWfpWdgt(url){var wayforpay=new Wayforpay();wayforpay.invoice(url);}</script>
+<button type="button" onclick="runWfpWdgt('https://secure.wayforpay.com/button/b6dd4a7083fe0');" style="display:inline-block!important;background:#2B3160 url('https://s3.eu-central-1.amazonaws.com/w4p-merch/button/bg1x2.png') no-repeat center right;background-size:cover;width: 256px!important;height:54px!important;border:none!important;border-radius:14px!important;padding:18px!important;box-shadow:3px 2px 8px rgba(71,66,66,0.22)!important;text-align:left!important;box-sizing:border-box!important;" onmouseover="this.style.opacity='0.8';" onmouseout="this.style.opacity='1';"><span style="font-family:Verdana,Arial,sans-serif!important;font-weight:bold!important;font-size:14px!important;color:#ffffff!important;line-height:!important;vertical-align:middle!important;">Оплатить</span></button>
+
 ## Ссылки
 * [Документация](https://selesnow.github.io/rfacebookstat/)
 * [Отчёт об ошибках и доработках](https://github.com/selesnow/rfacebookstat/issues)
