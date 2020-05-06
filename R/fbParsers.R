@@ -32,6 +32,16 @@ fbParserAds <- function(x) {
 # pasing ad creatives
 fbParserAdCreatives <- function(x) {
   
+  if ( x$object_type == "VIDEO" ) {
+    
+    data_type_name <- "video_data"
+    
+  } else {
+    
+    data_type_name <- "link_data"
+    
+  }
+  
   return(
     list(
       id               = x$id,
@@ -39,10 +49,13 @@ fbParserAdCreatives <- function(x) {
       title            = x$title,
       body             = x$body,
       status           = x$status,
+      object_type      = fbNullReplacer(x$object_type),
       url_tags         = fbNullReplacer(x$url_tags),
       account_id       = fbNullReplacer(x$account_id),
       page_id          = fbNullReplacer(x$object_story_spec$page_id), 
-      link             = fbNullReplacer(x$object_story_spec$link_data$link), 
+      link             = ifelse( ! is.null(x$object_story_spec$video_data) , 
+                                 fbNullReplacer(x$object_story_spec$video_data$call_to_action$value$link), 
+                                 fbNullReplacer(x$object_story_spec$link_data$link)), 
       link_nested      = ifelse(is.null(x$object_story_spec$link_data$child_attachments), 
                                 NA, 
                                 paste0(lapply(x$object_story_spec$link_data$child_attachments, 
@@ -51,11 +64,12 @@ fbParserAdCreatives <- function(x) {
                                 NA, 
                                 paste0(lapply(x$object_story_spec$link_data$call_to_action, 
                                               function (x) paste0(x)), collapse = ",")),
-      message          = fbNullReplacer(x$object_story_spec$link_data$message), 
+      message          = fbNullReplacer(x$object_story_spec[[data_type_name]]$message), 
       caption          = fbNullReplacer(x$object_story_spec$link_data$caption), 
+      video_id         = fbNullReplacer(x$object_story_spec$video_data$video_id), 
       attachment_style = fbNullReplacer(x$object_story_spec$link_data$attachment_style), 
       description      = fbNullReplacer(x$object_story_spec$link_data$description), 
-      image_hash       = fbNullReplacer(x$object_story_spec$link_data$image_hash),
+      image_hash       = fbNullReplacer(x$object_story_spec[[data_type_name]]$image_hash),
       object_type      = fbNullReplacer(x$object_type)
     )
   )
