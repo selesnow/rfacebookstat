@@ -99,7 +99,7 @@ rfacebookstatWelcomeMessage <- function(){
   }
   
   op <- options()
-  op.rfacebookstat <- list(rfacebookstat.api_version  = "v6.0",
+  op.rfacebookstat <- list(rfacebookstat.api_version  = "v7.0",
                            rfacebookstat.access_token = fb_token,
                            rfacebookstat.accounts_id  = NULL,
                            rfacebookstat.business_id  = NULL,
