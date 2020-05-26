@@ -1,9 +1,15 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.0.3
-Date: 2020-05-06
-Author: Alexey Seleznev <selesnow@gmail.com>
+Version: 2.0.4
+Date: 2020-05-26
+Authors@R: 
+    c(person(given  = "Alexey",
+             family = "Seleznev",
+             role   = c("aut", "cre"),
+             email  = "selesnow@gmail.com",
+             comment = c(ORCID = "0000-0003-0410-7385")))
+Author: Alexey Seleznev [aut, cre] (<https://orcid.org/0000-0003-0410-7385>)
 Maintainer: Alexey Seleznev <selesnow@gmail.com>
 Description: Load data by campaigns, ads, ad sets and insights, ad account and business manager 
     from Facebook Marketing API into R. For more details see official documents by Facebook 
