@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.0.4
-Date: 2020-05-26
+Version: 2.1.0
+Date: 2020-05-27
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -18,14 +18,14 @@ Depends: R (>= 3.5.0)
 BugReports: https://github.com/selesnow/rfacebookstat/issues
 Imports: 
      httr, 
-	 jsonlite, 
-	 dplyr, 
-	 purrr, 
-	 tidyr (>= 1.0.0), 
-	 stringr, 
-	 tidyselect
-URL: http://selesnow.github.io/rfacebookstat
-License: GPL-2
+	   jsonlite, 
+	   dplyr, 
+	   purrr, 
+	   tidyr (>= 1.0.0), 
+	   stringr, 
+	   tidyselect
+URL: http://selesnow.github.io/rfacebookstat, https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
+License: MIT + file LICENSE
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 Encoding: UTF-8

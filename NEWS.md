@@ -1,7 +1,8 @@
-# rfacebookstat 2.0.4
+# rfacebookstat 2.1.0
 
 Дата релиза: 2020-05-26
 
+* В пакет добавлена функция `fbGetCostData()`, которая запрашивает и преобразует данные о расходах на facebook, для загрузки в Google Analytics.
 * Миграция на API v.7.0
 
 # rfacebookstat 2.0.3
