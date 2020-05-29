@@ -37,7 +37,7 @@ fbGetCostData <-
                                    token_path   = token_path,
                                    access_token = access_token)
         
-        if ( nrow(data) ) {
+        if ( nrow(data) == 0 ) {
           
           warning(str_interp('There is no data in your account (${accounts_id}) for the specified period (${date_start} - ${date_stop})'))
           
