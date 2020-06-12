@@ -32,14 +32,16 @@ fbParserAds <- function(x) {
 # pasing ad creatives
 fbParserAdCreatives <- function(x) {
   
-  if ( x$object_type == "VIDEO" ) {
-    
-    data_type_name <- "video_data"
-    
-  } else {
-    
-    data_type_name <- "link_data"
-    
+  if ( ! is.null(x$object_type) ) {
+    if ( x$object_type == "VIDEO" ) {
+      
+      data_type_name <- "video_data"
+      
+    } else {
+      
+      data_type_name <- "link_data"
+      
+    }
   }
   
   return(

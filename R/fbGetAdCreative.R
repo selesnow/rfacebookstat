@@ -1,4 +1,5 @@
 fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
+                            filtering    = NULL,
                             api_version  = getOption("rfacebookstat.api_version"),
                             username     = getOption("rfacebookstat.username"),
                             token_path   = fbTokenPath(),
@@ -58,14 +59,37 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
     
   }
   
+  # filters handing to JSON
+  if ( ! is.null(filtering) ) {
+    if ( ! validate(filtering)[[1]] ) {
+      
+      filters <- list()
+      
+      for ( f in filtering ) {
+        temp_fil    <- str_split(f, " ")
+        temp_filter <- list(field    = temp_fil[[1]][1],
+                            operator = temp_fil[[1]][2])
+        
+        if ( temp_fil[[1]][2] %in% c("IN_RANGE", "NOT_IN_RANGE", "IN", "NOT_IN") ) {
+          temp_filter$value <- str_split(temp_fil[[1]][3], ",")[[1]]
+        } else {
+          temp_filter$value <- temp_fil[[1]][3]
+        }
+        filters <- append(filters, list(temp_filter))
+      }
+      filtering <- toJSON(filters, auto_unbox = T)
+    }
+  }
+  
   for( account_id in accounts_id ) {
       
     
       url <- str_interp("https://graph.facebook.com/${api_version}/${account_id}/adcreatives")
     
       api_answer  <- GET(url, 
-                         query = list(fields       = "ad_id,name,title,body,status,link_url,template_url,url_tags,object_story_spec,object_id,object_type,account_id",
+                         query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,object_story_spec,object_id,object_type,video_id,account_id",
                                       limit        = 1000,
+                                      filtering    = filtering,
                                       access_token = access_token))
       
       # attr
