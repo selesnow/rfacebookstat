@@ -24,9 +24,9 @@ fbAction.default <- function( obj ) {
   actions <-
     map_df(obj$data, 
            function(.x) {
-
+             
              nm <- names(.x)
-             nm <- nm[ ! nm %in% c("actions", "action_values") ]
+             nm <- nm[ ! nm %in% names(.x[unlist(map(.x, is.list))]) ]
              
              other_col <- .x[nm] %>% bind_rows()
              
@@ -55,17 +55,40 @@ fbAction.default <- function( obj ) {
                  replace_na(list(val = 0)) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
                
-                 if ( exists("df_actions") ) {
-                   
-                   df <- bind_cols(df_actions, df_action_values) 
-                   
-                 } else {
-                   
-                   df <- bind_cols(other_col, df_action_values) 
-                   
-                 }
                
-             } 
+               if ( exists("df_actions") ) {
+                 
+                 df <- bind_cols(df_actions, df_action_values) 
+                 
+               } else {
+                 
+                 df <- bind_cols(other_col, df_action_values) 
+                 
+               }
+               
+             }
+             
+             if ( length(.x$video_thruplay_watched_actions ) > 0 ) {
+               
+             df_video <-
+               .x[['video_thruplay_watched_actions']] %>%
+               bind_rows() %>%
+               pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
+               mutate(action_type = paste0("video_thruplay", action_type)) %>%
+               unite(action_type, matches("action\\_.*" ), remove = T) %>%
+               replace_na(list(val = 0)) %>%
+               pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
+             
+             if ( exists("df") ) {
+               
+               df <- bind_cols(df, df_video) 
+               
+             } else {
+               
+               df <- bind_cols(other_col, df_video) 
+               
+             }
+             }
              
              if ( length( .x$actions ) + length( .x$action_values ) == 0 ) {
                
