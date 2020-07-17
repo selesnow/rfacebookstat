@@ -1,3 +1,9 @@
+# rfacebookstat 2.1.3
+
+Дата релиза: 2020-07-17
+
+* Исправление в технической функции `fbAction()`, теперь она корректно парсит поле video_thruplay_watched_actions.
+
 # rfacebookstat 2.1.2
 
 Дата релиза: 2020-06-12
