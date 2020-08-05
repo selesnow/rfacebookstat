@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.1.3
-Date: 2020-07-17
+Version: 2.1.4
+Date: 2020-08-05
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
