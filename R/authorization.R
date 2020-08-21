@@ -67,9 +67,9 @@ fbGetUserInfo <- function(access_token = getOption("rfacebookstat.access_token")
 }
 
 # authorize
-fbAuth <- function(app_id      = getOption("rfacebookstat.app_id"), 
+fbAuth <- function(username    = getOption("rfacebookstat.username"),
+                   app_id      = getOption("rfacebookstat.app_id"), 
                    app_secret  = getOption("rfacebookstat.app_secret"), 
-                   username    = getOption("rfacebookstat.username"),
                    token_path  = fbTokenPath(),
                    reauth      = FALSE,
                    skip_option = FALSE) {
