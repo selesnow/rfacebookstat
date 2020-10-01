@@ -1,8 +1,8 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.1.5
-Date: 2020-08-21
+Version: 2.1.9
+Date: 2020-09-24
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -24,7 +24,7 @@ Imports:
 	   tidyr (>= 1.0.0), 
 	   stringr, 
 	   tidyselect
-URL: http://selesnow.github.io/rfacebookstat, https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
+URL: https://selesnow.github.io/rfacebookstat/, https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
 License: MIT + file LICENSE
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
