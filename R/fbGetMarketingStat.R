@@ -6,12 +6,14 @@ fbGetMarketingStat <-
            action_breakdowns  = NULL,
            fields             = "account_id,campaign_name,impressions,clicks,reach,spend",
            filtering          = NULL,
-           date_start         = Sys.Date() - 30,
-           date_stop          = Sys.Date(),
+           date_start         = NULL,
+           date_stop          = NULL,
+           date_preset        = 'last_30d',
            attribution_window = NULL,
            api_version        = getOption("rfacebookstat.api_version"),
            action_report_time = NULL,
            interval           = "day",
+           use_account_attribution_setting = FALSE,
            console_type       = "progressbar",
            request_speed      = "normal",
            username           = getOption("rfacebookstat.username"),
@@ -92,18 +94,59 @@ fbGetMarketingStat <-
       }
     }
     
-    if(interval == "overall"){
-      dates_from <- as.Date(date_start)
-      dates_to   <- as.Date(date_stop)
-    } else {
-      #Check dates interval
-      dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
-      dates_to   <- as.Date(dates_from - 1)
-      dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))}
+    # time_increment
+    if ( interval == "overall" ) {
+      #dates_from <- as.Date(date_start)
+      #dates_to   <- as.Date(date_stop)
+      time_increment <- 'all_days' 
+      
+    } else if ( interval == 'day' ) {
+      
+      time_increment <- 1
+      
+    } else if ( interval == 'weekly' ) {
+      
+      time_increment <- 7
     
-    #Create time interval data frame
-    dates_df   <- data.frame(dates_from = dates_from,
-                             dates_to   = dates_to)
+    }
+    
+    # time_range
+    if ( !is.null(date_start) & !is.null(date_stop) ) {
+      
+      time_range <- str_interp("{\"since\":\"${date_start}\",\"until\":\"${date_stop}\"}")
+      
+    } else {
+      
+      time_range <- NULL
+      
+    }
+    
+    # use_account_attribution_setting
+    if ( use_account_attribution_setting ) {
+      
+      use_account_attribution_setting <- 'true'
+      
+    } else {
+      
+      use_account_attribution_setting <- 'false'
+      
+    }
+    #################################################
+    # OLD VERSION OF CODE, WITH OUT time_range AND  #
+    # time_increment                                #
+    # date: 2020-09-24                              #
+    #################################################
+    
+    # else {
+    #   #Check dates interval
+    #   dates_from <- seq.Date(as.Date(date_start), as.Date(date_stop), by = interval)
+    #   dates_to   <- as.Date(dates_from - 1)
+    #   dates_to   <- c(as.Date(dates_to[-1]),as.Date(date_stop))
+    # 
+    # }
+    # # Create time interval data frame
+    # dates_df   <- data.frame(dates_from = dates_from,
+    #                          dates_to   = dates_to)
     
     #request step pause
     if(request_speed %in% c("fast","normal","slow")){
@@ -118,55 +161,64 @@ fbGetMarketingStat <-
     }
     
     #Check query number
-    if(length(accounts_id) * nrow(dates_df) < 2){
+    if(length(accounts_id) < 2){
       console_type <- "message"  
     }
     
     if(console_type == "progressbar"){      
       #Progress settings
       pb_step <- 1
-      pb <- utils::txtProgressBar(pb_step, length(accounts_id) * nrow(dates_df), style = 3,title = "Loading:", label = "load" )}
+      pb <- utils::txtProgressBar(pb_step, length(accounts_id), style = 3,title = "Loading:", label = "load" )}
     
     #API request counter
     request_counter <- 0
     error_counter   <- 0
     
-    for(i in 1:length(accounts_id)){
+    for(i in 1:length(accounts_id)) {
       
-      #Intervals flatten
-      for(dt in 1:nrow(dates_df)){
+      #################################################
+      # OLD VERSION OF CODE, WITH OUT time_range AND  #
+      # time_increment                                #
+      # date: 2020-09-24                              #
+      #################################################
+      
+      # #Intervals flatten
+      # for(dt in 1:nrow(dates_df)){
         
-        #Create query string
-        QueryString <- str_interp("https://graph.facebook.com/${api_version}/${accounts_id[i]}/insights?")
+      #Create query string
+      QueryString <- str_interp("https://graph.facebook.com/${api_version}/${accounts_id[i]}/insights?")
         
-        #Progresbar step
-        if(console_type == "progressbar"){
-          pb_step <- pb_step + 1
-          utils::setTxtProgressBar(pb, pb_step)}
+      #Progresbar step
+      if(console_type == "progressbar"){
+        pb_step <- pb_step + 1
+        utils::setTxtProgressBar(pb, pb_step)}
         
-        #Send API request
-        answer <- httr::GET(QueryString,
-                            query = list(sort                       = sorting,
-                                         level                      = level,
-                                         breakdowns                 = breakdowns,
-                                         action_breakdowns          = action_breakdowns,
-                                         fields                     = fields,
-                                         filtering                  = filtering,
-                                         action_report_time         = action_report_time,
-                                         action_attribution_windows = attribution_window,
-                                         time_range                 = str_interp("{\"since\":\"${dates_df$dates_from[dt]}\",\"until\":\"${dates_df$dates_to[dt]}\"}"),
-                                         limit                      = 5000,
-                                         access_token               = access_token))
+      #Send API request
+      answer <- httr::GET(QueryString,
+                          query = list(sort                       = sorting,
+                                       level                      = level,
+                                       breakdowns                 = breakdowns,
+                                       action_breakdowns          = action_breakdowns,
+                                       fields                     = fields,
+                                       filtering                  = filtering,
+                                       action_report_time         = action_report_time,
+                                       action_attribution_windows = attribution_window,
+                                       time_increment             = 1,
+                                       time_range                 = time_range,
+                                       date_preset                = date_preset,
+                                       use_account_attribution_setting = use_account_attribution_setting,
+                                       limit                      = 1000,
+                                       access_token               = access_token))
         
-        # attr
-        rq_ids      <- append(rq_ids, setNames(list(status_code(answer)), answer$headers$`x-fb-trace-id`))
-        out_headers <- append(out_headers, setNames(list(headers(answer)), answer$headers$`x-fb-trace-id`))
+      # attr
+      rq_ids      <- append(rq_ids, setNames(list(status_code(answer)), answer$headers$`x-fb-trace-id`))
+      out_headers <- append(out_headers, setNames(list(headers(answer)), answer$headers$`x-fb-trace-id`))
         
-        # check limit
-        queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time  )
+      # check limit
+      queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, pause_time  )
         
-        # reapet query if out of apilimit
-        while ( queryrep ) {
+      # reapet query if out of apilimit
+      while ( queryrep ) {
           
           answer <- httr::GET(QueryString,
                               query = list(sort                       = sorting,
@@ -177,30 +229,34 @@ fbGetMarketingStat <-
                                            filtering                  = filtering,
                                            action_report_time         = action_report_time,
                                            action_attribution_windows = attribution_window,
-                                           time_range                 = str_interp("{\"since\":\"${dates_df$dates_from[dt]}\",\"until\":\"${dates_df$dates_to[dt]}\"}"),
-                                           limit                      = 5000,
+                                           time_increment             = 1,
+                                           time_range                 = time_range,
+                                           date_preset                = date_preset,
+                                           use_account_attribution_setting = use_account_attribution_setting,
+                                           limit                      = 1000,
                                            access_token               = access_token))
           
           # attr
           rq_ids      <- append(rq_ids, setNames(list(status_code(answer)), answer$headers$`x-fb-trace-id`))
           out_headers <- append(out_headers, setNames(list(headers(answer)), answer$headers$`x-fb-trace-id`))
           
-          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
+          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, pause_time )
         }
         
-        request_counter <- request_counter + 1
+      request_counter <- request_counter + 1
         
-        #Parse result
-        answerobject <- httr::content(answer, as = "parsed")
+      #Parse result
+      answerobject <- httr::content(answer, as = "parsed")
         
-        #Request step pause
-        Sys.sleep(pause_time)
+      #Request step pause
+      Sys.sleep(pause_time)
         
-        #Check answer on errors
-        if (!is.null(answerobject$error)) {
-          #Add error in error counter
-          error_counter <- error_counter + 1
-          if (answerobject$error$message == "(#17) User request limit reached") {
+      #Check answer on errors
+      if (!is.null(answerobject$error)) {
+        
+         #Add error in error counter
+         error_counter <- error_counter + 1
+         if (answerobject$error$message == "(#17) User request limit reached") {
             #First attempt
             attempt <- 1
             if(console_type == "message"){
@@ -225,8 +281,11 @@ fbGetMarketingStat <-
                                                filtering          = filtering,
                                                action_report_time = action_report_time,
                                                action_attribution_windows = attribution_window,
-                                               time_range         = str_interp("{\"since\":\"${date_start}\",\"until\":\"${date_stop}\"}"),
-                                               limit              = 5000,
+                                               time_increment     = 1,
+                                               time_range         = time_range,
+                                               date_preset        = date_preset,
+                                               use_account_attribution_setting = use_account_attribution_setting,
+                                               limit              = 1000,
                                                access_token       = access_token))
               
             # attr
@@ -289,29 +348,19 @@ fbGetMarketingStat <-
           answer <- httr::GET(QueryString)
           
           # check limit
-          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
+          queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, pause_time )
           
           # reapet query if out of apilimit
           while ( queryrep ) {
             
-            answer <- httr::GET(QueryString,
-                                query = list(sort               = sorting,
-                                             level              = level,
-                                             breakdowns         = breakdowns,
-                                             action_breakdowns  = action_breakdowns,
-                                             fields             = fields,
-                                             filtering          = filtering,
-                                             action_report_time = action_report_time,
-                                             action_attribution_windows = attribution_window,
-                                             time_range         = str_interp("{\"since\":\"${date_start}\",\"until\":\"${date_stop}\"}"),
-                                             limit              = 5000,
-                                             access_token       = access_token))
+            answer <- httr::GET(QueryString)
             
             # attr
             rq_ids      <- append(rq_ids, setNames(list(status_code(answer)), answer$headers$`x-fb-trace-id`))
             out_headers <- append(out_headers, setNames(list(headers(answer)), answer$headers$`x-fb-trace-id`))
             
-            queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time )
+            queryrep <- fbAPILimitCheck( answer, console_type, pb, pb_step, accounts_id, pause_time )
+            
           }
           
           request_counter <- request_counter + 1
@@ -379,7 +428,6 @@ fbGetMarketingStat <-
           }
         }
       }
-    }
     
     # prepare output
     # unnesting_values
@@ -407,7 +455,7 @@ fbGetMarketingStat <-
     
     if(console_type == "progressbar"){  
       #Progressbar close
-      utils::setTxtProgressBar(pb, length(accounts_id) * nrow(dates_df))
+      utils::setTxtProgressBar(pb, length(accounts_id))
       close(pb)}
     
     #Out messages

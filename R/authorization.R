@@ -193,7 +193,8 @@ fbAuth <- function(username    = getOption("rfacebookstat.username"),
     }
     
     # set option
-    options( rfacebookstat.access_token = fb_token$access_tokn)
+    options( rfacebookstat.access_token = fb_token$access_tokn ,
+             rfacebookstat.username     = username)
     return(fb_token)
   }
 }

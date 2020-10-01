@@ -49,7 +49,7 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
     
     # send request
     answer  <- GET(url, 
-                   query = list(fields       = "id,name,account_id,account_status,amount_spent,balance,business_name,media_agency,currency,owner,partner,age,timezone_name,disable_reason",
+                   query = list(fields       = "id,name,account_id,account_status,amount_spent,created_time,balance,business_name,media_agency,currency,owner,partner,age,timezone_name,disable_reason",
                                 limit        = 1000,
                                 access_token = access_token))
 

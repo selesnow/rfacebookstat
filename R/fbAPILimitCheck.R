@@ -4,7 +4,7 @@ print.fblimits <- function(x) {
 }
 
 
-fbAPILimitCheck <- function( api_answer, console_type, pb, pb_step, accounts_id, dates_df, pause_time ) {
+fbAPILimitCheck <- function( api_answer, console_type, pb, pb_step, accounts_id, pause_time ) {
   
   rep_query <- FALSE
   
@@ -45,7 +45,7 @@ fbAPILimitCheck <- function( api_answer, console_type, pb, pb_step, accounts_id,
         
         if ( exists("console_type") ) {
           if (console_type == "progressbar"){
-            pb <- txtProgressBar(pb_step, length(accounts_id) * nrow(dates_df), style = 3)
+            pb <- txtProgressBar(pb_step, length(accounts_id), style = 3)
             utils::setTxtProgressBar(pb, pb_step)
           }
       }
