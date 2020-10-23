@@ -141,3 +141,21 @@ fbParserAdConversions <- function(x) {
   )
   
 }
+
+# business users parser
+# conversions parser
+fbParserBMUsers <- function(x, user_type) {
+  
+  return(
+    list(id            = x$id,
+         name          = x$name,
+         business_id   = x$business$id,
+         business_name = x$business$name,
+         role          = x$role,
+         first_name    = x$first_name,
+         last_name     = x$last_name,
+         email         = x$email,
+         user_type     = user_type)
+  )
+  
+}
