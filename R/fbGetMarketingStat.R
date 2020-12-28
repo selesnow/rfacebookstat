@@ -1,4 +1,19 @@
-fbGetMarketingStat <-
+
+# fetchBy date range ------------------------------------------------------
+fbDateRanges <- function(start, end, by) {
+  start <- as.Date(start)
+  end <- as.Date(end)
+  by <- tolower(by)
+  by <- match.arg(by, c("day", "week", "month", "quarter", "year"))
+  dates <- seq.Date(start, end, by = by)
+  res <- cbind(start = as.character(dates),
+               end = as.character(c(dates[-1] - 1, end)))
+  as.data.frame(res, stringsAsFactors = F)
+}
+
+
+# main fun - helper -------------------------------------------------------
+fbGetMarketingStatHelper <-
   function(accounts_id        = getOption("rfacebookstat.accounts_id"),
            sorting            = NULL,
            level              = "account",
@@ -16,6 +31,7 @@ fbGetMarketingStat <-
            use_account_attribution_setting = FALSE,
            console_type       = "progressbar",
            request_speed      = "normal",
+           fetch_by           = NULL,
            username           = getOption("rfacebookstat.username"),
            token_path         = fbTokenPath(),
            access_token       = getOption("rfacebookstat.access_token")){
@@ -203,7 +219,7 @@ fbGetMarketingStat <-
                                        filtering                  = filtering,
                                        action_report_time         = action_report_time,
                                        action_attribution_windows = attribution_window,
-                                       time_increment             = 1,
+                                       time_increment             = time_increment,
                                        time_range                 = time_range,
                                        date_preset                = date_preset,
                                        use_account_attribution_setting = use_account_attribution_setting,
@@ -260,13 +276,13 @@ fbGetMarketingStat <-
             #First attempt
             attempt <- 1
             if(console_type == "message"){
-              packageStartupMessage("WARNING: User request limit reached", appendLF = T)
-              packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
-              packageStartupMessage("Wait few minutes.", appendLF = T)}
+              message("WARNING: User request limit reached", appendLF = T)
+              message("Apply the mechanism for circumvention of the limit", appendLF = T)
+              message("Wait few minutes.", appendLF = T)}
             #Start cycle
             while(attempt <= 6){
               if(console_type == "message"){
-                packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)}
+                message(paste0("attempt number: ",attempt), appendLF = T)}
               
               #Wait one minute and repaete
               Sys.sleep(61)
@@ -298,14 +314,14 @@ fbGetMarketingStat <-
               #If many limits up pause time
               if(error_counter >= 3 & pause_time < 5){
                 if(console_type == "message"){
-                  packageStartupMessage("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
+                  message("WARNING: More 3 limits error, magnified pause time on 1.5", appendLF = T)}
                 pause_time <- pause_time * 1.5
               }
               
               #Check new answer
               if(is.null(answerobject$error$message)) {
                 if(console_type == "message"){
-                  packageStartupMessage("Problem fixed. Continue data collection", appendLF = T)}
+                  message("Problem fixed. Continue data collection", appendLF = T)}
                 break}
               #Add error in error counter
               error_counter <- error_counter + 1
@@ -377,13 +393,13 @@ fbGetMarketingStat <-
               #First attempt
               attempt <- 1
               if(console_type == "message"){
-                packageStartupMessage("WARNING: User request limit reached", appendLF = T)
-                packageStartupMessage("Apply the mechanism for circumvention of the limit", appendLF = T)
-                packageStartupMessage("Wait few minutes.", appendLF = T)}
+                message("WARNING: User request limit reached", appendLF = T)
+                message("Apply the mechanism for circumvention of the limit", appendLF = T)
+                message("Wait few minutes.", appendLF = T)}
               #Start cycle
               while(attempt <= 5){
                 if(console_type == "message"){
-                  packageStartupMessage(paste0("attempt number: ",attempt), appendLF = T)}
+                  message(paste0("attempt number: ",attempt), appendLF = T)}
                 
                 #Wait one minute and repaete
                 Sys.sleep(61)
@@ -396,7 +412,7 @@ fbGetMarketingStat <-
                 #Check new answer
                 if(is.null(answerobject$error$message)) {
                   if(console_type == "message"){
-                    packageStartupMessage("Problem fixed. Continue data collection", appendLF = T)}
+                    message("Problem fixed. Continue data collection", appendLF = T)}
                   break}
                 #Add error in error counter
                 error_counter <- error_counter + 1
@@ -468,4 +484,119 @@ fbGetMarketingStat <-
     packageStartupMessage(paste0("Total processing time ",round(difftime(Sys.time(), start_time, units = "secs"), 0) ," seconds."), appendLF = T)
     packageStartupMessage("-----------------------------------------------------", appendLF = T)
     return(result)
+  }
+
+
+# cycle_fun ---------------------------------------------------------------
+fbGetMarketingStat <-
+  function(accounts_id        = getOption("rfacebookstat.accounts_id"),
+           sorting            = NULL,
+           level              = "account",
+           breakdowns         = NULL,
+           action_breakdowns  = NULL,
+           fields             = "account_id,campaign_name,impressions,clicks,reach,spend",
+           filtering          = NULL,
+           date_start         = NULL,
+           date_stop          = NULL,
+           date_preset        = 'last_30d',
+           attribution_window = NULL,
+           api_version        = getOption("rfacebookstat.api_version"),
+           action_report_time = NULL,
+           interval           = "day",
+           use_account_attribution_setting = FALSE,
+           console_type       = "progressbar",
+           request_speed      = "normal",
+           fetch_by           = NULL,
+           username           = getOption("rfacebookstat.username"),
+           token_path         = fbTokenPath(),
+           access_token       = getOption("rfacebookstat.access_token")) {
+    
+    
+    # FetchBy
+    if ( !is.null(fetch_by) ) {
+      
+      #dates df
+      dates <- fbDateRanges(date_start, date_stop, fetch_by)
+      n <- nrow(dates)
+      message("Batch processing mode is enabled.")
+      message(paste0("Fetching data by ", tolower(fetch_by), ": from ", as.Date(date_start), " to ", as.Date(date_stop), "."))
+      console_type <- "message" 
+      
+    } else {
+      #dates df
+      dates <- as.data.frame(list(date_start, date_stop), col.names = c("start","end"), stringsAsFactors = F)
+      n <- 1
+    }
+    
+    if ( n > 1 ) {
+      
+      # apply fetching
+      result <- pblapply(1:n,
+                function(X) {
+                  suppressMessages( {
+                  suppressPackageStartupMessages( {
+                   fbGetMarketingStatHelper( 
+                       accounts_id        = accounts_id,
+                       sorting            = sorting,
+                       level              = level,
+                       breakdowns         = breakdowns,
+                       action_breakdowns  = action_breakdowns,
+                       fields             = fields,
+                       filtering          = filtering,
+                       date_start         = dates$start[X],
+                       date_stop          = dates$end[X],
+                       date_preset        = 'last_30d',
+                       attribution_window = attribution_window,
+                       api_version        = api_version,
+                       action_report_time = action_report_time,
+                       interval           = interval,
+                       use_account_attribution_setting = use_account_attribution_setting,
+                       console_type       = console_type,
+                       request_speed      = request_speed,
+                       fetch_by           = fetch_by,
+                       username           = username,
+                       token_path         = token_path,
+                       access_token       = access_token
+                       )
+                }
+                )
+          }
+          )
+      }
+      )
+      
+    } else {
+      
+      # simple request
+      result <- fbGetMarketingStatHelper( 
+                      accounts_id        = accounts_id,
+                      sorting            = sorting,
+                      level              = level,
+                      breakdowns         = breakdowns,
+                      action_breakdowns  = action_breakdowns,
+                      fields             = fields,
+                      filtering          = filtering,
+                      date_start         = dates$start,
+                      date_stop          = dates$end,
+                      date_preset        = 'last_30d',
+                      attribution_window = attribution_window,
+                      api_version        = api_version,
+                      action_report_time = action_report_time,
+                      interval           = interval,
+                      use_account_attribution_setting = use_account_attribution_setting,
+                      console_type       = console_type,
+                      request_speed      = request_speed,
+                      fetch_by           = fetch_by,
+                      username           = username,
+                      token_path         = token_path,
+                      access_token       = access_token
+                    )
+                      
+    }
+    
+    # collect all data
+    result <- bind_rows(result)
+
+    # return 
+    return( result )
   }
