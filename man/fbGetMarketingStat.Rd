@@ -5,19 +5,20 @@
 \description{fbGetMarketingStat is main function of rfacebookstat package, intended for load statiscit data by your ad, adset, campaign or account}
 \usage{
 fbGetMarketingStat(
-    accounts_id = getOption("rfacebookstat.accounts_id"), 
-    sorting = NULL, level = "account", breakdowns = NULL, 
+  accounts_id = getOption("rfacebookstat.accounts_id"), 
+  sorting = NULL, level = "account", breakdowns = NULL, 
 	action_breakdowns = NULL, 
 	fields = "account_id,campaign_name,impressions,clicks,reach,spend",
-    filtering = NULL, date_start = NULL,
-    date_stop = NULL, date_preset = "last_30d",
-    attribution_window = NULL,
+  filtering = NULL, date_start = NULL,
+  date_stop = NULL, date_preset = "last_30d",
+  attribution_window = NULL,
 	api_version = getOption("rfacebookstat.api_version"), 
 	action_report_time = NULL, interval = "day", 
 	use_account_attribution_setting = FALSE,
 	console_type = "progressbar", request_speed = "normal",
-    username = getOption("rfacebookstat.username"),
-    token_path = fbTokenPath(),	
+	fetch_by = NULL,
+  username = getOption("rfacebookstat.username"),
+  token_path = fbTokenPath(),	
 	access_token = getOption("rfacebookstat.access_token"))
 }
 \arguments{
@@ -33,6 +34,7 @@ fbGetMarketingStat(
   \item{date_preset}{Represents a relative time range. This field is ignored if time_range or time_ranges is specified. One of: today, yesterday, this_month, last_month, this_quarter, lifetime, last_3d, last_7d, last_14d, last_28d, last_30d, last_90d, last_week_mon_sun, last_week_sun_sat, last_quarter, last_year, this_week_mon_today, this_week_sun_today, this_year}
   \item{attribution_window}{The conversion attribution window provides timeframes that define when we attribute an event to an ad on Facebook. See Attribution Window sections.}
   \item{request_speed}{Speed beetwen API request, "normal", "fast" or "slow", depend of you API access level.}
+  \item{fetch_by}{Character, split your requst by time interval, one of: day, week, month, quarter, year.}
   \item{api_version}{Current Facebook API version.}
   \item{action_report_time}{Determines the report time of action stats.}
   \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"}
