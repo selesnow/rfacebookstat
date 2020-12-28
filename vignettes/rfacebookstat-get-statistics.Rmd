@@ -32,11 +32,14 @@ knitr::opts_chunk$set(
 * *filtering* - Текстовая строка или вектор. Фильтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.
 * *date_start* - Дата начала отчётного периода.
 * *date_stop* - Дата завершения рабочего отчётного периода.
+* *date_preset* - С попомщью этого аргумента, вы можете использовать преднастройки для запроса данных за относительный период, например за прошлый месяц. Допустимые значения: today, yesterday, this_month, last_month, this_quarter, lifetime, last_3d, last_7d, last_14d, last_28d, last_30d, last_90d, last_week_mon_sun, last_week_sun_sat, last_quarter, last_year, this_week_mon_today, this_week_sun_today, this_year
 * *request_speed* - Скорость отправки запросов, возможные значения "normal", "fast" или "slow". Так же можно задать числовое значение, которое будет задавать количество секунд в паузе между отправкой запросов к API.
+* *fetch_by* - позволяет разбить большой запрос, за длительный период, на части по неделям, месяцам, кварталам и годам. Приннимает одно из следующих значений: "day", "week", "month", "quarter", "year".
 * *api_version* - Версия API к которой будет отправлен запрос, по умолчанию берётся значение из опции *rfacebookstat.api_version*.
 * *action_report_time* - Допустимые значения: impression, conversion. Определяет отчет о времени действия статистики. Например, если человек видел объявление 1 января, но совершил конверсию 2 января, при запросе API с `action_report_time = "impression"`, вы увидите конверсию 1 января. Когда вы запросите API с помощью `action_report_time = "conversion"`, вы увидите преобразование 2 января.
 * *attribution_window* - Окна атрибуции
-* *interval* - Группировка по временному интервалу, возможные значения: day, week, month, quarter, year.
+* *interval* - Группировка по временному интервалу, возможные значения: day, all_days, overall, monthly, weekly, либо вы можете числом указать количество дней, и результат вашего запроса будет сгруппирован такими временными отрезками.
+* *use_account_attribution_setting* - Если для этого параметра установлено значение true, результаты ваших объявлений будут отображаться с использованием настроек атрибуции, определенных для рекламного аккаунта.
 * *console_type* - Тип выводимых в консоль данных, возможные значения progressbar, message.
 * *username* - Логин на Facebook под которым вы проходили авторизацию, используется для хранения учётных данных для работы с API.
 * *token_path* - Путь к папке в которой хранится файл с учётными данными на Facebook, которые вы получили при авторизации.
@@ -262,7 +265,7 @@ fb_data_action_breakdowns <- fbGetMarketingStat(
 
 * [Об окнах атрибуции в Ads Manager](https://www.facebook.com/business/help/2198119873776795?id=768381033531365)
 * [API Insights / Статистика / Окна атрибуции](https://developers.facebook.com/docs/marketing-api/insights/#sample)
-* [Система правил для рекламы](https://developers.facebook.com/docs/marketing-api/ad-rules-getting-started/)
+* [Система правил для рекламы](https://developers.facebook.com/docs/marketing-api/ad-rules)
 
 ## Фильтрация данных
 Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент `filtering`.
@@ -350,7 +353,7 @@ JSON: `[{"field":"publisher_platform","operator":"IN","value":["instagram","face
 JSON: `[{"field":"clicks","operator":"LESS_THAN","value":"500"},{"field":"impressions","operator":"GREATER_THAN","value":"1000"}]`
 
 ## Лимиты API и аргумент request_speed
-По использованию аргумента `request_speed` есть целая [статья](https://bit.ly/2JS8hon), но я всё же немного опишу зачем данный аргумент нужен.
+По использованию аргумента `request_speed` есть целая [статья](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/), но я всё же немного опишу зачем данный аргумент нужен.
 
 В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/docs/marketing-api/access) API Facebook):
 
