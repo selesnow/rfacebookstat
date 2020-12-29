@@ -528,6 +528,7 @@ fbGetMarketingStat <-
       n <- 1
     }
     
+    
     if ( n > 1 ) {
       
       # apply fetching
@@ -545,7 +546,7 @@ fbGetMarketingStat <-
                        filtering          = filtering,
                        date_start         = dates$start[X],
                        date_stop          = dates$end[X],
-                       date_preset        = 'last_30d',
+                       date_preset        = date_preset,
                        attribution_window = attribution_window,
                        api_version        = api_version,
                        action_report_time = action_report_time,
@@ -578,7 +579,7 @@ fbGetMarketingStat <-
                       filtering          = filtering,
                       date_start         = dates$start,
                       date_stop          = dates$end,
-                      date_preset        = 'last_30d',
+                      date_preset        = date_preset,
                       attribution_window = attribution_window,
                       api_version        = api_version,
                       action_report_time = action_report_time,
