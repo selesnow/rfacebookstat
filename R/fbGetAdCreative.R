@@ -87,8 +87,8 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
       url <- str_interp("https://graph.facebook.com/${api_version}/${account_id}/adcreatives")
     
       api_answer  <- GET(url, 
-                         query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,object_story_spec,object_id,object_type,video_id,account_id",
-                                      limit        = 500,
+                         query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,image_hash,object_story_spec,object_id,object_type,video_id,account_id",
+                                      limit        = 150,
                                       filtering    = filtering,
                                       access_token = access_token))
       
@@ -100,7 +100,7 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
       
       if(!is.null(pars_answer$error)) {
         error <- pars_answer$error
-        message("\n",pars_answer$error,"\n")
+        stop("\n",pars_answer$error,"\n")
       }
       
       # pars
@@ -113,6 +113,14 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
         api_answer  <- GET(pars_answer$paging$`next`)
         pars_answer <- content(api_answer, as = "parsed")
         
+        if(!is.null(pars_answer$error)) {
+          error <- pars_answer$error
+          stop("\n",pars_answer$error,"\n")
+        }
+        
+        # pause between query
+        Sys.sleep(0.2)  
+        
         # pars
         res <- append(res, 
                       lapply( pars_answer$data, fbParserAdCreatives ))
@@ -120,7 +128,7 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
       }
       
       # pause between query
-      if (pgbar) Sys.sleep(0.1)  
+      Sys.sleep(0.2)  
       
       # set progress bar
       if( pgbar ) {

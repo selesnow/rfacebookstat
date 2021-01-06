@@ -71,7 +71,8 @@ fbParserAdCreatives <- function(x) {
       video_id         = fbNullReplacer(x$object_story_spec$video_data$video_id), 
       attachment_style = fbNullReplacer(x$object_story_spec$link_data$attachment_style), 
       description      = fbNullReplacer(x$object_story_spec$link_data$description), 
-      image_hash       = fbNullReplacer(x$object_story_spec[[data_type_name]]$image_hash)
+      image_hash       = fbNullReplacer(x$object_story_spec[[data_type_name]]$image_hash),
+      image_url        = fbNullReplacer(x$image_url)
     )
   )
   
