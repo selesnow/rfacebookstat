@@ -120,11 +120,22 @@ fbGetMarketingStatHelper <-
       
       time_increment <- 1
       
-    } else if ( interval == 'weekly' ) {
+    } else if ( interval == 'week' ) {
       
       time_increment <- 7
     
     }
+else if ( interval == 'month' ) {
+      
+      time_increment <- 30
+    
+    }
+	  else if ( interval == 'quarter' ) {
+      
+      time_increment <- 90
+    
+    }
+	  
     
     # time_range
     if ( !is.null(date_start) & !is.null(date_stop) ) {
