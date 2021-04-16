@@ -46,9 +46,9 @@ library(googleAnalyticsR)
 
 # load cost data
 cost_data <- fbGetCostData(accounts_id = "act_11111",
-                           date_from = "2020-05-10", 
-                           date_to   = "2020-05-14",
-                           username  = "fb_login")
+                           date_start  = "2020-05-10", 
+                           date_stop   = "2020-05-14",
+                           username    = "fb_login")
                               
 # upload into GA source
 ga_custom_upload_file(accountId          = xxxx, 
