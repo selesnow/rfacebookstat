@@ -260,3 +260,31 @@ fbRevokeAppPrivilegies <-
    function( app_id = getOption("rfacebookstat.app_id") ) {
   browseURL(str_interp("https://www.facebook.com/settings/?tab=business_tools&initial_open_app_id=${app_id}"))
 }
+
+# get all logins
+fbGetLogins <- function(token_path = fbTokenPath(), set_login = TRUE) {
+
+  files <- dir(token_path, pattern = "\\.rfb_auth\\.rds$")
+  logins <- gsub("\\.rfb_auth\\.rds$", replacement = "", files)
+  
+  if (length(files) == 0) {
+    message("You does't have any authorize login.")
+    return(NULL)
+  }
+  
+  for (i in 1:length(logins)) {
+    cat(i, ":\t", logins[i], "\n")
+  }
+  
+  if (set_login) {
+    len <- length(logins)
+    login_number <- readline(str_glue("Choose login (enter number from 1 to {len}): "))
+    login <- logins[as.integer(login_number)]
+    options(rfacebookstat.username = login)
+    message(str_glue("Set {login} as default session login"))
+    return(login)
+  }
+  
+  return(logins)
+  
+}

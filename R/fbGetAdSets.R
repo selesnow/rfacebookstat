@@ -73,7 +73,12 @@ fbGetAdSets <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
   
   pars_answer <- content(api_answer, as = "parsed")
   
-  tempData     <- map_df(pars_answer$data, flatten)
+  if(!is.null(pars_answer$error)) {
+    error <- pars_answer$error
+    stop(pars_answer$error)
+  }
+
+  tempData     <- map_df(pars_answer$data, fbParserAdsets)
   result       <- bind_rows(result, tempData)
 
   # paging
@@ -82,7 +87,7 @@ fbGetAdSets <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
     api_answer  <- GET(pars_answer$paging$`next`)
     pars_answer <- content(api_answer, as = "parsed")
     
-    tempData     <- map_df(pars_answer$data, flatten)
+    tempData     <- map_df(pars_answer$data, fbParserAdsets)
     result       <- bind_rows(result, tempData)
   }
    

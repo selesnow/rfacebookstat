@@ -27,7 +27,51 @@ fbParserAds <- function(x) {
   
 }
 
+# pasing adsets
+fbParserAdsets <- function(x) {
+  
+  return(
+    list(id                = x$id,
+         name              = x$name,
+         account_id        = x$account_id,
+         bid_amount        = fbNullReplacer(x$bid_amount),
+         bid_strategy      = fbNullReplacer(x$bid_strategy),
+         billing_event     = fbNullReplacer(x$billing_event),
+         budget_remaining  = fbNullReplacer(x$budget_remaining) ,
+         campaign_id       = x$campaign_id ,
+         configured_status = x$configured_status,
+         effective_status  = x$effective_status,
+         status            = x$status,
+         optimization_goal = fbNullReplacer(x$optimization_goal),
+         pacing_type       = paste0(x$pacing_type, collapse = ", "),
+         destination_type  = fbNullReplacer(x$destination_type),
+         daily_budget      = fbNullReplacer(x$daily_budget),
+         created_time      = x$created_time,
+         source_adset_id   = fbNullReplacer(x$source_adset_id)
+         )
+  )
+  
+}
 
+# pasing pages
+fbParserPages <- function(x) {
+  
+  return(
+    list(id                = x$id,
+         name              = fbNullReplacer(x$name),
+         username          = fbNullReplacer(x$username),
+         link              = x$link,
+         general_info      = fbNullReplacer(x$general_info),
+         is_owned          = x$is_owned,
+         is_published      = x$is_published,
+         about             = fbNullReplacer(x$about),
+         business_id       = fbNullReplacer(x$business$id),
+         business_name     = fbNullReplacer(x$business$name),
+         category          = fbNullReplacer(x$category)
+         )
+    )
+  
+}
 
 # pasing ad creatives
 fbParserAdCreatives <- function(x) {
@@ -86,10 +130,11 @@ fbParserBM <- function(x) {
          name                     = x$name,
          primary_page_id          = x$primary_page$id,
          primary_page_name        = x$primary_page$name,
-         created_by_id            = x$created_by$id,
-         created_by_name          = x$created_by$name,
-         created_by_business_id   = x$created_by$business$id,
-         created_by_business_name = x$created_by$business$name)
+         created_by_id            = fbNullReplacer(x$created_by$id),
+         created_by_name          = fbNullReplacer(x$created_by$name),
+         created_by_business_id   = fbNullReplacer(x$created_by$business$id),
+         created_by_business_name = fbNullReplacer(x$created_by$business$name)
+  )
   )
   
 }

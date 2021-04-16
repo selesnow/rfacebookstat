@@ -68,7 +68,8 @@ function(accounts_id  = getOption("rfacebookstat.accounts_id"),
 	
     answerobject <- content(answer, as = "parsed")
 	
-    tempData     <- map_df(answerobject$data, flatten)
+    tempData     <- map_df(answerobject$data, fbParserPages) %>%
+                    mutate(account_id = account_id)
     
     # add info about account
     if ( nrow(tempData) > 0 && length(accounts_id) > 1 ) {
