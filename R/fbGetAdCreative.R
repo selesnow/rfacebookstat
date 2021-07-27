@@ -3,7 +3,8 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
                             api_version  = getOption("rfacebookstat.api_version"),
                             username     = getOption("rfacebookstat.username"),
                             token_path   = fbTokenPath(),
-                            access_token = getOption("rfacebookstat.access_token")){
+                            access_token = getOption("rfacebookstat.access_token"),
+                            limit        = 50){
 	
   # auth 
   if ( is.null(access_token) ) {    
@@ -88,7 +89,7 @@ fbGetAdCreative <- function(accounts_id  = getOption("rfacebookstat.accounts_id"
     
       api_answer  <- GET(url, 
                          query = list(fields       = "ad_id,name,title,body,status,adlabels,call_to_action_type,link_url,link_destination_display_url,template_url,url_tags,thumbnail_url,image_url,image_hash,object_story_spec,object_id,object_type,video_id,account_id",
-                                      limit        = 150,
+                                      limit        = limit,
                                       filtering    = filtering,
                                       access_token = access_token))
       
