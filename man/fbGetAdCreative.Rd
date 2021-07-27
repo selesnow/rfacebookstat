@@ -10,7 +10,8 @@ fbGetAdCreative(
         api_version = getOption("rfacebookstat.api_version"), 
 				username    = getOption("rfacebookstat.username"),
 	      token_path  = fbTokenPath(),
-				access_token = getOption("rfacebookstat.access_token"))
+				access_token = getOption("rfacebookstat.access_token"),
+				limit        = 50)
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
@@ -19,6 +20,7 @@ fbGetAdCreative(
   \item{username}{your username on Facebook}
   \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
+  \item{limit}{Number of rows per API call}
 }
 
 \value{
