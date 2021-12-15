@@ -124,6 +124,10 @@ fbGetMarketingStatHelper <-
       
       time_increment <- 7
     
+    } else {
+      
+      time_increment <- interval
+      
     }
     
     # time_range

@@ -1,3 +1,11 @@
+# rfacebookstat 2.5.0
+
+Дата релиза: 2021-12-15
+
+* Пакет переведён на работу с API v12.0
+* Исправлена работа аргумента interval в функции `fbGetMarketingStat()`.
+* В функции `fbAuth()` и `fbGetToken()` отдельным аргументом выделен scopes, который позволяет по необходимости исключать неиспользуемые разрешения, например business_management. Более подробно о разрешениях можно почитать в [справоке](https://developers.facebook.com/docs/permissions/reference/).
+
 # rfacebookstat 2.4.0
 
 Дата релиза: 2021-07-27

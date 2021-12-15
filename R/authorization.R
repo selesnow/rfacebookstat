@@ -1,9 +1,12 @@
 # authorization
 
 fbGetToken <-
-  function(app_id = NULL){
+  function(
+    app_id = NULL,
+    scopes = c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile") ){
     if(is.null(app_id)) stop("Enter your app id.")
-    utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=ads_read,business_management,pages_manage_ads,ads_management,public_profile"))
+    scopes <- paste(scopes, collapse = ",")
+    utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=",scopes))
     token <- readline(prompt = "Enter your token: ")
     options(rfacebookstat.access_token = token)
     return(token)
@@ -71,6 +74,7 @@ fbAuth <- function(username    = getOption("rfacebookstat.username"),
                    app_id      = getOption("rfacebookstat.app_id"), 
                    app_secret  = getOption("rfacebookstat.app_secret"), 
                    token_path  = fbTokenPath(),
+                   scopes      =  c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile"),
                    reauth      = FALSE,
                    skip_option = FALSE) {
   
@@ -151,7 +155,7 @@ fbAuth <- function(username    = getOption("rfacebookstat.username"),
     }
     
     # get shorttime token
-    st_token <- fbGetToken(app_id)
+    st_token <- fbGetToken(app_id, scopes)
     
     # change for longtime
     lt_token <- fbGetLongTimeToken(client_id         = app_id,

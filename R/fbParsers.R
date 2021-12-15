@@ -78,14 +78,12 @@ fbParserAdCreatives <- function(x) {
   
   if ( ! is.null(x$object_type) ) {
     if ( x$object_type == "VIDEO" ) {
-      
       data_type_name <- "video_data"
-      
     } else {
-      
       data_type_name <- "link_data"
-      
     }
+  } else {
+      data_type_name <- "unknown"
   }
   
   return(
