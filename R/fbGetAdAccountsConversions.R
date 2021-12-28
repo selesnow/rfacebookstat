@@ -67,7 +67,7 @@ fbGetAdAccountsConversions <- function(accounts_id  = getOption("rfacebookstat.a
     
     answer  <- GET(url, 
                    query = list(fields       = "d,name,rule,aggregation_rule,creation_time,custom_event_type,default_conversion_value,description,event_source_type,first_fired_time,is_archived,is_unavailable,last_fired_time,pixel,retention_days,account_id,business",
-                                limit        = 5000,
+                                limit        = 50,
                                 access_token = access_token))
   
     # attr
