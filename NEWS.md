@@ -1,3 +1,7 @@
+# rfacebookstat (development version)
+
+* Доработал парсинг ответа функцией `fbGetMarketingStat()`, теперь она так же парсит поле conversions.
+
 # rfacebookstat 2.5.0
 
 Дата релиза: 2021-12-15
