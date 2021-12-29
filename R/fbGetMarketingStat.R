@@ -339,10 +339,10 @@ fbGetMarketingStatHelper <-
             error <- answerobject$error
             stop(answerobject$error$message)}
           
-        }
-        
+      }
+      
         # action breakdown handing
-        if ( any(c("actions", "action_values", "conversions", "conversion_values")  %in% unlist(str_split(fields, ","))) ) {
+        if ( any(c("actions", "action_values", "conversions", "conversion_values") %in% unlist(str_split(fields, ","))) ) {
           
           # switch functions
           class(answerobject) <- answer_class
