@@ -1,6 +1,7 @@
 # rfacebookstat (development version)
 
 * Доработал парсинг ответа функцией `fbGetMarketingStat()`, теперь она так же парсит поле conversions.
+* В функции `fbGetAdAccounts()` снижен лимит с 1000 до 300 строк за один запрос, связано с ошибкой `Please reduce the amount of data you're asking for, then retry your request`.
 
 # rfacebookstat 2.5.0
 
