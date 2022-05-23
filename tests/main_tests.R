@@ -23,8 +23,9 @@ simple_stat <- fbGetMarketingStat(
   test_accs, 
   date_start = Sys.Date() - 12, 
   date_stop = Sys.Date() - 1)
+
 action_stat <- fbGetMarketingStat(
-  test_accs,
+  test_accs[3],
   level  = "adset",
   fields = "campaign_name,
             adset_name,
@@ -37,7 +38,7 @@ action_stat <- fbGetMarketingStat(
   date_preset = 'last_7d', 
   breakdowns  = 'publisher_platform',
   attribution_window = c('1d_view','7d_click'),
-  action_breakdowns = "action_type"
+  action_breakdowns = "action_type",
 )
 
 # auth tets
