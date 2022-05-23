@@ -1,7 +1,10 @@
-# rfacebookstat (development version)
+# rfacebookstat 2.6.0
+
+Дата релиза: 2022-05-23
 
 * Доработал парсинг ответа функцией `fbGetMarketingStat()`, теперь она так же парсит поле conversions.
 * В функции `fbGetAdAccounts()` снижен лимит с 1000 до 300 строк за один запрос, связано с ошибкой `Please reduce the amount of data you're asking for, then retry your request`.
+* Пакет переведён на работу с Facebook Marketing API v13.0.
 
 # rfacebookstat 2.5.0
 

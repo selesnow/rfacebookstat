@@ -37,7 +37,7 @@ fbAction.default <- function( obj ) {
                  bind_rows() %>%
                  pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                  unite(action_type, matches("action\\_.*" ), remove = T) %>%
-                 replace_na(list(val = 0)) %>%
+                 replace_na(list(val = "0")) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) %>%
                  bind_cols(other_col, .)
                
@@ -51,7 +51,7 @@ fbAction.default <- function( obj ) {
                  bind_rows() %>%
                  pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                  unite(action_type, matches("action\\_.*" ), remove = T) %>%
-                 replace_na(list(val = 0)) %>%
+                 replace_na(list(val = "0")) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0"))
                
                if ( exists("action_df") ) {
@@ -73,7 +73,7 @@ fbAction.default <- function( obj ) {
                  pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                  mutate(action_type = paste0("action_values.", action_type)) %>%
                  unite(action_type, matches("action\\_.*" ), remove = T) %>%
-                 replace_na(list(val = 0)) %>%
+                 replace_na(list(val = "0")) %>%
                  pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
                
                
@@ -97,7 +97,7 @@ fbAction.default <- function( obj ) {
                pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
                mutate(action_type = paste0("video_thruplay", action_type)) %>%
                unite(action_type, matches("action\\_.*" ), remove = T) %>%
-               replace_na(list(val = 0)) %>%
+               replace_na(list(val = "0")) %>%
                pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0")) 
              
              if ( exists("action_df") ) {

@@ -1,6 +1,7 @@
 # History files
 .Rhistory
 .Rapp.history
+*.rfb_auth.rds
 
 # Session Data files
 .RData

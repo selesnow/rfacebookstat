@@ -3,7 +3,10 @@
 fbGetToken <-
   function(
     app_id = NULL,
-    scopes = c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile") ){
+    scopes = c("ads_read", "business_management", "pages_manage_ads", "ads_management", "public_profile") 
+    ) 
+  {
+    
     if(is.null(app_id)) stop("Enter your app id.")
     scopes <- paste(scopes, collapse = ",")
     utils::browseURL(paste0("https://www.facebook.com/dialog/oauth?client_id=",app_id  ,"&display=popup&redirect_uri=https://selesnow.github.io/rfacebookstat/getToken/get_token.html&response_type=token&scope=",scopes))
