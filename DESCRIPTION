@@ -31,3 +31,4 @@ Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: ru
+RoxygenNote: 7.1.2

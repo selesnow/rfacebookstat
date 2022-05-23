@@ -1,5 +1,18 @@
 # authorization
 
+#' Get API facebook token.
+#' @description Get API facebook token for access to facebook ads API.
+#'
+#' @param app_id ID of your Facebook App
+#' @param scopes Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions/reference/}{docmentation}
+#'
+#' @return API token
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' tkn <- fbGetToken()
+#' }
 fbGetToken <-
   function(
     app_id = NULL,

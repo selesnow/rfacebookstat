@@ -1,3 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .*.rfb_auth.rds
+tests
+_config.yml
+^getToken$
+index.md

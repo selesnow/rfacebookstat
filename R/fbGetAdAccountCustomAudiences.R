@@ -21,7 +21,7 @@ fbGetAdAccountCustomAudiences <-
       }
     }
     
-    if ( class(access_token) == "fb_access_token" ) {
+    if ( inherits(access_token, "fb_access_token") ) {
       
       access_token <- access_token$access_token
       

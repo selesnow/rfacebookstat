@@ -14,7 +14,7 @@ fbGetBusinessManagers <- function(api_version  = getOption("rfacebookstat.api_ve
     }
   }
   
-  if ( class(access_token) == "fb_access_token" ) {
+  if ( inherits(access_token, "fb_access_token") ) {
     
     access_token <- access_token$access_token
     
