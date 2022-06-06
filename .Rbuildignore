@@ -10,3 +10,4 @@ index.md
 .RData
 .Rhisroty
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
