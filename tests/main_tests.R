@@ -14,7 +14,7 @@ creo        <- fbGetAdCreative(test_accs)
 apps        <- fbGetApps()
 pages       <- fbGetPages(test_accs)
 videos      <- fbGetAdVideos(my_acs$id[4:10])
-conversions <- fbGetAdAccountsConversions()
+conversions <- fbGetAdAccountsConversions(test_accs)
 # users
 bm_users         <- fbGetBusinessManagersUsers(bm$id[1])
 bm_user_accounts <- fbGetBusinessUserAdAccounts(bm_users$id[7], business_id = bm$id[1])
@@ -25,7 +25,7 @@ simple_stat <- fbGetMarketingStat(
   date_stop = Sys.Date() - 1)
 
 action_stat <- fbGetMarketingStat(
-  test_accs[3],
+  test_accs,
   level  = "adset",
   fields = "campaign_name,
             adset_name,

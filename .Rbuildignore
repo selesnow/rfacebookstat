@@ -5,3 +5,8 @@ tests
 _config.yml
 ^getToken$
 index.md
+^doc$
+^Meta$
+.RData
+.Rhisroty
+^cran-comments\.md$

@@ -1,7 +1,7 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.6.0
+Version: 2.7.0
 Date: 2022-05-23
 Authors@R: 
     c(person(given  = "Alexey",
@@ -9,7 +9,6 @@ Authors@R:
              role   = c("aut", "cre"),
              email  = "selesnow@gmail.com",
              comment = c(ORCID = "0000-0003-0410-7385")))
-Author: Alexey Seleznev [aut, cre] (<https://orcid.org/0000-0003-0410-7385>)
 Maintainer: Alexey Seleznev <selesnow@gmail.com>
 Description: Load data by campaigns, ads, ad sets and insights, ad account and business manager 
     from Facebook Marketing API into R. For more details see official documents by Facebook 
@@ -28,7 +27,6 @@ Imports:
 URL: https://selesnow.github.io/rfacebookstat/, https://www.youtube.com/playlist?list=PLD2LDq8edf4pItOb-vZTG5AXZK2niJ8_R
 License: MIT + file LICENSE
 Suggests: knitr, rmarkdown
-VignetteBuilder: knitr
 Encoding: UTF-8
-Language: ru
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr

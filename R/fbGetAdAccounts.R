@@ -35,7 +35,7 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
   if(source_id == "me"){
      end_points <- "adaccounts"
   } else {
-    end_points <- c("owned_ad_accounts","client_ad_accounts")
+     end_points <- c("owned_ad_accounts", "client_ad_accounts")
   }
   
   # Create result data frame
@@ -49,7 +49,7 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
     
     # send request
     answer  <- GET(url, 
-                   query = list(fields       = "id,name,account_id,account_status,amount_spent,created_time,balance,business_name,media_agency,currency,owner,partner,age,timezone_name,disable_reason",
+                   query = list(fields       = "id,name,account_id,account_status,amount_spent,created_time,balance,business_name,media_agency,currency,owner,partner,age,timezone_name,disable_reason,spend_cap",
                                 limit        = 300,
                                 access_token = access_token))
 
@@ -91,6 +91,8 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
   result$balance      <- result$balance / 100
   result$amount_spent <- as.numeric(result$amount_spent)
   result$amount_spent <- result$amount_spent / 100
+  result$spend_cap    <- as.numeric(result$spend_cap)
+  result$spend_cap    <- result$spend_cap / 100
   
   # joining disable reason names
   result <- left_join(result,

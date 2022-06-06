@@ -4,12 +4,11 @@
 <a href="https://selesnow.github.io/"><img src="https://alexeyseleznev.files.wordpress.com/2017/03/as.png" height="80"></a>
 </p>
 
-# rfacebookstat <a href='https:/selesnow/github.io/ryandexdirect'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
+# rfacebookstat <a href='https://selesnow.github.io/rfacebookstat/'><img src='https://raw.githubusercontent.com/selesnow/rfacebookstat/master/inst/logo/rfacebookstat.png' align="right" height="139" /></a>
 
 ## CRAN
 
-[![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](http://www.rdocumentation.org/packages/rfacebookstat)
-[![rpackages.io rank](http://www.rpackages.io/badge/rfacebookstat.svg)](http://www.rpackages.io/package/rfacebookstat)
+[![Rdoc](http://www.rdocumentation.org/badges/version/rfacebookstat)](https://www.rdocumentation.org/packages/rfacebookstat)
 [![](https://cranlogs.r-pkg.org/badges/rfacebookstat)](https://cran.r-project.org/package=rfacebookstat)
 [![](https://img.shields.io/badge/august%202018-top%2040%20on%20CRAN-brightgreen.svg)](https://rviews.rstudio.com/2018/09/26/august-2018-top-40-new-packages/)
 
@@ -39,15 +38,14 @@ devtools::install_github('selesnow/rfacebookstat')
 ```
 
 ### Ссылки
-1. [Документация по работе с пакетом rfacebookstat](https://selesnow.github.io/rfacebookstat/).
+1. [Документация по работе с пакетом rfacebookstat](https://selesnow.github.io/rfacebookstat//).
 2. Баг репорты, предложения по доработке и улучшению функционала rfacebookstat оставлять [тут](https://github.com/selesnow/rfacebookstat/issues). 
 3. [Список релизов](https://github.com/selesnow/rfacebookstat/releases).
-4. [Группа в Вконтакте](https://vk.com/data_club).
 
 ### Автор пакета
-Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
+Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net/en/us/)
 <Br>email: selesnow@gmail.com
 <Br>skype: selesnow
-<Br>facebook: [facebook.com/selesnow](https://facebook.com/selesnow)
-<Br>linkedin: [linkedin.com/in/selesnow](https://linkedin.com/in/selesnow)
+<Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
+<Br>linkedin: [linkedin.com/in/selesnow](https://www.linkedin.com/in/selesnow)
 <Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)

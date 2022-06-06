@@ -1,7 +1,5 @@
 ---
 title: "Загрузка данных о расходах на рекламу из Facebook в Google Analytics"
-author: "Алексей Селезнёв"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Загрузка данных о расходах на рекламу из Facebook в Google Analytics}
@@ -9,13 +7,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   eval=FALSE,
   collapse = TRUE,
   comment = "#>"
 )
 ```
+
+```{r setup}
+library(rfacebookstat)
+```
+
 
 Начиная с версии `rfacebookstat 2.1.0` в пакет была добавлена функция `fbGetCostData()`, которая позволяет вам получить данные о расходах для дальнейшей их загрузки в Google Analytics.
 

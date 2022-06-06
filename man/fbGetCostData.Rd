@@ -33,11 +33,6 @@ Before loading data create data source at Google Analytics.
 
 \author{Alexey Seleznev}
 
-\seealso{
-
-\href{https://support.google.com/analytics/answer/6014980}{Google Analytics: Understand Data Sets }
-
-}
 \examples{
 \dontrun{
 
