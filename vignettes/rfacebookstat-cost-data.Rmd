@@ -1,8 +1,8 @@
 ---
-title: "Загрузка данных о расходах на рекламу из Facebook в Google Analytics"
+title: "3. Loadind click and cost data from Facebook into Google Analytics"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Загрузка данных о расходах на рекламу из Facebook в Google Analytics}
+  %\VignetteIndexEntry{3. Loadind click and cost data from Facebook into Google Analytics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

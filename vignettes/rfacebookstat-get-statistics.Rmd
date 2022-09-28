@@ -1,8 +1,8 @@
 ---
-title: "Загрузки статистики из рекламных аккаунтов Facebook"
+title: "2. Get Facebook Marketing Insight"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Загрузки статистики из рекламных аккаунтов Facebook}
+  %\VignetteIndexEntry{2. Get Facebook Marketing Insight}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

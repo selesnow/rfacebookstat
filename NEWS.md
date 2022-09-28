@@ -1,3 +1,7 @@
+# rfacebookstat 2.8.0
+
+* Пакет переведён на работу с Facebook Marketing API v15.0
+
 # rfacebookstat 2.7.0
 
 * В результат функции `fbGetAdAccounts()` добавленоо поле `spend_cap`, в котором содержится информация об установленном в аккаунте лимите затрат.

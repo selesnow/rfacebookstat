@@ -1,8 +1,8 @@
 ---
-title: "Авторизация в API facebook"
+title: "1. API facebook Authorization"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Авторизация в API facebook}
+  %\VignetteIndexEntry{1. API facebook Authorization}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

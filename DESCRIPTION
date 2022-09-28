@@ -1,8 +1,7 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.7.0
-Date: 2022-05-23
+Version: 2.8.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -28,5 +27,5 @@ URL: https://selesnow.github.io/rfacebookstat/, https://www.youtube.com/playlist
 License: MIT + file LICENSE
 Suggests: knitr, rmarkdown
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
