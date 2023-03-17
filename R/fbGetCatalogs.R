@@ -29,15 +29,6 @@ fbGetCatalogs <- function(business_id  = getOption("rfacebookstat.business_id") 
   rq_ids      <- list()
   out_headers <- list()
   
-  #check stringAsFactor
-  factor_change <- FALSE
-  
-  #change string is factor if TRUE
-  if(getOption("stringsAsFactors")){
-    options(stringsAsFactors = F)
-    factor_change <- TRUE
-  }
-  
   QueryString <- paste0("https://graph.facebook.com/",api_version,"/",business_id,"/owned_product_catalogs?limit=1500&access_token=",access_token)
   answer_owned_product_catalogs <- httr::GET(QueryString)
   

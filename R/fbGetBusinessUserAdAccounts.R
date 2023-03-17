@@ -31,12 +31,6 @@ fbGetBusinessUserAdAccounts <- function(business_users_id = NULL,
   rq_ids      <- list()
   out_headers <- list()
   
-  factor_change <- FALSE
-  if (getOption("stringsAsFactors")) {
-    options(stringsAsFactors = F)
-    factor_change <- TRUE
-  }
-  
   # check user id
   if ( is.null(business_users_id) ) {
     

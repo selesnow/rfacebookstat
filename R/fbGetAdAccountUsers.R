@@ -32,15 +32,6 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
     
   }
   
-  #check stringAsFactor
-  factor_change <- FALSE
-  
-  #change string is factor if TRUE
-  if(getOption("stringsAsFactors")){
-    options(stringsAsFactors = F)
-    factor_change <- TRUE
-  }
-  
   if (length(accounts_id) == 1) {
     console_type <- "message"
   }
@@ -140,11 +131,6 @@ fbGetAdAccountUsers <- function(accounts_id  = getOption("rfacebookstat.accounts
     
     if(console_type == "message"){
       packageStartupMessage(paste0(" - Done, ",nrow(flatten_data)," users"), appendLF = T)}
-  }
-  
-  #back string as factor value
-  if(factor_change){
-    options(stringsAsFactors = T)
   }
   
   #Finish progressbar

@@ -1,3 +1,7 @@
+# rfacebookstat 2.8.1
+
+* Убрал все манипуляции с опцией stringsAsFactors согласно требованиям CRAN.
+
 # rfacebookstat 2.8.0
 
 * Пакет переведён на работу с Facebook Marketing API v15.0
