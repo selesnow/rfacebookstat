@@ -1,5 +1,5 @@
 # limit check
-print.fblimits <- function(x) {
+print.fblimits <- function(x, ...) {
   cat(str_interp(" call_count: ${x[[1]]$call_count} \n total_cputime: ${x[[1]]$total_cputime} \n total_time: ${x[[1]]$total_time}"))
 }
 

@@ -76,4 +76,8 @@ importFrom(stringr, str_replace)
 importFrom(utils, browseURL, setTxtProgressBar, txtProgressBar)
 importFrom(stats, setNames)
 importFrom(pbapply, pblapply)
+
 S3method(print, fb_access_token)
+S3method(print, fblimits)
+S3method(fbAction, default)
+

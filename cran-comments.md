@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Migrate to Facebook Marketing API v15.0
+* Fix fbAction.default() and fbAction().

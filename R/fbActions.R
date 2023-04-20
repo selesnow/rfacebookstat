@@ -8,9 +8,9 @@ type        <- NULL
 action_type <- NULL
 
 # create methode
-fbAction <- function(x, ...) {
+fbAction <- function(obj, ...) {
   
-  UseMethod("fbAction", x)
+  UseMethod("fbAction", obj)
   
 }
 
@@ -19,7 +19,7 @@ fbAction <- function(x, ...) {
 # actions
 # ============
 # ============
-fbAction.default <- function( obj ) {
+fbAction.default <- function( obj, ... ) {
   
   actions <-
     map_df(obj$data, 

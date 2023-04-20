@@ -47,5 +47,4 @@ devtools::install_github('selesnow/rfacebookstat')
 <Br>email: selesnow@gmail.com
 <Br>skype: selesnow
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)
-<Br>linkedin: [linkedin.com/in/selesnow](https://www.linkedin.com/in/selesnow)
 <Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)
