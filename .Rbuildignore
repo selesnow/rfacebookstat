@@ -11,3 +11,4 @@ index.md
 .Rhisroty
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^vignettes

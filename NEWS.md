@@ -1,3 +1,11 @@
+# rfacebookstat 2.9.4
+
+* В функции `fbGetAccounts()` снизил лимит на количество запрашиваемых аккаунтов в одном запросе с 300 до 200, связано с ошибкой `Please reduce the amount of data you're asking for, then retry your request`.
+
+# rfacebookstat 2.9.3
+
+* Пересборка для CRAN
+
 # rfacebookstat 2.9.2
 
 * Исправил аргументы в функции `fbAction()`, для согласованности с `fbAction.default()`.

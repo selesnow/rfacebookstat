@@ -369,6 +369,3 @@ JSON: `[{"field":"clicks","operator":"LESS_THAN","value":"500"},{"field":"impres
 
 Для получения стандартного доступа требуется перейти в [ваше приложение](https://developers.facebook.com/apps/) в раздел настроек API Marketing и отправить заявку на "Ads Management Standart Access".
 
-![Приложение](https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34443272_2211780812182292_5001620180766294016_n.png?_nc_cat=103&_nc_ht=scontent.fiev11-1.fna&oh=379c9cf5735395ecc4b1fe8461315672&oe=5D6B775C)
-
-![Приложение](https://scontent.fiev11-1.fna.fbcdn.net/v/t39.2365-6/34715564_167271114122355_8203937888174342144_n.png?_nc_cat=101&_nc_ht=scontent.fiev11-1.fna&oh=1119ca1d6709422a3105a93205729d02&oe=5D684F9B)
