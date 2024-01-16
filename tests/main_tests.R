@@ -1,5 +1,8 @@
 library(rfacebookstat)
 library(dplyr)
+fbAuth(username = 'selesnow', skip_option = T)
+fbSetUsername('selesnow')
+fbGetSettings()
 
 # accounts
 bm <- fbGetBusinessManagers()
@@ -13,7 +16,7 @@ ads         <- fbGetAds(test_accs)
 creo        <- fbGetAdCreative(test_accs)
 apps        <- fbGetApps()
 pages       <- fbGetPages(test_accs)
-videos      <- fbGetAdVideos(my_acs$id[4:10])
+videos      <- fbGetAdVideos(test_accs)
 conversions <- fbGetAdAccountsConversions(test_accs)
 # users
 bm_users         <- fbGetBusinessManagersUsers(bm$id[1])

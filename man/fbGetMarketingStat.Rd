@@ -27,7 +27,7 @@ fbGetMarketingStat(
   \item{level}{Represents the level of result. Avable ad, adset, campaign, account.}
   \item{action_breakdowns}{group results in the actions field. You can use the following breakdowns for action_breakdowns, for details \href{https://developers.facebook.com/docs/marketing-api/insights/breakdowns/#actionsbreakdown}{go}, or see details}
   \item{breakdowns}{Permutations marked with an asterisk (*) can be joined with action_type and action_target_id. Avable age, country, gender, frequency_value, hourly_stats_aggregated_by_advertiser_time_zone, hourly_stats_aggregated_by_audience_time_zone, impression_device, place_page_id, placement, device_platform, product_id, region. See details.}
-  \item{fields}{List of fields which you want get in R. You can find list of available fields at Facebook API documentation by this \href{https://developers.facebook.com/docs/marketing-api/insights/parameters#fields}{link}.}
+  \item{fields}{List of fields which you want get in R.}
   \item{filtering}{Vector of filtring or JSON string with array of filtring parameters, on example \code{"ad.effective_status IN ARCHIVED"} \code{[{/'field/':/'ad.effective_status/',/'operator/':/'IN/',/'value/':[/'ARCHIVED/']}}, see filtring block for more examples}
   \item{date_start}{Start reporting date.}
   \item{date_stop}{End reporting day}
@@ -172,7 +172,7 @@ Filtring with operators IN_RANGE, NOT_IN_RANGE, IN, NOT_IN
 \author{Alexey Seleznev}
 
 \seealso{
-All avable field, and discription of all parameters you can see oh this  \href{https://developers.facebook.com/docs/marketing-api/insights/parameters}{link}.
+All avable field, and discription of all parameters you can see oh this  \href{https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights}{link}.
 More information about breakdowns and action brekdowns on this \href{https://developers.facebook.com/docs/marketing-api/insights/breakdowns}{link}.
 More information about action field in this \href{https://developers.facebook.com/docs/marketing-api/reference/ads-action-stats/}{documentation}.
 }

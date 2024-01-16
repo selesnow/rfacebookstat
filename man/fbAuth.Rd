@@ -22,7 +22,7 @@ fbAuth(username    = getOption("rfacebookstat.username"),
   \item{app_id}{ID of Facebook App}
   \item{app_secret}{Secret of Facebook App}
   \item{token_path}{path to dir with credentials}
-  \item{scopes}{Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions/reference/}{docmentation}}
+  \item{scopes}{Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions}{docmentation}}
   \item{reauth}{boolean, do reauthorization}
   \item{skip_option}{logical, skip access token from options or not}
 }

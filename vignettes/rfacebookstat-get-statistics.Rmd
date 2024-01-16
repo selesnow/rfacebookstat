@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 * *level* - Уровень группировки данных, принимает одно из следующих значений: ad, adset, campaign, account. По умолчанию имеет значение account.
 * *action_breakdowns* - Разбивки по действиям, более подробно о них можно узнать в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown) к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.
 * *breakdowns* - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender) к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.
-* *fields* - Поля которые вы хотите загрузить из API, полный список всех полей доступен по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/parameters#fields).
+* *fields* - Поля которые вы хотите загрузить из API, полный список всех полей доступен по [ссылке](https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights).
 * *filtering* - Текстовая строка или вектор. Фильтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.
 * *date_start* - Дата начала отчётного периода.
 * *date_stop* - Дата завершения рабочего отчётного периода.

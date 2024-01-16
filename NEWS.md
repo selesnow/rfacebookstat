@@ -1,3 +1,24 @@
+# rfacebookstat 2.9.9
+
+* Cran fixing
+
+# rfacebookstat 2.9.8
+
+* Cran fixing
+
+# rfacebookstat 2.9.7
+
+* Исправление ссылок для документации.
+
+# rfacebookstat 2.9.6
+
+* Исправление ссылок для документации.
+
+# rfacebookstat 2.9.5
+
+* Пакет переведён на работу с Facebook Marketing API v.18.
+* Исправлены некоторые устаревшие ссылки в документации.
+
 # rfacebookstat 2.9.4
 
 * В функции `fbGetAccounts()` снизил лимит на количество запрашиваемых аккаунтов в одном запросе с 300 до 150, связано с ошибкой `Please reduce the amount of data you're asking for, then retry your request`.
@@ -58,7 +79,7 @@
 
 * Пакет переведён на работу с API v12.0
 * Исправлена работа аргумента interval в функции `fbGetMarketingStat()`.
-* В функции `fbAuth()` и `fbGetToken()` отдельным аргументом выделен scopes, который позволяет по необходимости исключать неиспользуемые разрешения, например business_management. Более подробно о разрешениях можно почитать в [справоке](https://developers.facebook.com/docs/permissions/reference/).
+* В функции `fbAuth()` и `fbGetToken()` отдельным аргументом выделен scopes, который позволяет по необходимости исключать неиспользуемые разрешения, например business_management. Более подробно о разрешениях можно почитать в [справоке](https://developers.facebook.com/docs/permissions).
 
 # rfacebookstat 2.4.0
 

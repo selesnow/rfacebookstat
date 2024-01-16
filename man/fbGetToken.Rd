@@ -13,7 +13,7 @@ fbGetToken(
 \arguments{
 \item{app_id}{ID of your Facebook App}
 
-\item{scopes}{Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions/reference/}{docmentation}}
+\item{scopes}{Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions}{docmentation}}
 }
 \value{
 API token

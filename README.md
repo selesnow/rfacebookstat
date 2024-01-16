@@ -43,7 +43,7 @@ devtools::install_github('selesnow/rfacebookstat')
 3. [Список релизов](https://github.com/selesnow/rfacebookstat/releases).
 
 ### Автор пакета
-Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net/en/us/)
+Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.us/)
 <Br>email: selesnow@gmail.com
 <Br>skype: selesnow
 <Br>facebook: [facebook.com/selesnow](https://www.facebook.com/selesnow)

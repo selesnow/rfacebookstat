@@ -4,7 +4,7 @@
 #' @description Get API facebook token for access to facebook ads API.
 #'
 #' @param app_id ID of your Facebook App
-#' @param scopes Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions/reference/}{docmentation}
+#' @param scopes Permissions provide a way for your app to access data from Facebook. For detail see \href{https://developers.facebook.com/docs/permissions}{docmentation}
 #'
 #' @return API token
 #' @export
