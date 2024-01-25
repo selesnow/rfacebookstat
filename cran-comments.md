@@ -2,4 +2,5 @@
 
 0 errors | 0 warnings | 1 note
 
-* Fix "Package has a VignetteBuilder field but no prebuilt vignette index.".
+* Migrate to Facebook Marketing API v19.0
+* Add new important argument use_account_attribution_setting to fbGetMarketingStat() function.
