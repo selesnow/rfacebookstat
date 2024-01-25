@@ -1,3 +1,8 @@
+# rfacebookstat 2.10.0
+
+* В функцию `fbGetMarketingStat()` добавлен аргумент `use_unified_attribution_setting`. Если для этого параметра установлено значение `TRUE`, результаты вашей рекламы будут показываться с использованием унифицированных настроек атрибуции, определенных на уровне группы объявлений, а параметр `use_account_attribution_setting` будет игнорироваться.
+* Пакет переведён на работу с Facebook Marketing API v.19.
+
 # rfacebookstat 2.9.9
 
 * Cran fixing

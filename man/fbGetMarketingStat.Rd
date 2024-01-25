@@ -14,6 +14,7 @@ fbGetMarketingStat(
   attribution_window = NULL,
 	api_version = getOption("rfacebookstat.api_version"), 
 	action_report_time = NULL, interval = "day", 
+	use_unified_attribution_setting = FALSE,
 	use_account_attribution_setting = FALSE,
 	console_type = "progressbar", request_speed = "normal",
 	fetch_by = NULL,
@@ -38,6 +39,7 @@ fbGetMarketingStat(
   \item{api_version}{Current Facebook API version.}
   \item{action_report_time}{Determines the report time of action stats.}
   \item{interval}{Character value for split by time interval, one of "day", "week", "month", "quarter", "year". By default = "day"}
+  \item{use_unified_attribution_setting}{When this parameter is set to true, your ads results will be shown using unified attribution settings defined at ad set level and parameter use_account_attribution_setting will be ignored.}
   \item{use_account_attribution_setting}{When this parameter is set to true, your ads results will be shown using the attribution settings defined for the ad account.}
   \item{console_type}{Character value for manage console output message, one of "progressbar", "message". By default = "progressbar". See more at Detail}
   \item{username}{your username on Facebook}

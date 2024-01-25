@@ -58,7 +58,7 @@ fbGetCampaigns <- function(accounts_id  = getOption("rfacebookstat.accounts_id")
   
   for( account_id in accounts_id ) {
   
-      QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account_id,"/campaigns?fields=id,name,created_time,bid_strategy,daily_budget,budget_remaining,spend_cap,buying_type,status,configured_status,account_id,recommendations,source_campaign_id,start_time,stop_time&limit=1000",
+      QueryString <- paste0("https://graph.facebook.com/",api_version,"/",account_id,"/campaigns?fields=id,name,created_time,bid_strategy,daily_budget,budget_remaining,spend_cap,buying_type,status,configured_status,account_id,recommendations,source_campaign_id,primary_attribution,campaign_attribution,start_time,stop_time&limit=1000",
                             "&filtering=[{'field':'campaign.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
                             "&access_token=",access_token)
       

@@ -25,6 +25,7 @@ fbGetMarketingStatHelper <-
            date_stop          = NULL,
            date_preset        = 'last_30d',
            attribution_window = NULL,
+           use_unified_attribution_setting = FALSE,
            api_version        = getOption("rfacebookstat.api_version"),
            action_report_time = NULL,
            interval           = "day",
@@ -151,6 +152,19 @@ fbGetMarketingStatHelper <-
       use_account_attribution_setting <- 'false'
       
     }
+    
+    # use_account_attribution_setting
+    if ( use_unified_attribution_setting ) {
+      
+      use_unified_attribution_setting <- 'true'
+      
+    } else {
+      
+      use_unified_attribution_setting <- 'false'
+      
+    }
+    
+    
     #################################################
     # OLD VERSION OF CODE, WITH OUT time_range AND  #
     # time_increment                                #
@@ -227,6 +241,7 @@ fbGetMarketingStatHelper <-
                                        time_range                 = time_range,
                                        date_preset                = date_preset,
                                        use_account_attribution_setting = use_account_attribution_setting,
+                                       use_unified_attribution_setting = use_unified_attribution_setting,
                                        limit                      = 1000,
                                        access_token               = access_token))
         
@@ -507,6 +522,7 @@ fbGetMarketingStat <-
            api_version        = getOption("rfacebookstat.api_version"),
            action_report_time = NULL,
            interval           = "day",
+           use_unified_attribution_setting = FALSE,
            use_account_attribution_setting = FALSE,
            console_type       = "progressbar",
            request_speed      = "normal",
@@ -555,6 +571,7 @@ fbGetMarketingStat <-
                        api_version        = api_version,
                        action_report_time = action_report_time,
                        interval           = interval,
+                       use_unified_attribution_setting = use_unified_attribution_setting,
                        use_account_attribution_setting = use_account_attribution_setting,
                        console_type       = console_type,
                        request_speed      = request_speed,
@@ -588,6 +605,7 @@ fbGetMarketingStat <-
                       api_version        = api_version,
                       action_report_time = action_report_time,
                       interval           = interval,
+                      
                       use_account_attribution_setting = use_account_attribution_setting,
                       console_type       = console_type,
                       request_speed      = request_speed,
