@@ -1,3 +1,7 @@
+# rfacebookstat (development version)
+
+* Исправлена ошибка, при которой в функции `fbGetMarketingStat()` не работал аргумент `use_unified_attribution_setting` если не использовался аргумент `fetch_by`.
+
 # rfacebookstat 2.10.0
 
 * В функцию `fbGetMarketingStat()` добавлен аргумент `use_unified_attribution_setting`. Если для этого параметра установлено значение `TRUE`, результаты вашей рекламы будут показываться с использованием унифицированных настроек атрибуции, определенных на уровне группы объявлений, а параметр `use_account_attribution_setting` будет игнорироваться.

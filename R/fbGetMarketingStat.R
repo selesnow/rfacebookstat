@@ -605,7 +605,7 @@ fbGetMarketingStat <-
                       api_version        = api_version,
                       action_report_time = action_report_time,
                       interval           = interval,
-                      
+                      use_unified_attribution_setting = use_unified_attribution_setting,
                       use_account_attribution_setting = use_account_attribution_setting,
                       console_type       = console_type,
                       request_speed      = request_speed,
