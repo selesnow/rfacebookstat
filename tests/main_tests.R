@@ -20,7 +20,7 @@ videos      <- fbGetAdVideos(test_accs)
 conversions <- fbGetAdAccountsConversions(test_accs)
 # users
 bm_users         <- fbGetBusinessManagersUsers(bm$id[1])
-bm_user_accounts <- fbGetBusinessUserAdAccounts(bm_users$id[7], business_id = bm$id[1])
+bm_user_accounts <- fbGetBusinessUserAdAccounts("205698076637029", business_id = bm$id[1])
 # statistic
 simple_stat <- fbGetMarketingStat(
   test_accs, 

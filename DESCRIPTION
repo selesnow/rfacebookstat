@@ -1,7 +1,7 @@
 Package: rfacebookstat
 Type: Package
 Title: Load Data from Facebook API Marketing
-Version: 2.12.1
+Version: 2.12.1.9000
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -16,6 +16,7 @@ Depends: R (>= 3.5.0)
 BugReports: https://github.com/selesnow/rfacebookstat/issues
 Imports: 
      httr, 
+     httr2,
 	   jsonlite, 
 	   dplyr, 
 	   purrr, 
