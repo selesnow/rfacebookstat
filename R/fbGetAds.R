@@ -68,7 +68,7 @@ fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
         req_url_path_append('ads') %>%  
         req_url_query(
           fields       = "id,name,object_url,adlabels,adset_id,bid_amount,bid_type,campaign_id,account_id,configured_status,effective_status,creative",
-          limit        = 500, #1000
+          limit        = 1500,
           filtering    = "[{'field':'ad.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
           access_token = access_token
         ) %>% 
@@ -121,7 +121,9 @@ fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
     
       # paging
       while (!is.null(pars_answer$paging$`next`)) {
-
+        
+        
+        cat('Run pagination!')
         #api_answer  <- GET(pars_answer$paging$`next`)
         #pars_answer <- content(api_answer, as = "parsed")
         
