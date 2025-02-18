@@ -1,8 +1,22 @@
 fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
+                     fields       = c("id", 
+                                      "name" , 
+                                      "object_url",
+                                      "adlabels",
+                                      "adset_id",
+                                      "bid_amount",
+                                      "bid_type",
+                                      "campaign_id",
+                                      "account_id",
+                                      "configured_status",
+                                      "effective_status",
+                                      "creative"),
                      api_version  = getOption("rfacebookstat.api_version"),
                      username     = getOption("rfacebookstat.username"),
                      token_path   = fbTokenPath(),
-                     access_token = getOption("rfacebookstat.access_token")) {
+                     access_token = getOption("rfacebookstat.access_token"),
+                     limit        = 5000
+                     ) {
 	
   
   # auth 
@@ -67,10 +81,11 @@ fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
         req_url_path_append(account_id) %>% 
         req_url_path_append('ads') %>%  
         req_url_query(
-          fields       = "id,name,object_url,adlabels,adset_id,bid_amount,bid_type,campaign_id,account_id,configured_status,effective_status,creative",
-          limit        = 1500,
-          filtering    = "[{'field':'ad.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
-          access_token = access_token
+          fields       = fields,
+          limit        = limit,
+          #filtering    = "[{'field':'ad.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
+          access_token = access_token,
+          .multi = "comma"
         ) %>% 
         req_error(body = fb_error_body) %>% 
         req_retry(
@@ -81,16 +96,7 @@ fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
         req_perform()
       
       pars_answer <- resp_body_json(api_answer)
-      
-      
-      # url <- str_interp("https://graph.facebook.com/${api_version}/${account_id}/ads")
 
-      # api_answer  <- GET(url,
-      #                    query = list(fields       = "id,name,object_url,adlabels,adset_id,bid_amount,bid_type,campaign_id,account_id,configured_status,effective_status,creative",
-      #                                 limit        = 1000,
-      #                                 filtering    = "[{'field':'ad.delivery_info','operator':'NOT_IN','value':['stupid_filter']}]",
-      #                                 access_token = access_token))
-      
       # attr
       rq_ids      <- append(rq_ids, setNames(list(resp_status(last_response())), api_answer$headers$`x-fb-trace-id`))
       out_headers <- append(out_headers, setNames(list(resp_headers(last_response())), api_answer$headers$`x-fb-trace-id`))
@@ -114,18 +120,12 @@ fbGetAds <- function(accounts_id  = getOption("rfacebookstat.accounts_id"),
         
       }
       
-      
       # pars
       result <- append(result, 
                        lapply( pars_answer$data, fbParserAds ))
     
       # paging
       while (!is.null(pars_answer$paging$`next`)) {
-        
-        
-        cat('Run pagination!')
-        #api_answer  <- GET(pars_answer$paging$`next`)
-        #pars_answer <- content(api_answer, as = "parsed")
         
         api_answer <- request(pars_answer$paging$`next`) %>% 
           req_error(body = fb_error_body) %>% 
