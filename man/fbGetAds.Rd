@@ -4,18 +4,34 @@
 \title{Get ads list from facebook marketing API}
 \description{Get ads list with parameters from facebook marketing API. Contains information to display an ad and associate it an ad set. Each ad is associated with an ad set and all ads in a set have the same daily or lifetime budget, schedule, and targeting. Creating multiple ads in an ad set helps optimize their delivery based on variations in images, links, video, text or placements.}
 \usage{
-fbGetAds(accounts_id  = getOption("rfacebookstat.accounts_id"), 
-         api_version  = getOption("rfacebookstat.api_version"),
-		 username     = getOption("rfacebookstat.username"),
-	     token_path   = fbTokenPath(),
-         access_token = getOption("rfacebookstat.access_token"))
+fbGetAds(
+    accounts_id  = getOption("rfacebookstat.accounts_id"),
+    fields       = c("id", 
+                     "name" , 
+                     "object_url",
+                     "adlabels",
+                     "adset_id",
+                     "bid_amount",
+                     "bid_type",
+                     "campaign_id",
+                     "account_id",
+                     "configured_status",
+                     "effective_status",
+                     "creative"),
+    api_version  = getOption("rfacebookstat.api_version"),
+    username     = getOption("rfacebookstat.username"),
+    token_path   = fbTokenPath(),
+    access_token = getOption("rfacebookstat.access_token"),
+    limit        = 5000)
 }
 \arguments{
   \item{accounts_id}{Your account ID, for example 'act_11111111111111111'.}
+  \item{fields}{Character vector of fields what you need, list of available fields <https://developers.facebook.com/docs/marketing-api/reference/adgroup/#---->.}
   \item{api_version}{Current Facebook API version.}
   \item{username}{your username on Facebook}
   \item{token_path}{path to dir with credentials}
   \item{access_token}{Your facebook API token.}
+  \item{limit}{Row limit per 1 request.}
 }
 
 \value{
