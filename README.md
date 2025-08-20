@@ -14,7 +14,7 @@
 
 ## Краткое описание.
 
-Пакет для загрузки данных из [Marketing API Facebook](https://developers.facebook.com/docs/marketing-apis?locale=ru_RU) в R, а так же с помощью пакета вы можете управлять доступами пользователей к рекламный аккаунтам на Facebook.
+Пакет для загрузки данных из [Marketing API Facebook](https://developers.facebook.com/docs/marketing-api) в R, а так же с помощью пакета вы можете управлять доступами пользователей к рекламный аккаунтам на Facebook.
 
 ## Достижения
 

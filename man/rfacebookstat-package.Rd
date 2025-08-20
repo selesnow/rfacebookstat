@@ -24,7 +24,7 @@ Maintainer: \packageMaintainer{rfacebookstat}
 \seealso{
 See oficial documantation:
 rfacebookstat package - https://selesnow.github.io/rfacebookstat/
-Facebook API Marketing - https://developers.facebook.com/docs/marketing-apis/
+Facebook API Marketing - https://developers.facebook.com/docs/marketing-api
 }
 \examples{
 \dontrun{
