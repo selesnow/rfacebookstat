@@ -352,7 +352,10 @@ fbGetMarketingStatHelper <-
           #Check other questions  
           if(!is.null(answerobject$error)){
             error <- answerobject$error
-            stop(answerobject$error$message)}
+            error_msg <- answerobject$error$message
+            if ( !is.null(answerobject$error$error_user_title) ) error_msg <- paste0(answerobject$error$error_user_title, ": ", error_msg)
+            if ( !is.null(answerobject$error$error_user_msg) )   error_msg <- paste0(error_msg, ". ", answerobject$error$error_user_msg)
+            stop(error_msg)}
           
       }
       

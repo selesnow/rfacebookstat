@@ -47,7 +47,8 @@ fbParserAdsets <- function(x) {
          destination_type  = fbNullReplacer(x$destination_type),
          daily_budget      = fbNullReplacer(x$daily_budget),
          created_time      = x$created_time,
-         source_adset_id   = fbNullReplacer(x$source_adset_id)
+         source_adset_id   = fbNullReplacer(x$source_adset_id),
+         is_adset_budget_sharing_enabled = fbNullReplacer(x$is_adset_budget_sharing_enabled)
          )
   )
   

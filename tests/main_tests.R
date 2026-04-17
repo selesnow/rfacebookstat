@@ -1,8 +1,10 @@
 library(rfacebookstat)
 library(dplyr)
 fbAuth(username = 'selesnow', skip_option = T)
-fbSetUsername('selesnow')
+fbSetUsername('a.seleznev@netpeak.group')
 fbGetSettings()
+
+options(rfacebookstat.api_version  = "v25.0")
 
 # accounts
 bm <- fbGetBusinessManagers()
