@@ -2,6 +2,7 @@
 * Пакет переведён на работу с Facebook Marketing API v25.0.
 * В функцию `fbGetAdSets()` добавлено новое поле `is_adset_budget_sharing_enabled`.
 * Улучшена обработка ошибок в функции `fbGetMarketingStat()`, теперь выводятся более подробные сообщения `error_user_title` и `error_user_msg`.
+* В функцию `fbGetAdAccounts()` добавлен аргумент `limit`. Значение по умолчанию снижено со 100 до 50 для избежания ошибки `An unexpected error has occurred. Please retry your request later.` на больших бизнес-менеджерах.
 
 # rfacebookstat 2.13.1
 * Небольшие правки документации пакета для отправки на CRAN.

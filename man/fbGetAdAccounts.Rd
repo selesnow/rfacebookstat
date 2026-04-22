@@ -7,7 +7,8 @@ fbGetAdAccounts(source_id    = getOption("rfacebookstat.business_id"),
                 api_version  = getOption("rfacebookstat.api_version"), 
                 username     = getOption("rfacebookstat.username"),
                 token_path   = fbTokenPath(),
-				access_token = getOption("rfacebookstat.access_token"))
+				access_token = getOption("rfacebookstat.access_token"),
+				limit        = 50)
 }
 
 \arguments{
@@ -16,6 +17,7 @@ fbGetAdAccounts(source_id    = getOption("rfacebookstat.business_id"),
   \item{username}{your username on Facebook}
   \item{token_path}{path to dir with credentials}
   \item{api_version}{Current Facebook API version.}
+  \item{limit}{Number of ad accounts requested per API call. Reduce this if you experience unexpected errors. Default is 50.}
 }
 
 \value{
