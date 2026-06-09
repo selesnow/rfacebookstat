@@ -111,13 +111,36 @@ fbAction.default <- function( obj, ... ) {
              }
              }
              
-             if ( length( .x$actions ) + length( .x$action_values ) + length(.x$video_thruplay_watched_actions ) + length(.x$conversions ) == 0 ) {
+             # Parse any other action list columns (e.g. video_p25_watched_actions, video_play_actions)
+             all_lists <- names(.x)[unlist(map(.x, is.list))]
+             other_action_cols <- all_lists[ grepl("_actions$", all_lists) & ! all_lists %in% c("actions", "action_values", "video_thruplay_watched_actions", "conversions") ]
+             
+             for ( col_name in other_action_cols ) {
+               if ( length(.x[[col_name]]) > 0 ) {
+                 df_other <-
+                   .x[[col_name]] %>%
+                   bind_rows() %>%
+                   pivot_longer(cols = -matches("action\\_.*" ), names_to = "action_sufix", values_to = "val") %>%
+                   mutate(action_type = paste0(col_name, ".", action_type)) %>%
+                   unite(action_type, matches("action\\_.*" ), remove = T) %>%
+                   replace_na(list(val = "0")) %>%
+                   pivot_wider(names_from = "action_type", values_from = "val", values_fill = list("val" = "0"))
+                 
+                 if ( exists("action_df") ) {
+                   action_df <- bind_cols(action_df, df_other)
+                 } else {
+                   action_df <- bind_cols(other_col, df_other)
+                 }
+               }
+             }
+             
+             if ( exists("action_df") ) {
                
-               other_col
+               action_df
                
              } else {
                
-               action_df
+               other_col
                
              }
              

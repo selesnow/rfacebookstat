@@ -1,6 +1,8 @@
 export(fbAuth)
 export(fbGetToken)
 export(fbGetBusinessManagers)
+export(fbGetBusinessInvoices)
+export(fbDownloadBusinessInvoices)
 export(fbGetAdAccounts)
 export(fbGetUserAdAccounts)
 export(fbGetAdAccountUsers)
