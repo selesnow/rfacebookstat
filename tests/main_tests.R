@@ -4,7 +4,7 @@ fbAuth(username = 'selesnow', skip_option = T)
 fbSetUsername('a.seleznev@netpeak.group')
 fbGetSettings()
 
-options(rfacebookstat.api_version  = "v25.0")
+options(rfacebookstat.api_version  = "v26.0")
 
 # accounts
 bm <- fbGetBusinessManagers()
@@ -32,19 +32,21 @@ simple_stat <- fbGetMarketingStat(
 action_stat <- fbGetMarketingStat(
   test_accs,
   level  = "adset",
-  fields = "campaign_name,
+  fields = "account_id, campaign_name,
             adset_name,
             impressions,
             clicks,
             reach,
             spend,
             actions,
-            action_values",
+            action_values,
+  video_p25_watched_actions,video_p50_watched_actions,video_p75_watched_actions,video_p95_watched_actions,video_p100_watched_actions",
   date_preset = 'last_7d', 
   breakdowns  = 'publisher_platform',
-  attribution_window = c('1d_view','7d_click'),
+  #attribution_window = c('1d_view','7d_click'),
   action_breakdowns = "action_type",
 )
+
 
 # auth tets
 # owner

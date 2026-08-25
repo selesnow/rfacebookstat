@@ -1,3 +1,8 @@
+# rfacebookstat 2.16.0
+* Пакет переведён на работу с Facebook Marketing API v26.0.
+* В функцию `fbGetAdSets()` добавлено новое поле `advantage_audience` для отслеживания настроек таргетинга в HEF-кампаниях.
+* В функцию `fbGetAds()` добавлено новое поле `ad_disclaimer` для получения юридических дисклеймеров объявлений.
+
 # rfacebookstat 2.15.0
 * Добавлена функция `fbGetBusinessInvoices()` для загрузки счетов из Бизнес-менеджера.
 * Добавлена функция `fbDownloadBusinessInvoices()` для векторизированного скачивания PDF-счетов.

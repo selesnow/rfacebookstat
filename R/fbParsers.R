@@ -22,7 +22,8 @@ fbParserAds <- function(x) {
          bid_amount        = fbNullReplacer(x$bid_amount) ,
          bid_type          = x$bid_type,
          configured_status = x$configured_status,
-         effective_status  = x$effective_status)
+         effective_status  = x$effective_status,
+         ad_disclaimer     = fbNullReplacer(x$ad_disclaimer))
   )
   
 }
@@ -48,7 +49,8 @@ fbParserAdsets <- function(x) {
          daily_budget      = fbNullReplacer(x$daily_budget),
          created_time      = x$created_time,
          source_adset_id   = fbNullReplacer(x$source_adset_id),
-         is_adset_budget_sharing_enabled = fbNullReplacer(x$is_adset_budget_sharing_enabled)
+         is_adset_budget_sharing_enabled = fbNullReplacer(x$is_adset_budget_sharing_enabled),
+         advantage_audience              = fbNullReplacer(x$advantage_audience)
          )
   )
   
