@@ -1,5 +1,5 @@
 # action hander 
-# https://developers.facebook.com/docs/marketing-api/reference/ads-action-stats/
+# https://developers.facebook.com/documentation/ads-commerce/marketing-api/reference/ads-action-stats/
 
 name        <- NULL
 val         <- NULL

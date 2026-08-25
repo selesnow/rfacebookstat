@@ -2,5 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Migrate to Facebook API Version 23.0
-* Fix some links and dependency
+* Fix links in documentation.

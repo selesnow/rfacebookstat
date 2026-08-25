@@ -36,6 +36,6 @@ Alexey Seleznev
 }
 
 \seealso{
- \href{https://developers.facebook.com/docs/marketing-api/reference/ad-account/customaudiences/}{Ad Account Customaudiences API Documentation}
+ \href{https://developers.facebook.com/documentation/ads-commerce/marketing-api/reference/ad-account/customaudiences}{Ad Account Customaudiences API Documentation}
 }
 

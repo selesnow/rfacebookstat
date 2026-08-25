@@ -15,7 +15,7 @@ fbUpdateAdAccountUsers(
 
 \arguments{
   \item{accounts_id}{vector with ID of your ad account, for example c("act_00001","act_00002").}
-  \item{role}{Character or integer value, one of administator, advertiser, ad manager, analyst, sales, direct sales, 1001, 1002, 1003,1004 (https://developers.facebook.com/docs/marketing-api/aduser/v2.12).}
+  \item{role}{Character or integer value, one of administator, advertiser, ad manager, analyst, sales, direct sales, 1001, 1002, 1003,1004 (https://developers.facebook.com/documentation/ads-commerce/marketing-api/aduser/v2.12).}
   \item{access_token}{Your facebook API token.}
   \item{user_ids}{vector with users ids who need remove from ad account.}
   \item{username}{your username on Facebook}
@@ -43,7 +43,7 @@ Permissions:
 7: REPORTS: run reports
 9, 10 - Apply to some directly managed accounts. Not currently needed for Marketing API calls
 
-For more details go link (https://developers.facebook.com/docs/marketing-api/aduser/)
+For more details go link (https://developers.facebook.com/documentation/ads-commerce/marketing-api/aduser/)
 }
 \author{Alexey Seleznev}
 

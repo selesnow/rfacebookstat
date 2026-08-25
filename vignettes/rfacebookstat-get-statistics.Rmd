@@ -25,9 +25,9 @@ knitr::opts_chunk$set(
 * *accounts_id* - ID рекламных аккаунтов, перед ID необходимо указать префикс `act_`, вы можете указать вектор из ID аккаунтов если требуется загрузить данные из набора аккаунтов. По умолчанию запрашивает значение опции *rfacebookstat.accounts_id*.
 * *sorting* - Поле для сортировки полученных данных, так же вы можете указать направление добавив "_ascending" или "_descending" в поле сортировки. Например "reach_descending". Для действий вы можете сортировать по типу действия в форме "actions: <action_type>". Например, ["actions: link_click_ascending"]. Вы можете задать только одно поле для сортировки.
 * *level* - Уровень группировки данных, принимает одно из следующих значений: ad, adset, campaign, account. По умолчанию имеет значение account.
-* *action_breakdowns* - Разбивки по действиям, более подробно о них можно узнать в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#actionsbreakdown) к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.
-* *breakdowns* - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в [документации](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender) к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.
-* *fields* - Поля которые вы хотите загрузить из API, полный список всех полей доступен по [ссылке](https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights).
+* *action_breakdowns* - Разбивки по действиям, более подробно о них можно узнать в [документации](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights/breakdowns#actionsbreakdown) к API Facebook, так же более подробно они будут рассмотрены позже в этой виньетке.
+* *breakdowns* - Общие разбивки которые предоставляют дополнительные возможности по группировке данных, подробности в [документации](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights/breakdowns#ageandgender) к API Facebook, так же этот аргумент будет более подробно рассмотрен немного ниже.
+* *fields* - Поля которые вы хотите загрузить из API, полный список всех полей доступен по [ссылке](https://developers.facebook.com/documentation/ads-commerce/marketing-api/reference/ad-account/insights).
 * *filtering* - Текстовая строка или вектор. Фильтрацию отчёта вы можете задавать либо в JSON формате либо в упрощенном формате, более подробно о фильтрации будет написано немного ниже.
 * *date_start* - Дата начала отчётного периода.
 * *date_stop* - Дата завершения рабочего отчётного периода.
@@ -98,7 +98,7 @@ fb_data <- fbGetMarketingStat(
 * platform_position
 * device_platform
 
-Актуальный список группировок всегда можно найти в официальной документации API Facebook по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns#ageandgender).
+Актуальный список группировок всегда можно найти в официальной документации API Facebook по [ссылке](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights/breakdowns#ageandgender).
 
 ```{r}
 library(rfacebookstat)
@@ -264,8 +264,8 @@ fb_data_action_breakdowns <- fbGetMarketingStat(
 Более подробно об окнах атрибуции в Facebook можно узнать по следующим ссылкам:
 
 * [Об окнах атрибуции в Ads Manager](https://www.facebook.com/business/help/2198119873776795?id=768381033531365)
-* [API Insights / Статистика / Окна атрибуции](https://developers.facebook.com/docs/marketing-api/insights/#sample)
-* [Система правил для рекламы](https://developers.facebook.com/docs/marketing-api/ad-rules)
+* [API Insights / Статистика / Окна атрибуции](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights#sample)
+* [Система правил для рекламы](https://developers.facebook.com/documentation/ads-commerce/marketing-api/ad-rules)
 
 ## Фильтрация данных
 Вы можете применять фильтры к запрашиваемым данным. Использовать для этого необходимо аргумент `filtering`.
@@ -355,7 +355,7 @@ JSON: `[{"field":"clicks","operator":"LESS_THAN","value":"500"},{"field":"impres
 ## Лимиты API и аргумент request_speed
 По использованию аргумента `request_speed` есть целая [статья](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/), но я всё же немного опишу зачем данный аргумент нужен.
 
-В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/docs/marketing-api/get-started/authorization) API Facebook):
+В API Facebook на данный момент существует 2 уровня доступа к API ([раздел в справке](https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authorization) API Facebook):
 
 * Разработка - Тестирование приложений с помощью API.
 * Стандартный уровень доступа для управления рекламой - Дополнительные ресурсы, например менее строгие ограничения количества обращений, а также возможность принять участие в программе для партнеров Facebook.

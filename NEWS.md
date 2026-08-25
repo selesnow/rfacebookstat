@@ -1,3 +1,6 @@
+# rfacebookstat 2.16.1
+* Исправлены ссылки в документации по требованию CRAN.
+
 # rfacebookstat 2.16.0
 * Пакет переведён на работу с Facebook Marketing API v26.0.
 * В функцию `fbGetAdSets()` добавлено новое поле `advantage_audience` для отслеживания настроек таргетинга в HEF-кампаниях.

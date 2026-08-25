@@ -256,7 +256,7 @@ li.nm_li {
 </p>
 
 На данном этапе вы получили уровень доступа к API «Development» и можете работать максимум с пятью рекламными аккаунтами.
-*Если вам понадобится полный доступ к API, подробная инструкция находится [здесь](https://developers.facebook.com/docs/marketing-api/access/)*
+*Если вам понадобится полный доступ к API, подробная инструкция находится [здесь](https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authorization)*
 
 ## Установка пакета rfacebookstat
 Для установки пакета запустите приведённый ниже код в RStudio или R консоли.
@@ -347,7 +347,7 @@ fb_acc_user2 <- fbGetAdAccountUsers(accounts_id  =  "act_262115113",
 ## Безопасность использования rfacebookstat
 
 Вся работа с API Facebook Marketing происходит через зарегистрированное вами приложение.
-О том, как устроен процесс аутентификации в Facebook Marketing API подробно описано [тут](https://developers.facebook.com/docs/marketing-api/access/). 
+О том, как устроен процесс аутентификации в Facebook Marketing API подробно описано [тут](https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authorization). 
 
 Для прохождения авторизации в пакете rfacebookstat есть функция `fbGetToken`, реализуется через одноэтапную аутентификацию. Никакой опасности в том, что ваш токен будет перехвачен через отчёты Google Analytics нет, скрин того, как в Google Analytics выглядит посещение страницы генерации токена.
 
@@ -1024,13 +1024,13 @@ fbGetMarketingStat(accounts_id,
 * accounts_id — ID рекламного аккаунта. Это обязательный аргумент. Вы можете получить его из URL, если перейдете в нужный рекламный аккаунт Facebook, указывайте ID аккаунта с приставкой «act_», как в примере: accounts_id = "act_000000000000".
 * sorting — cортировка данных. Необязательный аргумент. На входе принимает список полей и направление сортировки (по возрастанию или по убыванию). Пример: reach_descending, impressions_ascending.
 * level — уровень детализации данных. Обязательный аргумент. Принимает значения ad, adset, campaign, account. Пример — level = "account".
-* fields — список полей, по которым вы планируете получить данные. Обязательный аргумент. Пример: fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend". Актуальный список всех доступных полей можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/fields/).
+* fields — список полей, по которым вы планируете получить данные. Обязательный аргумент. Пример: fields = "account_id,account_name,campaign_name,impressions,unique_impressions,clicks,unique_clicks,reach,spend". Актуальный список всех доступных полей можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights/fields/).
 * filtering — фильтр данных. Необязательный аргумент. Фильтры задаются в виде JSON объектов «ключ:значение». Необходимо прописать три свойства:
     + field — поле, по которому будет осуществляться фильтрация;
     + operator — оператор логического значения ('EQUAL', 'NOT_EQUAL', 'GREATER_THAN', 'GREATER_THAN_OR_EQUAL', 'LESS_THAN', 'LESS_THAN_OR_EQUAL', 'IN_RANGE', 'NOT_IN_RANGE', 'CONTAIN', 'NOT_CONTAIN', 'IN', 'NOT_IN', 'ANY', 'ALL', 'NONE');
     + value — значения, по которому будет фильтроваться указанное поле.
 Пример: filtering = "[{'field':'publisher_platform','operator':'IN','value':['instagram']}]
-* breakdowns — аргумент, с помощью которого можно получить данные в разбивке на различные сегменты. Список доступных срезов информации, а так же информацию о том как они могут друг с другом сочитаться можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/docs/marketing-api/insights/breakdowns/).
+* breakdowns — аргумент, с помощью которого можно получить данные в разбивке на различные сегменты. Список доступных срезов информации, а так же информацию о том как они могут друг с другом сочитаться можно посмотреть в официальной документации к API по [ссылке](https://developers.facebook.com/documentation/ads-commerce/marketing-api/insights/breakdowns/).
 * date_start — начальная дата отчетного периода в формате YYYY-MM-DDD.
 * date_stop — конечная дата отчетного периода в формате YYYY-MM-DDD.
 * interval - временная разбивка, допустимые значения "day", "week", "month", "quarter", "year", "overall"
@@ -1042,7 +1042,7 @@ fbGetMarketingStat(accounts_id,
     * Уровень доступа к API Basic - "normal"
     * Уровень доступа к API Standart - "fast"
 Подробно работа с этим аргументом описана [тут](https://alexeyseleznev.wordpress.com/2017/12/26/rfacebookstat-1-5-0-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%80%D0%B3%D1%83%D0%BC/).
-Информация об уровнях доступа к API Facebook находится [тут](https://developers.facebook.com/docs/marketing-api/access).
+Информация об уровнях доступа к API Facebook находится [тут](https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authorization).
 
 * api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять)
 * access_token — токен доступа.
