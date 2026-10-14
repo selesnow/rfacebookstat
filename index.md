@@ -153,6 +153,7 @@ li.nm_li {
     + [fbGetApps](#fbgetapps) - Загружает набор данных со списком аккаунтов в вашем бизнес менеджере.
     + [fbGetPages](#fbgetpages) - Возвращает список всех страниц по конкретному проекту бизнес менеджера.
     + [fbGetAdAccounts](#fbgetadaccounts) - Возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
+    + [fbGetAdAccount](#fbgetadaccount) - Загружает подробные данные по конкретному рекламному аккаунту или вектору аккаунтов по их ID.
     + [fbGetCampaigns](#fbgetcampaigns) - Загрузить список всех рекламных кампаний из рекламного аккаунта.
     + [fbGetAdSets](#fbgetadsets) - Загрузка списка групп объявлений из рекламного аккаунта.
     + [fbGetAds](#fbgetads) - Загрузка списка объявлений из рекламного аккаунта.
@@ -467,6 +468,9 @@ fbGetSettings()
         <td><center>fbGetAdAccounts</center></td><td><center>Получает список доступных рекламных аккаунтов</center></td>
     </tr>
     <tr>
+        <td><center>fbGetAdAccount</center></td><td><center>Загружает данные по конкретному рекламному аккаунту или вектору аккаунтов</center></td>
+    </tr>
+    <tr>
         <td><center>fbGetCampaigns</center></td><td><center>Получает список всех рекламных кампаний из рекламного аккаунтов Facebook</center></td>
     </tr>
     <tr>
@@ -756,6 +760,32 @@ fbGetAdAccounts(source_id, api_version, access_token )
         <td><center>owner.name</center></td><td><center>Имя владельца рекламного аккаунта</center></td>
     </tr>
 </table>
+
+## fbGetAdAccount
+### Описание
+Функция возвращает подробную информацию по конкретному рекламному аккаунту или вектору аккаунтов по их ID.
+
+### Синтаксис
+fbGetAdAccount(account_id, fields, api_version, username, token_path, access_token)
+
+### Аргументы
+* account_id - Вектор одного или нескольких ID рекламных аккаунтов (с префиксом `act_` или без него). По умолчанию запрашивается из опции `rfacebookstat.account_id` или `rfacebookstat.accounts_id`.
+* fields - Список запрашиваемых полей через запятую. По умолчанию: `"id,name,account_id,account_status,amount_spent,created_time,balance,business_name,currency,owner,timezone_name,disable_reason,spend_cap"`.
+* api_version - Версия API Facebook, по умолчанию запрашивается из опции `rfacebookstat.api_version`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`.
+* token_path - Путь к папке, в которой вы сохранили учётные данные, по умолчанию запрашивается из `fbTokenPath()`.
+* access_token - Токен доступа Facebook API, по умолчанию запрашивается из опции `rfacebookstat.access_token`.
+
+### Пример
+```r
+library(rfacebookstat)
+
+# Запрос данных по одному аккаунту
+acc <- fbGetAdAccount(account_id = "1090055510425474")
+
+# Запрос данных по нескольким аккаунтам
+accs <- fbGetAdAccount(account_id = c("1090055510425474", "act_2090055510425474"))
+```
 	
 ## fbGetCampaigns
 ### Описание

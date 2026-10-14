@@ -11,6 +11,8 @@ bm <- fbGetBusinessManagers()
 my_acs      <- fbGetAdAccounts()
 bm_accounts <- fbGetAdAccounts(bm$id[1])
 test_accs   <- sample_n(bm_accounts, size = 10, replace = FALSE)$id
+single_acc  <- fbGetAdAccount(test_accs[1])
+multi_accs  <- fbGetAdAccount(test_accs[1:2])
 # objects
 camp        <- fbGetCampaigns(test_accs)
 adsets      <- fbGetAdSets(test_accs)

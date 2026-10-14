@@ -104,6 +104,7 @@ rfacebookstatWelcomeMessage <- function(){
   op.rfacebookstat <- list(rfacebookstat.api_version  = "v26.0",
                            rfacebookstat.access_token = fb_token,
                            rfacebookstat.accounts_id  = NULL,
+                           rfacebookstat.account_id   = NULL,
                            rfacebookstat.business_id  = NULL,
                            rfacebookstat.token_path   = fb_token_path,
                            rfacebookstat.username     = fb_user,
