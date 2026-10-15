@@ -27,28 +27,22 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
   rq_ids      <- list()
   out_headers <- list()
   
+  # Check source
+  if(is.null(source_id)){
+    source_id <- "me"
+  }
+  
   # filters handling to JSON
   if ( ! is.null(filtering) ) {
     
-    if ( is.list(filtering) ) {
-      
-      filters <- list()
-      for ( f in filtering ) {
-        filter <- list(field    = f$field,
-                       operator = f$operator,
-                       value    = f$value)
-        filters <- append(filters, list(filter))
-      }
-      filtering <- as.character(toJSON(filters, auto_unbox = TRUE))
-      
-    } else if ( is.character(filtering) ) {
-      
-      if ( ! validate(filtering)[[1]] ) {
-        
-        # check single quotes
+    # if character, parse to list for normalization
+    if ( is.character(filtering) ) {
+      if ( validate(filtering)[[1]] ) {
+        filtering <- fromJSON(filtering, simplifyVector = FALSE)
+      } else {
         fixed_quotes <- gsub("'", "\"", filtering)
         if ( validate(fixed_quotes)[[1]] ) {
-          filtering <- fixed_quotes
+          filtering <- fromJSON(fixed_quotes, simplifyVector = FALSE)
         } else {
           # string format "field operator value"
           filters <- list()
@@ -64,15 +58,64 @@ fbGetAdAccounts <- function(source_id    = getOption("rfacebookstat.business_id"
             }
             filters <- append(filters, list(temp_filter))
           }
-          filtering <- as.character(toJSON(filters, auto_unbox = TRUE))
+          filtering <- filters
         }
       }
     }
-  }
-  
-  # Check source
-  if(is.null(source_id)){
-    source_id <- "me"
+    
+    # Normalize filters for Facebook API compatibility
+    if ( is.list(filtering) ) {
+      norm_filters <- list()
+      for ( f in filtering ) {
+        field_name <- tolower(f$field)
+        op_name    <- toupper(f$operator)
+        val        <- f$value
+        
+        # Auto-fix: On Business Manager, ID filtering requires field "id" and "act_" prefix
+        if ( field_name %in% c("account_id", "id") ) {
+          if ( source_id != "me" ) {
+            field_name <- "id"
+            if ( op_name == "IN" ) {
+              val <- as.list(ifelse(grepl("^act_", unlist(val)), unlist(val), paste0("act_", unlist(val))))
+            } else if ( op_name == "EQUAL" ) {
+              val <- ifelse(grepl("^act_", val), val, paste0("act_", val))
+            }
+          } else {
+            # On me/adaccounts
+            field_name <- "account_id"
+            if ( op_name == "IN" ) {
+              if ( length(val) == 1 ) {
+                op_name <- "EQUAL"
+                val <- gsub("^act_", "", unlist(val)[1])
+              } else {
+                stop("Meta API does not support operator 'IN' for account IDs on /me/adaccounts. Please specify source_id (Business Manager ID), or use fbGetAdAccount(account_id = ...) to query specific accounts.")
+              }
+            } else if ( op_name == "EQUAL" ) {
+              val <- gsub("^act_", "", val)
+            }
+          }
+        }
+        
+        # Auto-fix: account_status only supports EQUAL in Meta API
+        if ( field_name == "account_status" ) {
+          if ( op_name == "IN" ) {
+            if ( length(val) == 1 ) {
+              op_name <- "EQUAL"
+              val <- as.numeric(unlist(val)[1])
+            } else {
+              stop("Meta API does not support operator 'IN' for 'account_status' (only 'EQUAL' is supported).")
+            }
+          } else if ( op_name == "EQUAL" ) {
+            val <- as.numeric(val)
+          }
+        }
+        
+        norm_filters <- append(norm_filters, list(list(field    = field_name,
+                                                       operator = op_name,
+                                                       value    = val)))
+      }
+      filtering <- as.character(toJSON(norm_filters, auto_unbox = TRUE))
+    }
   }
   
   # Define endpoint, joint operation with v2.11 and v2.10

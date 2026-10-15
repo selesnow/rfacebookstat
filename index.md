@@ -711,26 +711,31 @@ fbGetAdAccounts(source_id, api_version, username, token_path, access_token, limi
 
 ### Пример использования аргумента filtering
 ```r
-# Фильтрация только активных аккаунтов (account_status = 1) через R-список
+# Фильтрация только активных аккаунтов (account_status EQUAL 1) через R-список
 active_accs <- fbGetAdAccounts(
   source_id = "1234567890",
   filtering = list(
-    list(field = "account_status", operator = "IN", value = list(1))
+    list(field = "account_status", operator = "EQUAL", value = 1)
   )
 )
 
-# Поиск аккаунтов по названию через JSON-строку
+# Поиск аккаунтов по названию через JSON-строку (оператор CONTAIN)
 shop_accs <- fbGetAdAccounts(
   source_id = "1234567890",
   filtering = '[{"field":"name","operator":"CONTAIN","value":"Shop"}]'
 )
 
-# Выборка конкретных аккаунтов по ID
+# Выборка аккаунтов в Бизнес-менеджере по ID (поле id с префиксом act_, оператор IN)
 my_accs <- fbGetAdAccounts(
   source_id = "1234567890",
   filtering = list(
-    list(field = "account_id", operator = "IN", value = list("111111", "222222"))
+    list(field = "id", operator = "IN", value = list("act_111111", "act_222222"))
   )
+)
+
+# Для точечного запроса конкретных ID кабинетов используйте функцию fbGetAdAccount()
+specific_accounts <- fbGetAdAccount(
+  account_id = c("1872462700348355", "3281404162010857")
 )
 ```
 

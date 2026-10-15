@@ -30,25 +30,19 @@ The \code{filtering} argument allows filtering ad accounts directly on the Faceb
 Filters can be specified in three formats:
 \itemize{
   \item \strong{R list}: A list of lists, where each sublist has elements \code{field}, \code{operator}, and \code{value}.
-  \item \strong{JSON string}: A JSON array of filter objects, e.g., \code{'[{"field":"account_status","operator":"IN","value":[1]}]'}.
-  \item \strong{Character vector shortcut}: String format \code{"<field> <operator> <value>"}, e.g., \code{c("account_status IN 1", "name CONTAIN Shop")}.
+  \item \strong{JSON string}: A JSON array of filter objects, e.g., \code{'[{"field":"name","operator":"CONTAIN","value":"Shop"}]'}.
+  \item \strong{Character vector shortcut}: String format \code{"<field> <operator> <value>"}, e.g., \code{c("account_status EQUAL 1", "name CONTAIN Shop")}.
 }
 
-\strong{Common filterable fields}:
+\strong{API supported filterable fields and operators}:
 \itemize{
-  \item \code{account_status}: Status code of the ad account (1 = ACTIVE, 2 = DISABLED, 3 = UNSETTLED, 7 = PENDING_RISK_REVIEW, 9 = IN_GRACE_PERIOD, 100 = PENDING_CLOSURE, 101 = CLOSED, 201 = ANY_ACTIVE, 202 = ANY_CLOSED).
-  \item \code{name}: Ad account name.
-  \item \code{id} or \code{account_id}: Ad account ID.
-  \item \code{permitted_tasks}: Permissions granted on the account (e.g., \code{"MANAGE"}, \code{"ADVERTISE"}).
+  \item \code{name}: Ad account name. Supported operator: \code{CONTAIN}. Available on both personal profile (\code{me/adaccounts}) and Business Manager.
+  \item \code{account_status}: Status code (1 = ACTIVE, 2 = DISABLED, etc.). Supported operator: \code{EQUAL}. (Note: operator \code{IN} is not supported by Facebook on this endpoint).
+  \item \code{account_id}: Account ID without prefix. Supported operator: \code{EQUAL} (on \code{me/adaccounts}).
+  \item \code{id}: Account ID with \code{act_} prefix (e.g. \code{"act_12345"}). Supported operator: \code{IN} (on Business Manager \code{owned_ad_accounts} / \code{client_ad_accounts}).
 }
 
-\strong{Supported operators}:
-\itemize{
-  \item \code{EQUAL}, \code{NOT_EQUAL}
-  \item \code{IN}, \code{NOT_IN}
-  \item \code{CONTAIN}, \code{NOT_CONTAIN}
-  \item \code{STARTS_WITH}
-}
+Note: If you need to retrieve details for a specific set or vector of account IDs, prefer using \code{\link{fbGetAdAccount}}, which queries account nodes directly and does not have edge filtering constraints.
 }
 
 \value{
@@ -62,11 +56,11 @@ Data frame (tibble) with ad account list and metadata.
 # Load all ad accounts
 all_accounts <- fbGetAdAccounts()
 
-# Filter active accounts only using R list format
+# Filter active accounts only (account_status EQUAL 1)
 active_accounts <- fbGetAdAccounts(
   source_id = "xxxxxxxxxxxxx",
   filtering = list(
-    list(field = "account_status", operator = "IN", value = list(1))
+    list(field = "account_status", operator = "EQUAL", value = 1)
   )
 )
 
@@ -76,18 +70,17 @@ shop_accounts <- fbGetAdAccounts(
   filtering = '[{"field":"name","operator":"CONTAIN","value":"Shop"}]'
 )
 
-# Filter specific accounts by ID using list format
-specific_accounts <- fbGetAdAccounts(
+# Filter accounts in a Business Manager by ID
+bm_accounts <- fbGetAdAccounts(
   source_id = "xxxxxxxxxxxxx",
   filtering = list(
-    list(field = "account_id", operator = "IN", value = list("111111", "222222"))
+    list(field = "id", operator = "IN", value = list("act_111111", "act_222222"))
   )
 )
 
-# Filter using character vector shortcut format
-active_shops <- fbGetAdAccounts(
-  source_id = "xxxxxxxxxxxxx",
-  filtering = c("account_status IN 1", "name CONTAIN Shop")
+# Or use fbGetAdAccount() for direct querying of specific IDs
+specific_accounts <- fbGetAdAccount(
+  account_id = c("1872462700348355", "3281404162010857")
 )
 }
 }
