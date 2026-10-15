@@ -9,6 +9,7 @@ options(rfacebookstat.api_version  = "v26.0")
 # accounts
 bm <- fbGetBusinessManagers()
 my_acs      <- fbGetAdAccounts()
+act_acs     <- fbGetAdAccounts(filtering = list(list(field = "account_status", operator = "IN", value = list(1))))
 bm_accounts <- fbGetAdAccounts(bm$id[1])
 test_accs   <- sample_n(bm_accounts, size = 10, replace = FALSE)$id
 single_acc  <- fbGetAdAccount(test_accs[1])

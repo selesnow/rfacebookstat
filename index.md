@@ -698,14 +698,41 @@ fbGetPages(accounts_is, api_version, access_token)
 Функция возвращает список всех рекламных аккаунтов по конкретному проекту бизнес менеджера.
 	
 ### Синтаксис
-fbGetAdAccounts(source_id, api_version, access_token )
+fbGetAdAccounts(source_id, api_version, username, token_path, access_token, limit, filtering)
 
-### Аругменты
-* source_id - ID пользователя или бизнес менеджера в котором ведётся реклама приложени, если не указать никакое значение в аргументе source_id функция вернёт список всех доступных вам рекламных аккаунтов.
-* api_version - Версия API Facebook в формате v*.*, например v5.0 (не рекомендуется менять), по умолчанию запрашивается из опции `rfacebookstat.api_version`
-* access_token - Токен достепа полученный с помощью функции `fbAuth`, `fbGetToken()` или `fbGetLongTimeToken()`. По умолчанию запрашивается из опции `rfacebookstat.access_token`.
-* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`
-* token_path - Путь к папаке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`
+### Аргументы
+* source_id - ID пользователя или бизнес менеджера в котором ведётся реклама. Если не указать значение, функция вернёт список всех доступных вам рекламных аккаунтов (`me/adaccounts`).
+* api_version - Версия API Facebook, по умолчанию запрашивается из опции `rfacebookstat.api_version`.
+* access_token - Токен доступа, по умолчанию запрашивается из опции `rfacebookstat.access_token`.
+* username - Логин на Facebook под которым вы прошли авторизацию, по умолчанию запрашивается из опции `rfacebookstat.username`.
+* token_path - Путь к папке в которой вы сохранили учётные данные, по умолчанию запрашивается из опции `rfacebookstat.token_path`.
+* limit - Количество аккаунтов запрашиваемых за один вызов API, по умолчанию 50.
+* filtering - Фильтрация аккаунтов на уровне Facebook API. Принимает R-список, JSON-строку или вектор строковых условий.
+
+### Пример использования аргумента filtering
+```r
+# Фильтрация только активных аккаунтов (account_status = 1) через R-список
+active_accs <- fbGetAdAccounts(
+  source_id = "1234567890",
+  filtering = list(
+    list(field = "account_status", operator = "IN", value = list(1))
+  )
+)
+
+# Поиск аккаунтов по названию через JSON-строку
+shop_accs <- fbGetAdAccounts(
+  source_id = "1234567890",
+  filtering = '[{"field":"name","operator":"CONTAIN","value":"Shop"}]'
+)
+
+# Выборка конкретных аккаунтов по ID
+my_accs <- fbGetAdAccounts(
+  source_id = "1234567890",
+  filtering = list(
+    list(field = "account_id", operator = "IN", value = list("111111", "222222"))
+  )
+)
+```
 
 ### Структура возвращаемого дата фрейма
 <table>
